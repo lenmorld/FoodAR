@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<span id="image_url_3">haha</span>
+
+<script src="upload/cloudinary.js"></script>
+<script src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+<script src="clarifai/clarifai_app.js"></script>
+<script>
+
+    var food_serving = ['fruit salad', 'pasta'];
+
+    //        const image = './food.jpg';       // THIS WONT WORK BECAUSE OF XSRF uploads,
+    var image = 'https://samples.clarifai.com/metro-north.jpg';
+    image = 'https://i.imgur.com/eTuCPxM.jpg';
+    image = 'https://i.imgur.com/r0xlLtK.jpg';          // apple
+    image = 'https://i.imgur.com/bQOombb.jpg';          // banana
+    image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';    // fruit salad
+//    image = 'https://www.recipetineats.com/wp-content/uploads/2017/05/Bacon-Tomato-Pasta-3-landscape.jpg';  // pasta
+
+    function logWords(words) {
+//        console.log("words:", words);
+        console.log("common:", getCommon(words.food, words.general, "name"));
+
+        var food_servings = getFoodServings(words.food);
+        food_servings.concat(getFoodServings(words.general));
+
+        console.log("food servings:", food_servings);
+
+        if (food_servings.length > 0) {
+            // e.g. 'fruit salad'
+            // we don't want to individually get nutrition of strawberry, berry, etc.
+            // if food serving is found, this is priority instead of individual food items
+            // look this up
+
+        } else {
+            // look up food items, then sum up
+
+            // TODO: must have a way to determine multiple food items in photo (to get each one)
+            // or just one item that resulted to different concepts (to get only one)
+
+        }
+
+
+//        console.log("food servings:", getFoodServings(words.food));
+//        console.log("food servings:", getFoodServings(words.general));
+    }
+
+    function getCommon(arr1, arr2, attr) {
+        return arr1.filter(function(e) {return (arr2.filter(function(f) {return f[attr] === e[attr] }) ).length > 0 });
+    }
+
+    function getFoodServings(arr) {
+        return arr.filter(function(e) {return food_serving.includes(e.name) });
+    }
+
+    predictUsingWorkflow(image, 10, 0.90, logWords);
+
+</script>
+
+</body>
+</html>

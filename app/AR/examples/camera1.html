@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- <video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>
+
+
+
+<p><strong>Note:</strong> The video tag is not supported in Internet Explorer 8 and earlier versions.</p> -->
+
+<video autoplay></video>
+
+<script>
+
+/******* camera support ********/
+function hasGetUserMedia() {
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+if (hasGetUserMedia()) {
+  // alert("good to go!");
+  // Good to go!
+
+} else {
+  alert('getUserMedia() is not supported in your browser');
+}
+
+
+
+// view camera
+
+var errorCallback = function(e) {
+  console.log('Reeeejected!', e);
+};
+//
+// // Not showing vendor prefixes.
+// navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
+//   var video = document.querySelector('video');
+//   video.src = window.URL.createObjectURL(localMediaStream);
+//
+//   // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
+//   // See crbug.com/110938.
+//   video.onloadedmetadata = function(e) {
+//     // Ready to go. Do some stuff.
+//   };
+// }, errorCallback);
+
+
+navigator.getUserMedia  = navigator.getUserMedia ||
+                          navigator.webkitGetUserMedia ||
+                          navigator.mozGetUserMedia ||
+                          navigator.msGetUserMedia;
+
+var video = document.querySelector('video');
+
+if (navigator.getUserMedia) {
+  navigator.getUserMedia({audio: true, video: true}, function(stream) {
+    video.src = window.URL.createObjectURL(stream);
+  }, errorCallback);
+} else {
+  video.src = 'somevideo.webm'; // fallback.
+}
+
+
+/*******************************/
+
+
+</script>
+
+</body>
+</html>

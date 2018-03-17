@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <span id="image_url_3">haha</span>
+
+    <script src="upload/cloudinary.js"></script>
+    <script src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+    <!--<script src="clarifai/clarifai_app.js"></script>-->
+    <script>
+
+        // **** CLARIFAI ****
+
+        let foodModel = Clarifai.GENERAL_MODEL;
+      foodModel = "bd367be194cf45149e75f01d59f77ba7";
+      let workflow = "foodandgeneral";         // workflow - combined food and general
+
+        // Clarifai.GENERAL_MODEL
+
+        // initialize with your api key. This will also work in your browser via http://browserify.org/
+        const app = new Clarifai.App({
+            apiKey: 'bf2c869d10754199bdb948e07ca7ab63'
+        });
+
+//        const image = './food.jpg';       // THIS WONT WORK BECAUSE OF XSRF uploads,
+        let image = 'https://samples.clarifai.com/metro-north.jpg';
+        image = 'https://i.imgur.com/eTuCPxM.jpg';
+        image = 'https://i.imgur.com/r0xlLtK.jpg';          // apple
+        image = 'https://i.imgur.com/bQOombb.jpg';          // banana
+        image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';    // fruit salad
+
+        image = 'https://www.recipetineats.com/wp-content/uploads/2017/05/Bacon-Tomato-Pasta-3-landscape.jpg';  // pasta
+
+//        var base64img = dataURL.split("base64,")[1];
+
+        //        console.log(app);
+
+        // predict the contents of an image by passing in an image
+//        app.models.predict( foodModel,
+          app.workflow.predict( workflow,
+            image).then(
+            function(response) {
+                console.log(response);
+                var results = response.outputs[0].data.concepts;
+//                var food_result_0 = results[0].name + "_" + results[0].value;
+
+                var text = "";
+                for (index in results) {
+                    var food_result = results[index].name + "_" + results[index].value;
+                    text += food_result + "<br/>";
+                }
+
+//                console.log(results[0].name + "_" + results[0].value);
+                document.getElementById('image_url_3').innerHTML = text;
+
+            },
+            function(err) {
+                console.error(err);
+                document.getElementById('image_url_3').innerHTML = err;
+            }
+        );
+
+
+
+    </script>
+
+</body>
+</html>

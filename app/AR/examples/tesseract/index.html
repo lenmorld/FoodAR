@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo">Click the button to change the text in this paragraph.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js'></script>
+
+<script>
+    function callback() {
+        console.log("after req");
+    }
+
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "Hello World";
+
+
+        Tesseract.recognize("nutrition.png")
+            .then(function(result){
+                console.log(result)
+
+                callback();
+
+            })
+    }
+</script>
+
+</body>
+</html>
