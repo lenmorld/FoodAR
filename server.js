@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const favicon = require('serve-favicon');
+
 // serve all
 const APP_DIR = path.join(__dirname, "app");
 
@@ -17,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.use(favicon(__dirname + '/favicon.ico'));
 
 app.use(express.static(APP_DIR));
 
