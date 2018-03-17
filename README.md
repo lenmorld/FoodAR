@@ -19,3 +19,22 @@ food model -> strawberry, berry, sweet, fruit salad
 
 pasta
 food -> pasta as 3rd, sauce, spaghetti
+
+
+===
+
+EDAMAM api
+
+-> have to develop server-side that would query API
+since they don't allow CORS requests
+
+
+====
+Heroku
+
+[heroku login]
+[heroku create]
+
+$ heroku local web    // Start your app locally
+$ git push heroku master    // deploy
+

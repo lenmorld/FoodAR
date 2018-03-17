@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="results"></div>
+
+<button>HTTP GET</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+    var searchString = "banana";
+
+    $(document).ready(function(){
+
+        $("button").click(function(){
+            $.ajax({
+                url: '/foodapi/search',
+                contentType: 'application/json',
+                data: JSON.stringify({"query": searchString}),
+                type: 'POST',
+                success: function (data) {
+                    console.log(data);
+
+                    // data.parsed[0].food.uri
+
+                    var foodItemURI = data.parsed[0].food.uri;
+
+                    $.ajax({
+                        url: '/foodapi/nutrients',
+                        contentType: 'application/json',
+                        data: JSON.stringify({"food_item_uri": foodItemURI}),
+                        type: 'POST',
+                        success: function (data) {
+                            console.log(JSON.parse(data));
+                        },
+                        error : function(httpReq,status,exception){
+                            console.log(status+" "+exception);
+                        }
+                    });
+
+                },
+                error : function(httpReq,status,exception){
+                    console.log(status+" "+exception);
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
