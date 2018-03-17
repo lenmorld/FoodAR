@@ -73,6 +73,6 @@ app.get('/food', function (req, res) {
 
 // app.use('/edamam', require('./api/edamam'));
 
-app.listen(port, function () {
-    console.log("Node-express server is running at ", port);
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
