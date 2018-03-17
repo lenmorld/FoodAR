@@ -38,3 +38,9 @@ Heroku
 $ heroku local web    // Start your app locally
 $ git push heroku master    // deploy
 
+$ heroku logs --tail
+$ heroku restart
+
+
+
+
