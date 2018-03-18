@@ -38,7 +38,7 @@ function nutrients_fetch(foodItemURI, success_callback, failure_callback) {
 
             // totalNutrients is what we need
             if (json_data.totalNutrients) {
-                success_callback(data);
+                success_callback(json_data);
             } else {
                 failure_callback("failed to get nutrients");
             }

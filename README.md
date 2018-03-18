@@ -43,4 +43,19 @@ $ heroku restart
 
 
 
+====
+before:
+
+USDA API
+https://ndb.nal.usda.gov/ndb/doc/apilist/API-SEARCH.md
+
+- limitations of returning 'peanut butter' when searching 'butter'
+
+sample: https://api.nal.usda.gov/ndb/search/?format=json&q=butter&sort=n&max=25&
+offset=0&api_key=DEMO_KEY&ds=Standard+Reference
+
+
+nutrients fetch:
+https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=DEMO_KEY&
+nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=45258948
 

@@ -28,14 +28,22 @@ router.post('/search', function (req, res) {
 
 });
 
-
 router.post('/nutrients', function (req, res) {
 
     const food_item_uri = req.body.food_item_uri;
     console.log("food item: ", food_item_uri);
 
 
-    // can be multiple ingredients
+    // now, assuming one single food item, but could be a simple 'food serving' keyword like [fruit salad, pasta]
+    // TODO: handle multiple ingredients  from multiple food items (multiple keywords from Clarifai)
+    // or more complex recipe 'food serving' stuff like 'butter chicken'
+
+    // e.g. 'butter chicken'
+    // https://api.edamam.com/api/food-database/parser?ingr=butter+chicken&app_id=2abaf7e9&app_key=46bc3f1de63bac5841f9a1c211cdec59
+    // results are 'butter'
+    // cannot do 'recipe' to 'nutrients'
+    // must go 'recipe' to [ingredient1, ingredient2, ...] to nutrients (then sum?)
+
     const food_items_request_body = {
         yield: 1,
         ingredients: [
