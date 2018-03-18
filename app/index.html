@@ -10,44 +10,41 @@
 <button>HTTP GET</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="edamam_api_calls.js"></script>
 
 <script>
 
     var searchString = "banana";
 
+    function nutrients_fetch_success(nutrientsInfo) {
+
+        console.log("success: ", nutrientsInfo);
+        console.log("analyzing nutrients info ");
+
+    }
+
+    function nutrients_fetch_failure(msg) {
+        console.log("failure: ", msg);
+    }
+
+
+    function food_search_success(foodItemUri) {
+
+        console.log("success: ", foodItemUri);
+        console.log("invoking nutrients fetch ");
+
+        nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
+    }
+
+    function food_search_failure(msg) {
+        console.log("failure: ", msg);
+    }
+
+
     $(document).ready(function(){
-
         $("button").click(function(){
-            $.ajax({
-                url: '/foodapi/search',
-                contentType: 'application/json',
-                data: JSON.stringify({"query": searchString}),
-                type: 'POST',
-                success: function (data) {
-                    console.log(data);
+            food_search(searchString, food_search_success, food_search_failure);
 
-                    // data.parsed[0].food.uri
-
-                    var foodItemURI = data.parsed[0].food.uri;
-
-                    $.ajax({
-                        url: '/foodapi/nutrients',
-                        contentType: 'application/json',
-                        data: JSON.stringify({"food_item_uri": foodItemURI}),
-                        type: 'POST',
-                        success: function (data) {
-                            console.log(JSON.parse(data));
-                        },
-                        error : function(httpReq,status,exception){
-                            console.log(status+" "+exception);
-                        }
-                    });
-
-                },
-                error : function(httpReq,status,exception){
-                    console.log(status+" "+exception);
-                }
-            });
         });
     });
 </script>
