@@ -14,7 +14,7 @@ function food_search_success(foodItemUri) {
 
 function food_search_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML = "[food_search_failure]" + msg;
+    document.getElementById('extra').innerHTML += "[food_search_failure]" + msg;
 }
 
 
@@ -31,7 +31,7 @@ function nutrients_fetch_success(nutrientsInfo) {
 
 function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML = "[nutrients_fetch_failure]" + msg;
+    document.getElementById('extra').innerHTML += "[nutrients_fetch_failure]" + msg;
 }
 
 function round(decimal) {
@@ -53,7 +53,8 @@ function renderNutritionAR(nutrientsObj) {
         }
     }
 
-    document.getElementById('nut_info').innerHTML = html;
+    document.getElementById('nut_info').innerHTML += html;
+    alert(html);
 }
 
 
