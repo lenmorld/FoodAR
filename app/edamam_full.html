@@ -5,14 +5,31 @@
     <title>Title</title>
 </head>
 <body>
-<div id="results"></div>
+
+
+
+<div id="results">
+    <h3>Food item:</h3>
+    <div id="food_item"></div>
+    <h3>Nutritional Info:</h3>
+    <div id="nut_info"></div>
+
+    <div id="extra">Extra</div>
+</div>
 
 <button>HTTP GET</button>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="food/edamam_api_calls.js"></script>
-
 <script src="nutrition.js"></script>
+
+<script>
+
+    FOOD_ITEM_VIEW = document.getElementById('food_item');
+    NUTR_INFO_VIEW = document.getElementById('nut_info');
+    EXTRA_VIEW = document.getElementById('extra');
+
+</script>
 
 <script>
 

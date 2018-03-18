@@ -16,6 +16,7 @@ FILLED WITH CONTENT IN AR
 
 FOOD_ITEM_VIEW = document.getElementById('food_item');
 NUTR_INFO_VIEW = document.getElementById('nut_info');
+EXTRA_VIEW = document.getElementById('extra');
 
 //////////////////////////////////////////////////////
 
@@ -213,7 +214,7 @@ image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mi
 function processKeywords(words) {
 //        console.log("words:", words);
 
-    document.getElementById('extra').innerHTML = 'Processing....';
+    EXTRA_VIEW.innerHTML = 'Processing....';
 
     if (words.error) {
         FOOD_ITEM_VIEW.innerHTML = words.error;

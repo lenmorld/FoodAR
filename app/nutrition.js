@@ -87,8 +87,7 @@ function renderNutritionAR(nutrientsObj) {
         }
     }
 
-    NUTR_INFO_VIEW = html;
-
+    NUTR_INFO_VIEW.innerHTML = html;
 }
 
 
