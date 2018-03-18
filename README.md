@@ -28,6 +28,10 @@ EDAMAM api
 -> have to develop server-side that would query API
 since they don't allow CORS requests
 
+CURL testing
+
+curl -d '{"yield": 1, "ingredients": [{"quantity": 1, "measureURI": "http://www.edamam.com/ontologies/edamam.owl#Measure_unit", "foodURI": "http://www.edamam.com/ontologies/edamam.owl#Food_09003"}]}' -H "Content-Type: application/json" "https://api.edamam.com/api/food-database/nutrients?app_id=2abaf7e9&app_key=46bc3f1de63bac5841f9a1c211cdec59"
+
 
 ====
 Heroku

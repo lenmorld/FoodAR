@@ -1,89 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Food AR app</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+  minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div id="results"></div>
+    <div id="results">
+        <div id="food_item">Food item:</div>
+        <h3>Nutritional Info:</h3>
+        <div id="nut_info"></div>
 
-<button>HTTP GET</button>
+        <div id="extra">Extra</div>
+    </div>
+    <div class="controls">
+        <!--<span id="image_url">haha</span> <br/>-->
+        <!--<span id="image_url_2">haha</span><br/>-->
+        <!--<span id="image_url_4">haha</span><br/>-->
+        <button id="btn-analyze" onclick="buttonFunc()">Analyze</button>
+    </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="edamam_api_calls.js"></script>
+    <script src="AR/third_party/three.js/three.js"></script>
+    <script src="AR/third_party/three.js/VRControls.js"></script>
+    <script src="AR/third_party/dat.gui/dat.gui.js"></script>
+    <script src="AR/dist/three.ar.js"></script>
 
-<script>
+    <!--<script src="upload/cloudinary.js"></script>-->
+    <script src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
 
-    var searchString = "banana";
-
-
-    // food item search
-    function food_search_success(foodItemUri) {
-
-        console.log("success: ", foodItemUri);
-        console.log("invoking nutrients fetch ");
-
-        nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
-    }
-
-    function food_search_failure(msg) {
-        console.log("failure: ", msg);
-    }
-
-
-    // nutrient search
-    function nutrients_fetch_success(nutrientsInfo) {
-
-        console.log("success: ", nutrientsInfo);
-        console.log("analyzing nutrients info");
-
-        prepareNutrientsView(nutrientsInfo);
-    }
-
-    function nutrients_fetch_failure(msg) {
-        console.log("failure: ", msg);
-    }
-
-    function round(decimal) {
-        return Math.round(decimal * 100) / 100;
-    }
-
-    // process nutrients for display
-    function prepareNutrientsView(nutrientsInfo) {
-
-        var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
-
-        var total_daily = nutrientsInfo.totalDaily;
-        var total_quantity = nutrientsInfo.totalNutrients;
-
-        for(var i=0; i< nutrients_for_display.length; i++) {
-            var nutrient = nutrients_for_display[i];
-
-            // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
-            // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
-
-            var total_daily_nutrient = total_daily[nutrient];
-            var total_quantity_nutrient = total_quantity[nutrient];
-
-            var total_daily_string = [round(total_daily_nutrient.quantity), total_daily_nutrient.unit, total_daily_nutrient.label].join(" ");
-            var total_quantity_string = [round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit, total_quantity_nutrient.label].join(" ");
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-            // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
-            console.log(searchString);
-            console.log(total_daily_string);
-            console.log(total_quantity_string);
-        }
+    <!-- MY SCRIPTS -->
+    <script src="clarifai/clarifai_app.js"></script>
+    <!--<script src="food/usda_api.js"></script>-->
+    <script src="food/edamam_api_calls.js"></script>
+    <script src="nutrition.js"></script>
+    <script src="app.js"></script>
 
-    }
-
-
-    $(document).ready(function(){
-        $("button").click(function(){
-            food_search(searchString, food_search_success, food_search_failure);
-        });
-    });
-</script>
 
 </body>
 </html>

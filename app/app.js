@@ -7,6 +7,18 @@ var boxesAdded = false;
 
 var isUploaded = false;
 
+/*
+DECLARE ALL HTML DOM ELEMENTS HERE TO BE
+FILLED WITH CONTENT IN AR
+ */
+
+// GLOBAL
+
+FOOD_ITEM_VIEW = document.getElementById('food_item');
+NUTR_INFO_VIEW = document.getElementById('nut_info');
+
+//////////////////////////////////////////////////////
+
 /**
  * Use the `getARDisplay()` utility to leverage the WebVR API
  * to see if there are any AR-capable WebVR VRDisplays. Returns
@@ -160,7 +172,7 @@ if (hasGetUserMedia()) {
     // alert("AR is ready!");
     // Good to go!
 } else {
-    document.getElementById('nut_info').innerHTML = 'getUserMedia() is not supported in your browser';
+    FOOD_ITEM_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
 }
 
 /*******************************/
@@ -187,6 +199,9 @@ function analyzeObject(canvasObj) {
 
 var food_serving = ['fruit salad', 'pasta'];
 
+
+// var searchString = "banana";
+
 //        const image = './food.jpg';       // THIS WONT WORK BECAUSE OF XSRF uploads,
 var image = 'https://samples.clarifai.com/metro-north.jpg';
 image = 'https://i.imgur.com/eTuCPxM.jpg';
@@ -201,7 +216,7 @@ function processKeywords(words) {
     document.getElementById('extra').innerHTML = 'Processing....';
 
     if (words.error) {
-        document.getElementById('nut_info').innerHTML = words.error;
+        FOOD_ITEM_VIEW.innerHTML = words.error;
     }
 
     console.log("common:", getCommon(words.food, words.general, "name"));
@@ -222,7 +237,7 @@ function processKeywords(words) {
         // if food serving is found, this is priority instead of individual food items
         // look this up
 
-        document.getElementById('nut_info').innerHTML = food_servings[0];
+        FOOD_ITEM_VIEW.innerHTML = food_servings[0];
 
     } else {
         // look up food items, then sum up
@@ -230,20 +245,34 @@ function processKeywords(words) {
         // TODO: determine which is better: words.food or words.general
 
         var text = "";
+
         for (index in words.food) {
             // var food_result = results[index].name + "_" + results[index].value;
-            var food_result = results[index].name;
+            var food_result = words.food[index].name;
             text += food_result + "<br/>";
         }
 
-        document.getElementById('nut_info').innerHTML = text;
+        FOOD_ITEM_VIEW.innerHTML = text;
 
         // TODO: must have a way to determine multiple food items in photo (to get each one)
         // or just one item that resulted to different concepts (to get only one)
+
+        // get first item for now
+        var searchString = 'banana';        // default banaa search LOL
+        if (words.food.length > 0) {
+            searchString = words.food[0];
+        }
+
+        // get nutrition info
+        food_search(searchString, food_search_success, food_search_failure);
     }
 //        console.log("food servings:", getFoodServings(words.food));
 //        console.log("food servings:", getFoodServings(words.general));
 }
+
+
+
+
 
 function getCommon(arr1, arr2, attr) {
     return arr1.filter(function(e) {return (arr2.filter(function(f) {return f[attr] === e[attr] }) ).length > 0 });

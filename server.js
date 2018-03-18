@@ -37,14 +37,14 @@ app.use(express.static(APP_DIR));
 app.get('/', function (req, res) {
     // res.json('data": {"name": "lenny"}');
     // serve HTML files
-    res.sendFile(path.join(APP_DIR, "index2.html"));
+    res.sendFile(path.join(APP_DIR, "index.html"));
 });
 
 
-app.get('/food', function (req, res) {
+app.get('/foo', function (req, res) {
     // res.json('data": {"name": "lenny"}');
     // serve HTML files
-    res.sendFile(path.join(APP_DIR, "index.html"));
+    res.sendFile(path.join(APP_DIR, "edamam_full.html"));
 });
 
 // Edamam Food API
