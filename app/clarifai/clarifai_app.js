@@ -45,7 +45,7 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
             // return results;
 
             // TEST
-            document.getElementById('nut_info').innerHTML = food_results[0].name;
+            document.getElementById('extra').innerHTML = food_results[0].name;
             // TEST
 
             callback(results);

@@ -63,8 +63,7 @@ canvas {
     color: darkblue;
 }
 
-#extra {
-    margin-right: 100px;
+#results #extra {
 }
 
 #btn-analyze {
