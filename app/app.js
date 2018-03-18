@@ -261,7 +261,7 @@ function processKeywords(words) {
         // get first item for now
         var searchString = 'banana';        // default banaa search LOL
         if (words.food.length > 0) {
-            searchString = words.food[0];
+            searchString = words.food[0].name;
         }
 
         // get nutrition info
