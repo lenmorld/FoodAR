@@ -98,6 +98,7 @@
 
     $(document).ready(function(){
         $("button").click(function(){
+            FOOD_ITEM_VIEW.innerHTML = searchString;
             food_search(searchString, food_search_success, food_search_failure);
         });
     });

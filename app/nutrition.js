@@ -7,33 +7,58 @@ function food_search_success(foodItemUri) {
     console.log("success: ", foodItemUri);
     console.log("invoking nutrients fetch ");
 
+    document.getElementById('extra').innerHTML = foodItemUri;
+
     nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
 }
 
 function food_search_failure(msg) {
     console.log("failure: ", msg);
+    document.getElementById('extra').innerHTML = msg;
 }
 
 
 // nutrient search
-function nutrients_fetch_success(nutrientsInfo, viewCallback) {
+function nutrients_fetch_success(nutrientsInfo) {
 
     console.log("success: ", nutrientsInfo);
     console.log("analyzing nutrients info");
 
-    prepareNutrientsView(nutrientsInfo, viewCallback);
+    document.getElementById('extra').innerHTML = nutrientsInfo;
+
+    prepareNutrientsView(nutrientsInfo);
 }
 
 function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
+    document.getElementById('extra').innerHTML = msg;
 }
 
 function round(decimal) {
     return Math.round(decimal * 100) / 100;
 }
 
+function renderNutritionAR(nutrientsObj) {
+
+    var html = "";
+
+    document.getElementById('extra').innerHTML = "html";
+
+    for (var key in nutrientsObj) {
+        if (nutrientsObj.hasOwnProperty(key)) {
+            console.log(key, nutrientsObj[key]);
+
+            var item = nutrientsObj[key];
+            html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
+        }
+    }
+
+    document.getElementById('nut_info').innerHTML = html;
+}
+
+
 // process nutrients for display
-function prepareNutrientsView(nutrientsInfo, viewCallback) {
+function prepareNutrientsView(nutrientsInfo) {
 
     var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
 
@@ -74,21 +99,6 @@ function prepareNutrientsView(nutrientsInfo, viewCallback) {
 }
 
 
-function renderNutritionAR(nutrientsObj) {
-
-    var html = "";
-
-    for (var key in nutrientsObj) {
-        if (nutrientsObj.hasOwnProperty(key)) {
-            console.log(key, nutrientsObj[key]);
-
-            var item = nutrientsObj[key];
-            html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
-        }
-    }
-
-    NUTR_INFO_VIEW.innerHTML = html;
-}
 
 
 

@@ -14,9 +14,9 @@ FILLED WITH CONTENT IN AR
 
 // GLOBAL
 
-FOOD_ITEM_VIEW = document.getElementById('food_item');
-NUTR_INFO_VIEW = document.getElementById('nut_info');
-EXTRA_VIEW = document.getElementById('extra');
+var FOOD_ITEM_VIEW = document.getElementById('food_item');
+var NUTR_INFO_VIEW = document.getElementById('nut_info');
+var EXTRA_VIEW = document.getElementById('extra');
 
 //////////////////////////////////////////////////////
 
