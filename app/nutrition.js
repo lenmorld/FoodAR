@@ -7,14 +7,14 @@ function food_search_success(foodItemUri) {
     console.log("success: ", foodItemUri);
     console.log("invoking nutrients fetch ");
 
-    document.getElementById('extra').innerHTML = foodItemUri;
+    document.getElementById('extra').innerHTML = "[food_search_success]" + foodItemUri;
 
     nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
 }
 
 function food_search_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML = msg;
+    document.getElementById('extra').innerHTML = "[food_search_failure]" + msg;
 }
 
 
@@ -31,7 +31,7 @@ function nutrients_fetch_success(nutrientsInfo) {
 
 function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML = msg;
+    document.getElementById('extra').innerHTML = "[nutrients_fetch_failure]" + msg;
 }
 
 function round(decimal) {
