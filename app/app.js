@@ -39,6 +39,13 @@ THREE.ARUtils.getARDisplay().then(function (display) {
 
 function init() {
 
+    /*
+    init UI elements
+     */
+
+    $("#img_captured").hide();
+
+
     /*** simple button ****/
     // Initialize the dat.GUI.
 //    var datGUI = new dat.GUI();

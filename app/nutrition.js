@@ -58,11 +58,15 @@ function renderNutritionAR(nutrientsObj) {
         }
     }
 
+    // SUCCESS!!!
+
     NUTR_INFO_VIEW.innerHTML += html;
-
-
     DEBUG_VIEW.innerHTML = "=D";
     LOGS_VIEW.innerHTML = "done! press analyze again...";
+
+    $("#img_captured").show();
+
+    // TODO: set image to base64 captured before
 }
 
 
