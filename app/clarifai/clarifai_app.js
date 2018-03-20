@@ -44,9 +44,7 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
             // console.log("results:", results);
             // return results;
 
-            // TEST
-            document.getElementById('extra').innerHTML = food_results[0].name;
-            // TEST
+            LOGS_VIEW.innerHTML = food_results[0].name;
 
             callback(results);
         },
@@ -62,9 +60,6 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
         }
     );
 }
-
-
-
 
 
 

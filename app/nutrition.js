@@ -1,5 +1,10 @@
 // var searchString = "banana";
 
+var FOOD_ITEM_VIEW = document.getElementById('food_item');
+var NUTR_INFO_VIEW = document.getElementById('nut_info');
+var LOGS_VIEW = document.getElementById('logs');
+var DEBUG_VIEW = document.getElementById('debug');
+
 
 // food item search
 function food_search_success(foodItemUri) {
@@ -7,14 +12,17 @@ function food_search_success(foodItemUri) {
     console.log("success: ", foodItemUri);
     console.log("invoking nutrients fetch ");
 
-    document.getElementById('extra').innerHTML = "[food_search_success]" + foodItemUri;
+
+    DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
+    LOGS_VIEW.innerHTML = "fetching nutrition info...";
 
     nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
 }
 
 function food_search_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML += "[food_search_failure]" + msg;
+
+    DEBUG_VIEW.innerHTML += "[food_search_failure]" + msg;
 }
 
 
@@ -22,16 +30,12 @@ function food_search_failure(msg) {
 function nutrients_fetch_success(nutrientsInfo) {
 
     console.log("success: ", nutrientsInfo);
-    console.log("analyzing nutrients info");
-
-    document.getElementById('extra').innerHTML = nutrientsInfo;
-
     prepareNutrientsView(nutrientsInfo);
 }
 
 function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
-    document.getElementById('extra').innerHTML += "[nutrients_fetch_failure]" + msg;
+    DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
 }
 
 function round(decimal) {
@@ -42,7 +46,7 @@ function renderNutritionAR(nutrientsObj) {
 
     var html = "";
 
-    document.getElementById('extra').innerHTML = "html";
+    LOGS_VIEW.innerHTML = "rendering...";
 
     for (var key in nutrientsObj) {
         if (nutrientsObj.hasOwnProperty(key)) {
@@ -53,8 +57,7 @@ function renderNutritionAR(nutrientsObj) {
         }
     }
 
-    document.getElementById('nut_info').innerHTML += html;
-    alert(html);
+    NUTR_INFO_VIEW.innerHTML += html;
 }
 
 

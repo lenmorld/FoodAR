@@ -1,40 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Food AR app</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+  minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
-
 
 <div id="results">
     <h3>Food item:</h3>
     <div id="food_item"></div>
+
     <h3>Nutritional Info:</h3>
     <div id="nut_info"></div>
 
-    <div id="extra">Extra</div>
+
+</div>
+<div class="controls">
+    <!--<span id="image_url">haha</span> <br/>-->
+    <!--<span id="image_url_2">haha</span><br/>-->
+    <!--<span id="image_url_4">haha</span><br/>-->
+    <div id="debug"></div>
+    <div id="logs">Press analyze...</div>
+    <button id="btn-analyze">Analyze</button>
 </div>
 
-<button>HTTP GET</button>
+<!--<div id="results">-->
+    <!--<h3>Food item:</h3>-->
+    <!--<div id="food_item"></div>-->
+    <!--<h3>Nutritional Info:</h3>-->
+    <!--<div id="nut_info"></div>-->
+
+    <!--<div id="extra">Extra</div>-->
+<!--</div>-->
+
+<!--<button id="btn-analyze">HTTP GET</button>-->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="food/edamam_api_calls.js"></script>
 <script src="nutrition.js"></script>
 
-<script>
+<script src="AR/third_party/dat.gui/dat.gui.js"></script>
 
+<script>
     FOOD_ITEM_VIEW = document.getElementById('food_item');
     NUTR_INFO_VIEW = document.getElementById('nut_info');
-    EXTRA_VIEW = document.getElementById('extra');
-
+    LOGS_VIEW = document.getElementById('logs');
 </script>
 
 <script>
-
     var searchString = "banana";
-
 
 //    // food item search
 //    function food_search_success(foodItemUri) {
@@ -94,7 +112,6 @@
 //            console.log(total_quantity_string);
 //        }
 //    }
-
 
     $(document).ready(function(){
         $("button").click(function(){

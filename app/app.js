@@ -16,7 +16,8 @@ FILLED WITH CONTENT IN AR
 
 var FOOD_ITEM_VIEW = document.getElementById('food_item');
 var NUTR_INFO_VIEW = document.getElementById('nut_info');
-var EXTRA_VIEW = document.getElementById('extra');
+var LOGS_VIEW = document.getElementById('logs');
+var DEBUG_VIEW = document.getElementById('debug');
 
 //////////////////////////////////////////////////////
 
@@ -173,7 +174,7 @@ if (hasGetUserMedia()) {
     // alert("AR is ready!");
     // Good to go!
 } else {
-    FOOD_ITEM_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
+    LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
 }
 
 /*******************************/
@@ -214,10 +215,13 @@ image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mi
 function processKeywords(words) {
 //        console.log("words:", words);
 
-    EXTRA_VIEW.innerHTML = 'Processing....';
+    // EXTRA_VIEW.innerHTML = 'Processing....';
+
+    LOGS_VIEW.innerHTML = "searching food item...";
+
 
     if (words.error) {
-        FOOD_ITEM_VIEW.innerHTML = words.error;
+        LOGS_VIEW.innerHTML = words.error;
     }
 
     console.log("common:", getCommon(words.food, words.general, "name"));
