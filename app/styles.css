@@ -26,7 +26,7 @@ h3 {
     bottom: 20px;
     /*transform: translate(-50%, 0);*/
     margin: 10px auto;
-    /*z-index: 10;*/
+    z-index: 10;
     display: block;
     line-height: 2em;
     text-align: center;
@@ -66,6 +66,8 @@ h3 {
     word-wrap: break-word;
 }
 
+
+
 .title {
     background-color: rgba(40, 40, 40, 0.4);
     padding: 0.4em 0.6em;
@@ -81,13 +83,15 @@ canvas {
     top: 0;
     left: 0;
 }
+
+
 #results {
     /*position: absolute;*/
     /*left: 50%;*/
     /*top: 10%;*/
     /*transform: translate(-50%, 0);*/
     margin: 10px auto;
-    /*z-index: 11;*/
+    z-index: 11;
     /*display: block;*/
     line-height: 1em;
 
