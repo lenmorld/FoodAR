@@ -5,7 +5,7 @@ var BOX_SIZE = 0.25;
 var BOX_QUANTITY = 6;
 var boxesAdded = false;
 
-var foodItemDone = true;        // must press button on load
+var captureFoodItem = false;        // must press button on load
 
 /*
 DECLARE ALL HTML DOM ELEMENTS HERE TO BE
@@ -44,6 +44,8 @@ function init() {
      */
 
     $("#img_captured").hide();
+
+    $("#btn-analyze").prop('disabled', false);
 
 
     /*** simple button ****/
@@ -133,7 +135,7 @@ function update() {
     renderer.clearDepth();
     renderer.render(scene, camera);
 
-    if (!foodItemDone) {
+    if (captureFoodItem) {
         analyzeObject(canvas);
     }
 
@@ -188,7 +190,9 @@ if (hasGetUserMedia()) {
 /*******************************/
 
 function buttonFunc() {
-    foodItemDone = false;
+    captureFoodItem = true;
+
+    $("#btn-analyze").prop('disabled', true);       // analyze while processing
 }
 
 function analyzeObject(canvasObj) {
@@ -277,9 +281,12 @@ function renderNutritionAR(nutrientsObj) {
 
     $("#img_captured").show();
 
-    foodItemDone = true;
-    // PREV_IMAGE_THUMBNAIL = null;             // reset image
+    // enable button again
+    $("#btn-analyze").prop('disabled', false);
 
+
+    // captureFoodItem = true;
+    // PREV_IMAGE_THUMBNAIL = null;             // reset image
 }
 
 
