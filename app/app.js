@@ -12,7 +12,8 @@ DECLARE ALL HTML DOM ELEMENTS HERE TO BE
 FILLED WITH CONTENT IN AR
  */
 
-// GLOBAL
+var KEYWORD_LIMIT = 5;
+
 
 var FOOD_ITEM_VIEW = document.getElementById('food_item');
 var NUTR_INFO_VIEW = document.getElementById('nut_info');
@@ -185,6 +186,8 @@ function buttonFunc() {
 
 function analyzeObject(canvasObj) {
 
+
+
     // convert webGL image to base64 representation
     var dataURL = canvasObj.toDataURL();
     var base64img = dataURL.split("base64,")[1];
@@ -251,21 +254,23 @@ function processKeywords(words) {
 
         var text = "";
 
-        for (index in words.food) {
-            // var food_result = results[index].name + "_" + results[index].value;
-            var food_result = words.food[index].name;
-            text += food_result + "<br/>";
+        for (var index=0; index < KEYWORD_LIMIT; index++) {
+            var food_result = words.food[index].name + ":" + words.food[index].value;
+            // var food_result = words.food[index].name;
+            text += food_result + " ";
         }
 
-        FOOD_ITEM_VIEW.innerHTML = text;
+        DEBUG_VIEW.innerHTML = text;    // top 5
 
         // TODO: must have a way to determine multiple food items in photo (to get each one)
         // or just one item that resulted to different concepts (to get only one)
 
         // get first item for now
-        var searchString = 'banana';        // default banaa search LOL
+        var searchString = 'banana';        // default banana search LOL
         if (words.food.length > 0) {
             searchString = words.food[0].name;
+
+            FOOD_ITEM_VIEW.innerHTML = words.food[0].name;
         }
 
         // get nutrition info

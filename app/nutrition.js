@@ -59,6 +59,10 @@ function renderNutritionAR(nutrientsObj) {
     }
 
     NUTR_INFO_VIEW.innerHTML += html;
+
+
+    DEBUG_VIEW.innerHTML = "=D";
+    LOGS_VIEW.innerHTML = "finished...";
 }
 
 
