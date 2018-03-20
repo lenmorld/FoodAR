@@ -220,6 +220,7 @@ function processKeywords(words) {
 
     // EXTRA_VIEW.innerHTML = 'Processing....';
 
+    NUTR_INFO_VIEW.innerHTML = "";
     LOGS_VIEW.innerHTML = "searching food item...";
 
 

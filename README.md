@@ -62,4 +62,3 @@ offset=0&api_key=DEMO_KEY&ds=Standard+Reference
 nutrients fetch:
 https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=DEMO_KEY&
 nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=45258948
-
