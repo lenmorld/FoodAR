@@ -111,6 +111,9 @@ canvas {
 
 
 #img_captured {
+    width: 140px;
+    height: 140px;
+    z-index: 11;
     /*float: right;*/
     position: absolute;
     right: 2%;
