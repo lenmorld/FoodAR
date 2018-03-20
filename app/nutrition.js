@@ -62,7 +62,7 @@ function renderNutritionAR(nutrientsObj) {
 
 
     DEBUG_VIEW.innerHTML = "=D";
-    LOGS_VIEW.innerHTML = "finished...";
+    LOGS_VIEW.innerHTML = "done! press analyze again...";
 }
 
 
