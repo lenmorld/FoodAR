@@ -5,7 +5,7 @@ var BOX_SIZE = 0.25;
 var BOX_QUANTITY = 6;
 var boxesAdded = false;
 
-var isUploaded = false;
+var foodItemDone = true;        // must press button on load
 
 /*
 DECLARE ALL HTML DOM ELEMENTS HERE TO BE
@@ -39,7 +39,6 @@ THREE.ARUtils.getARDisplay().then(function (display) {
 });
 
 function init() {
-
     /*
     init UI elements
      */
@@ -134,7 +133,7 @@ function update() {
     renderer.clearDepth();
     renderer.render(scene, camera);
 
-    if (!isUploaded) {
+    if (!foodItemDone) {
         analyzeObject(canvas);
     }
 
@@ -189,7 +188,7 @@ if (hasGetUserMedia()) {
 /*******************************/
 
 function buttonFunc() {
-    isUploaded = false;
+    foodItemDone = false;
 }
 
 function analyzeObject(canvasObj) {
@@ -202,7 +201,7 @@ function analyzeObject(canvasObj) {
     // predictUsingWorkflow(image, maxConcepts, minConfidence, callback)
     predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
 
-    isUploaded = true;
+    // foodItemDone = true;
 
     // *** CLOUDINARY ***
     // upload to Cloudinary
@@ -278,6 +277,7 @@ function renderNutritionAR(nutrientsObj) {
 
     $("#img_captured").show();
 
+    foodItemDone = true;
     // PREV_IMAGE_THUMBNAIL = null;             // reset image
 
 }
