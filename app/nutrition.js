@@ -30,6 +30,7 @@ function food_search_failure(msg) {
 function nutrients_fetch_success(nutrientsInfo) {
 
     console.log("success: ", nutrientsInfo);
+    DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
     prepareNutrientsView(nutrientsInfo);
 }
 

@@ -44,7 +44,7 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
             // console.log("results:", results);
             // return results;
 
-            LOGS_VIEW.innerHTML = food_results[0].name;
+            // LOGS_VIEW.innerHTML = food_results[0].name;
 
             callback(results);
         },
