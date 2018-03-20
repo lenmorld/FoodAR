@@ -202,10 +202,10 @@ function analyzeObject(canvasObj) {
     var base64img = dataURL.split("base64,")[1];
     PREV_IMAGE_THUMBNAIL = dataURL;
 
+    captureFoodItem = false;
+
     // predictUsingWorkflow(image, maxConcepts, minConfidence, callback)
     predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
-
-    // foodItemDone = true;
 
     // *** CLOUDINARY ***
     // upload to Cloudinary
@@ -283,7 +283,6 @@ function renderNutritionAR(nutrientsObj) {
 
     // enable button again
     $("#btn-analyze").prop('disabled', false);
-
 
     // captureFoodItem = true;
     // PREV_IMAGE_THUMBNAIL = null;             // reset image
