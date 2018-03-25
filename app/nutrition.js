@@ -109,8 +109,6 @@ function prepareNutrientsView(nutrientsInfo) {
     renderNutritionAR(nutrientsObj);
 }
 
-
-
 // $(document).ready(function(){
 //     $("button").click(function(){
 //         food_search(searchString, food_search_success, food_search_failure);

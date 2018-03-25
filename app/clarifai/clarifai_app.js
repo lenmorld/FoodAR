@@ -9,7 +9,7 @@ const app = new Clarifai.App({
 });
 
 
-function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback ) {
+function predictUsingWorkflow(image, maxConcepts, minPredictionValue, successCallback ) {
 
     // response.results[0].outputs
     // [0][1],... one for each model in workflow
@@ -46,7 +46,7 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
 
             // LOGS_VIEW.innerHTML = food_results[0].name;
 
-            callback(results);
+            successCallback(results);
         },
         function(err) {
             console.error(err);
@@ -62,32 +62,53 @@ function predictUsingWorkflow(image, maxConcepts, minPredictionValue, callback )
 }
 
 
+/*
 
-function predictUsingModel(image) {
+not used for now since workflow contains both Food and General model results
+and dont know yet how to pass config object to model
+
+ */
+function predictUsingModel(image, maxConcepts, minPredictionValue, successCallback ) {
 
     // response.outputs[0].data.concepts
 
+    var configObject = {
+        maxConcepts: maxConcepts,
+        minValue: minPredictionValue
+    };
 
-      app.models.predict( foodModel,
-        image).then(
+    // predict the contents of an image by passing in an image
+    app.workflow.predict( foodModel, workflow,
+        image, configObject).then(
         function(response) {
             console.log(response);
-            var results = response.outputs[0].data.concepts;
-//                var food_result_0 = results[0].name + "_" + results[0].value;
-
-            var text = "";
-            for (index in results) {
-                var food_result = results[index].name + "_" + results[index].value;
-                text += food_result + "<br/>";
-            }
-
-//                console.log(results[0].name + "_" + results[0].value);
-            document.getElementById('image_url_3').innerHTML = text;
-
+            successCallback(response);
         },
-        function(err) {
-            console.error(err);
-            document.getElementById('image_url_3').innerHTML = err;
-        }
-    );
+        function(error) {
+            console.log(error);
+        });
+
+
+      // app.models.predict( foodModel,
+//         image).then(
+//         function(response) {
+//             console.log(response);
+//             var results = response.outputs[0].data.concepts;
+// //                var food_result_0 = results[0].name + "_" + results[0].value;
+//
+//             var text = "";
+//             for (index in results) {
+//                 var food_result = results[index].name + "_" + results[index].value;
+//                 text += food_result + "<br/>";
+//             }
+//
+// //                console.log(results[0].name + "_" + results[0].value);
+//             document.getElementById('image_url_3').innerHTML = text;
+//
+//         },
+//         function(err) {
+//             console.error(err);
+//             document.getElementById('image_url_3').innerHTML = err;
+//         }
+//     );
 }
