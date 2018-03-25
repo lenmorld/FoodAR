@@ -63,7 +63,6 @@ function nutrients_fetch(foodItemURI, nutrientsForDisplay, success_callback, fai
             failure_callback(status + " " + exception);
         }
     });
-
 }
 
 //

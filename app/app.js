@@ -1,6 +1,3 @@
-var clarifai_app = require('clarifai/clarifai_app');
-
-
 var vrDisplay, vrControls, arView;
 var canvas, camera, scene, renderer;
 var BOX_DISTANCE = 1.5;
@@ -194,7 +191,6 @@ if (hasGetUserMedia()) {
 } else {
     LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
 }
-
 /*******************************/
 
 function buttonFunc() {
