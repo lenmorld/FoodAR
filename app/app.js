@@ -395,7 +395,7 @@ function processKeywords(words) {
         // get first item for now
 
         if (words.food.length > 0) {
-            var foodItemResult = food_servings[0].name;
+            var foodItemResult = words.food[0].name;
             FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
             searchNutritionString = foodItemResult;          // # search for nutrition info
         }
