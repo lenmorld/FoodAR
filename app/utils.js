@@ -14,7 +14,7 @@ var Utils = function () {
 
     function smartLog(msg) {
         if(DEV_MODE) {
-            console.log(msg);
+            console.log(msg.join(" "));
         } else {
             LOGS_VIEW.innerHTML = msg.join(" ");
         }
