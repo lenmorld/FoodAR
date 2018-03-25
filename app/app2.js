@@ -138,6 +138,36 @@ $(function() {
         vrDisplay.requestAnimationFrame(update);
     }
 
+    /**
+     * On window resize, update the perspective camera's aspect ratio,
+     * and call `updateProjectionMatrix` so that we can get the latest
+     * projection matrix provided from the device
+     */
+    function onWindowResize () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    /**
+     * Once we have position information applied to our camera,
+     * create some boxes at the same height as the camera
+     */
+    function addBoxes () {
+        // Create some cubes around the origin point
+        for (var i = 0; i < BOX_QUANTITY; i++) {
+            var angle = Math.PI * 2 * (i / BOX_QUANTITY);
+            var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
+            var material = new THREE.MeshNormalMaterial();
+            var cube = new THREE.Mesh(geometry, material);
+            cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
+            scene.add(cube);
+        }
+
+        // Flip this switch so that we only perform this once
+        boxesAdded = true;
+    }
+
 
     startAR();
 
