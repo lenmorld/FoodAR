@@ -43,12 +43,11 @@ function nutrients_fetch(foodItemURI, nutrientsForDisplay, success_callback, fai
             // totalNutrients is what we need
             // check if at least one of the required nutrients is in the result object
 
-
             if (json_data.totalNutrients) {
 
-                var requriedNutrientsReturned = getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
+                var requiredNutrientsReturned = getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
 
-                if (requriedNutrientsReturned.length) {
+                if (requiredNutrientsReturned.length) {
                     success_callback(json_data);
                 } else {
                     failure_callback("No nutrient info found for food");

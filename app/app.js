@@ -22,6 +22,7 @@ var LOGS_VIEW = document.getElementById('logs');
 var DEBUG_VIEW = document.getElementById('debug');
 
 var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
+var food_serving = ['fruit salad', 'pasta'];
 
 //////////////////////////////////////////////////////
 
@@ -214,7 +215,7 @@ function analyzeObject(canvasObj) {
 // uploadFile(dataURL);
 }
 
-var food_serving = ['fruit salad', 'pasta'];
+
 
 /************************************************************/
 /**************** nutrition.js *******************************/
