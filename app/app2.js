@@ -3,7 +3,10 @@
  */
 $(function() {
     function testing() {
-        LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
+
+        DEV_MODE = true;
+
+        Utils.smartLog('getUserMedia() is not supported in your browser');
         DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...'
 
         var searchString = "beer";
@@ -37,50 +40,20 @@ $(function() {
         ClarifaiModule.predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
     }
 
-    // function renderNutritionAR(nutrientsObj) {
-    //
-    //     var html = "";
-    //
-    //     LOGS_VIEW.innerHTML = "rendering...";
-    //
-    //     for (var key in nutrientsObj) {
-    //         if (nutrientsObj.hasOwnProperty(key)) {
-    //             console.log(key, nutrientsObj[key]);
-    //
-    //             var item = nutrientsObj[key];
-    //             html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
-    //         }
-    //     }
-    //
-    //     // SUCCESS!!!
-    //
-    //     NUTR_INFO_VIEW.innerHTML += html;
-    //     DEBUG_VIEW.innerHTML = "=D";
-    //     LOGS_VIEW.innerHTML = "done! press analyze again...";
-    //     IMAGE_CAPTURED_THUMB.setAttribute('src', PREV_IMAGE_THUMBNAIL);
-    //
-    //     // document.getElementById('img_captured_thumb')
-    //     //     .setAttribute(
-    //     //         'src', PREV_IMAGE_THUMBNAIL );
-    //
-    //     IMAGE_CAPTURED.show();          // show top-right captured image
-    //     ANALYZE_BUTTON.prop('disabled', false);
-    // }
-
     function processKeywords(words) {
 
         NUTR_INFO_VIEW.innerHTML = "";
-        LOGS_VIEW.innerHTML = "searching food item...";
+        Utils.smartLog("searching food item...");
 
         if (words.error) {
-            LOGS_VIEW.innerHTML = words.error;
+            Utils.smartLog(words.error);
         }
 
         /*
             DEEP COPY {words} object here
          */
 
-        console.log("common:", Utils.getCommon(words.food, words.general, "name"));
+        Utils.smartLog("common:", Utils.getCommon(words.food, words.general, "name"));
 
         var food_servings = Utils.getFoodServings(words.food);
         food_servings.concat(Utils.getFoodServings(words.general));
@@ -93,7 +66,7 @@ $(function() {
         var searchNutritionString = "";
 
         if (food_servings.length > 0) {
-            console.log("food servings:", food_servings);
+            Utils.smartLog("food servings:", food_servings);
 
             // e.g. 'fruit salad'
             // we don't want to individually get nutrition of strawberry, berry, etc.
@@ -151,12 +124,12 @@ $(function() {
 
     //####################################################
 
-    console.log(FOOD_ITEM_VIEW);
-    console.log(LOGS_VIEW);
-
-    console.log(Utils.round(12.34));
-    console.log(EdamamModule);
-    console.log(FoodHelperModule);
+    // Utils.smartLog(FOOD_ITEM_VIEW);
+    // Utils.smartLog(LOGS_VIEW);
+    //
+    // Utils.smartLog(Utils.round(12.34));
+    // Utils.smartLog(EdamamModule);
+    // Utils.smartLog(FoodHelperModule);
 
     FOOD_ITEM_VIEW.innerHTML = Utils.round(12.34);
 

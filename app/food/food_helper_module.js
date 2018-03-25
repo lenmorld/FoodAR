@@ -17,17 +17,16 @@ var FoodHelperModule = function () {
 // food item search
     function foodSearchSuccess(foodItemUri) {
 
-        console.log("success: ", foodItemUri);
-        console.log("invoking nutrients fetch ");
+        Utils.smartLog("success: ", foodItemUri);
+        Utils.smartLog("fetching nutrition info...");
 
         DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
-        LOGS_VIEW.innerHTML = "fetching nutrition info...";
 
         EdamamModule.nutrientsFetch(foodItemUri, NUTRIENTS_FOR_DISPLAY, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
 
     function foodSearchFailure(msg) {
-        console.log("failure: ", msg);
+        Utils.smartLog("failure: ", msg);
         DEBUG_VIEW.innerHTML += "[food_search_failure]" + msg;
     }
 
@@ -35,13 +34,13 @@ var FoodHelperModule = function () {
 // nutrient search
     function nutrientsFetchSuccess(nutrientsInfo) {
 
-        console.log("success: ", nutrientsInfo);
+        Utils.smartLog("success: ", nutrientsInfo);
         DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
         prepareNutrientsView(nutrientsInfo);
     }
 
     function nutrientsFetchFailure(msg) {
-        console.log("failure: ", msg);
+        Utils.smartLog("failure: ", msg);
         DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
     }
 
@@ -49,11 +48,11 @@ var FoodHelperModule = function () {
 
         var html = "";
 
-        LOGS_VIEW.innerHTML = "rendering...";
+        Utils.smartLog("rendering...");
 
         for (var key in nutrientsObj) {
             if (nutrientsObj.hasOwnProperty(key)) {
-                console.log(key, nutrientsObj[key]);
+                Utils.smartLog(key, nutrientsObj[key]);
 
                 var item = nutrientsObj[key];
                 html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
@@ -64,7 +63,7 @@ var FoodHelperModule = function () {
 
         NUTR_INFO_VIEW.innerHTML += html;
         DEBUG_VIEW.innerHTML = "=D";
-        LOGS_VIEW.innerHTML = "done! press analyze again...";
+        Utils.smartLog("done! press analyze again...");
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
 
         // document.getElementById('img_captured_thumb')
@@ -79,7 +78,7 @@ var FoodHelperModule = function () {
 // process nutrients for display
     function prepareNutrientsView(nutrientsInfo) {
 
-        LOGS_VIEW.innerHTML = "preparing nutrients info for rendering";
+        Utils.smartLog("preparing nutrients info for rendering");
 
         var nutrientsObj = {};
 
@@ -87,8 +86,8 @@ var FoodHelperModule = function () {
             var total_daily = nutrientsInfo.totalDaily;
             var total_quantity = nutrientsInfo.totalNutrients;
 
-            // console.log(total_daily);
-            // console.log(total_quantity);
+            // Utils.smartLog(total_daily);
+            // Utils.smartLog(total_quantity);
 
             for(var i=0; i< NUTRIENTS_FOR_DISPLAY.length; i++) {
                 var nutrient = NUTRIENTS_FOR_DISPLAY[i];
@@ -112,9 +111,9 @@ var FoodHelperModule = function () {
                     nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
 
                     // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
-                    // console.log(searchString);
-                    // console.log(total_daily_string);
-                    // console.log(total_quantity_string);
+                    // Utils.smartLog(searchString);
+                    // Utils.smartLog(total_daily_string);
+                    // Utils.smartLog(total_quantity_string);
                 } else {
                     // if certain nutrient not available, just skip
                     continue;
@@ -122,10 +121,10 @@ var FoodHelperModule = function () {
             }
         }
         catch(err) {
-            LOGS_VIEW.innerHTML = err;
+            Utils.smartLog(err);
         }
         finally {
-            // console.log(nutrientsObj);
+            // Utils.smartLog(nutrientsObj);
             renderNutritionAR(nutrientsObj);
         }
 

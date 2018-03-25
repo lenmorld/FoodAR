@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8ca46bb7-c0f5-4b3c-92ab-9e5a2cd48275" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app2.js" afterPath="$PROJECT_DIR$/app/app2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/food/edamam_module.js" afterPath="$PROJECT_DIR$/app/food/edamam_module.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/food/food_helper_module.js" afterPath="$PROJECT_DIR$/app/food/food_helper_module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/globals.js" afterPath="$PROJECT_DIR$/app/globals.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/utils.js" afterPath="$PROJECT_DIR$/app/utils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,7 +23,7 @@
       <content type="file-editors">
         <state>
           <leaf>
-            <file leaf-file-name="edamam_full.html" pinned="false" current-in-tab="true">
+            <file leaf-file-name="edamam_full.html" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/app/edamam_full.html">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="301">
@@ -43,20 +46,18 @@
             <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="76">
-                    <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-                    <folding>
-                      <element signature="n#!!doc" expanded="true" />
-                    </folding>
+                  <state relative-caret-position="38">
+                    <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+                    <folding />
                   </state>
                 </provider>
               </entry>
             </file>
-            <file leaf-file-name="edamam_module.js" pinned="false" current-in-tab="false">
+            <file leaf-file-name="edamam_module.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="352">
-                    <caret line="48" column="47" lean-forward="true" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+                  <state relative-caret-position="266">
+                    <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
                     <folding>
                       <element signature="n#!!doc" expanded="true" />
                     </folding>
@@ -106,7 +107,7 @@
       <file leaf-file-name="index3.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
+            <state relative-caret-position="380">
               <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="35" />
               <folding />
             </state>
@@ -126,19 +127,9 @@
       <file leaf-file-name="app2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-57">
-              <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-              <folding>
-                <element signature="e#1298#1343#0" expanded="false" />
-                <element signature="e#2503#2561#0" expanded="false" />
-                <element signature="e#2571#2627#0" expanded="false" />
-                <element signature="e#2854#2870#0" expanded="false" />
-                <element signature="e#3152#3748#0" expanded="false" />
-                <element signature="e#3225#3246#0" expanded="false" />
-                <element signature="e#3973#4182#0" expanded="false" />
-                <element signature="e#4784#5002#0" expanded="false" />
-                <element signature="e#5171#5270#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="327">
+              <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -146,8 +137,8 @@
       <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+            <state relative-caret-position="266">
+              <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -156,8 +147,8 @@
       <file leaf-file-name="food_helper_module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+            <state relative-caret-position="850">
+              <caret line="65" column="24" lean-forward="false" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
               <folding>
                 <element signature="e#348#456#0" expanded="false" />
               </folding>
@@ -168,8 +159,8 @@
       <file leaf-file-name="globals.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/globals.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="95">
+              <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -198,9 +189,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>nutrients_fte</find>
-      <find>nutrients_f</find>
-      <find>fetching nutri</find>
       <find>nutrients_fetch</find>
       <find>nutrients_for_display</find>
       <find>food_search_success</find>
@@ -222,13 +210,19 @@
       <find>fetching</find>
       <find>[nutrient_fetch_success]</find>
       <find>fetching</find>
-      <find>captureFoodItem</find>
       <find>setA</find>
-      <find>img_captured_thumb</find>
       <find>nutrient_fetch_succ</find>
       <find>renderNutritionAR</find>
       <find>quantity</find>
+      <find>img_captured_thumb</find>
+      <find>captureFoodItem</find>
+      <find>console.log</find>
+      <find>done! press</find>
+      <find>LOGS_VIEW</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Utils.smartLog</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -259,13 +253,13 @@
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/index3.html" />
-        <option value="$PROJECT_DIR$/app/utils.js" />
-        <option value="$PROJECT_DIR$/app/globals.js" />
         <option value="$PROJECT_DIR$/app/food/edamam_api_calls.js" />
         <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
+        <option value="$PROJECT_DIR$/app/globals.js" />
         <option value="$PROJECT_DIR$/app/food/edamam_module.js" />
-        <option value="$PROJECT_DIR$/app/app2.js" />
+        <option value="$PROJECT_DIR$/app/utils.js" />
         <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
+        <option value="$PROJECT_DIR$/app/app2.js" />
       </list>
     </option>
   </component>
@@ -383,7 +377,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60586000" />
+    <option name="totallyTimeSpent" value="61228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -738,47 +732,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="13" column="8" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="48" column="47" lean-forward="true" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -798,36 +756,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/app2.js">
+    <entry file="file://$PROJECT_DIR$/app/index3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#1298#1343#0" expanded="false" />
-            <element signature="e#2503#2561#0" expanded="false" />
-            <element signature="e#2571#2627#0" expanded="false" />
-            <element signature="e#2854#2870#0" expanded="false" />
-            <element signature="e#3152#3748#0" expanded="false" />
-            <element signature="e#3225#3246#0" expanded="false" />
-            <element signature="e#3973#4182#0" expanded="false" />
-            <element signature="e#4784#5002#0" expanded="false" />
-            <element signature="e#5171#5270#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="380">
+          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/globals.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="53" lean-forward="false" selection-start-line="2" selection-start-column="53" selection-end-line="2" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="28" lean-forward="true" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/app2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="132" column="0" lean-forward="true" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+        <state relative-caret-position="850">
+          <caret line="65" column="24" lean-forward="false" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
           <folding>
             <element signature="e#348#456#0" expanded="false" />
           </folding>

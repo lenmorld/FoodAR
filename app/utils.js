@@ -12,11 +12,20 @@ var Utils = function () {
         return arr.filter(function(e) {return FOOD_SERVINGS_LIST.includes(e.name) });
     }
 
+    function smartLog(msg) {
+        if(DEV_MODE) {
+            console.log(msg);
+        } else {
+            LOGS_VIEW.innerHTML = msg.join(" ");
+        }
+    }
+
 
     return {
         round: round,
         getCommon: getCommon,
-        getFoodServings: getFoodServings
+        getFoodServings: getFoodServings,
+        smartLog: smartLog
     }
 }();
 
