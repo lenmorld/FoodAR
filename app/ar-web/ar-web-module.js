@@ -11,7 +11,15 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
-    function startAR() {
+    var analyzeObject = null;
+    var captureFoodItem = false;        // must press button on load
+
+
+    function setCaptureFoodItemStatus(bool) {
+        captureFoodItem = bool;
+    }
+
+    function startAR(analyzeObjectFunc, failureCallback) {
         /**
          * Use the `getARDisplay()` utility to leverage the WebVR API
          * to see if there are any AR-capable WebVR VRDisplays. Returns
@@ -21,9 +29,11 @@ var ArWebModule = function () {
         THREE.ARUtils.getARDisplay().then(function (display) {
             if (display) {
                 vrDisplay = display;
+                analyzeObject = analyzeObjectFunc;
                 init();
             } else {
-                THREE.ARUtils.displayUnsupportedMessage();
+                failureCallback();
+                // THREE.ARUtils.displayUnsupportedMessage();
             }
         });
     }
@@ -33,11 +43,14 @@ var ArWebModule = function () {
             navigator.mozGetUserMedia || navigator.msGetUserMedia);
     }
 
-    if (hasGetUserMedia()) {
-        // alert("AR is ready!");
-        // Good to go!
-    } else {
-        LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
+    function checkArBrowser() {
+        if (hasGetUserMedia()) {
+            // alert("AR is ready!");
+            // Good to go!
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function init() {
@@ -115,9 +128,9 @@ var ArWebModule = function () {
         renderer.render(scene, camera);
 
         // ############ ANALYZE button ##################
-        // if (captureFoodItem) {
-        //     analyzeObject(canvas);
-        // }
+        if (captureFoodItem) {
+            analyzeObject(canvas);
+        }
         // ##########################################
 
         // Kick off the requestAnimationFrame to call this function
@@ -125,9 +138,40 @@ var ArWebModule = function () {
         vrDisplay.requestAnimationFrame(update);
     }
 
+    /**
+     * On window resize, update the perspective camera's aspect ratio,
+     * and call `updateProjectionMatrix` so that we can get the latest
+     * projection matrix provided from the device
+     */
+    function onWindowResize () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    /**
+     * Once we have position information applied to our camera,
+     * create some boxes at the same height as the camera
+     */
+    function addBoxes () {
+        // Create some cubes around the origin point
+        for (var i = 0; i < BOX_QUANTITY; i++) {
+            var angle = Math.PI * 2 * (i / BOX_QUANTITY);
+            var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
+            var material = new THREE.MeshNormalMaterial();
+            var cube = new THREE.Mesh(geometry, material);
+            cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
+            scene.add(cube);
+        }
+
+        // Flip this switch so that we only perform this once
+        boxesAdded = true;
+    }
 
     // expose functions and objects here
     return {
-        startAR: startAR
+        startAR: startAR,
+        checkArBrowser: checkArBrowser,
+        setCaptureFoodItem: setCaptureFoodItemStatus
     };
 }();

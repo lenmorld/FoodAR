@@ -45,7 +45,7 @@ function nutrients_fetch(foodItemURI, nutrientsForDisplay, success_callback, fai
 
             if (json_data.totalNutrients) {
 
-                var requiredNutrientsReturned = getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
+                var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
 
                 if (requiredNutrientsReturned.length) {
                     success_callback(json_data);

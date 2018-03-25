@@ -46,7 +46,7 @@ var EdamamModule = function () {
 
                 if (json_data.totalNutrients) {
 
-                    var requiredNutrientsReturned = getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
+                    var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
 
                     if (requiredNutrientsReturned.length) {
                         success_callback(json_data);

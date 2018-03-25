@@ -23,7 +23,7 @@ var FoodHelperModule = function () {
         DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
         LOGS_VIEW.innerHTML = "fetching nutrition info...";
 
-        nutrients_fetch(foodItemUri, nutrients_for_display, nutrients_fetch_success, nutrients_fetch_failure);
+        EdamamModule.nutrientsFetch(foodItemUri, NUTRIENTS_FOR_DISPLAY, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
 
     function foodSearchFailure(msg) {
@@ -66,8 +66,14 @@ var FoodHelperModule = function () {
         NUTR_INFO_VIEW.innerHTML += html;
         DEBUG_VIEW.innerHTML = "=D";
         LOGS_VIEW.innerHTML = "done! press analyze again...";
+        IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
 
-        $("#img_captured").show();          // show top-right captured image
+        // document.getElementById('img_captured_thumb')
+        //     .setAttribute(
+        //         'src', PREV_IMAGE_THUMBNAIL );
+
+        IMAGE_CAPTURED.show();          // show top-right captured image
+        ANALYZE_BUTTON.prop('disabled', false);
     }
 
 
@@ -79,8 +85,8 @@ var FoodHelperModule = function () {
 
         var nutrientsObj = {};
 
-        for(var i=0; i< nutrients_for_display.length; i++) {
-            var nutrient = nutrients_for_display[i];
+        for(var i=0; i< NUTRIENTS_FOR_DISPLAY.length; i++) {
+            var nutrient = NUTRIENTS_FOR_DISPLAY[i];
 
             // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
             // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
@@ -92,8 +98,8 @@ var FoodHelperModule = function () {
                 nutrientsObj[nutrient] = {};
             }
 
-            var total_daily_string = [round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
-            var total_quantity_string = [round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
+            var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
+            var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
 
             nutrientsObj[nutrient]["daily"] = total_daily_string;
             nutrientsObj[nutrient]["quantity"] = total_quantity_string;
