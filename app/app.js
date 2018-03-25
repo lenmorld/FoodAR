@@ -1,3 +1,6 @@
+var clarifai_app = require('clarifai/clarifai_app');
+
+
 var vrDisplay, vrControls, arView;
 var canvas, camera, scene, renderer;
 var BOX_DISTANCE = 1.5;
@@ -23,6 +26,8 @@ var DEBUG_VIEW = document.getElementById('debug');
 
 var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
 var food_serving = ['fruit salad', 'pasta'];
+
+var CLARIFAI_KEYWORD_RESULTS = {};
 
 //////////////////////////////////////////////////////
 
@@ -208,7 +213,8 @@ function analyzeObject(canvasObj) {
     captureFoodItem = false;
 
     // predictUsingWorkflow(image, maxConcepts, minConfidence, successCallback)
-    predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
+
+    clarifai_app.predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
 
     // *** CLOUDINARY ***
     // upload to Cloudinary
@@ -253,6 +259,10 @@ function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
     LOGS_VIEW.innerHTML = "nutrition fetch failed";
     DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
+
+    // if failed, one strategy is change the request to a different keyword
+
+
 }
 
 function round(decimal) {
@@ -296,8 +306,6 @@ function renderNutritionAR(nutrientsObj) {
 
 // process nutrients for display
 function prepareNutrientsView(nutrientsInfo) {
-
-
 
     var total_daily = nutrientsInfo.totalDaily;
     var total_quantity = nutrientsInfo.totalNutrients;
@@ -355,6 +363,12 @@ function processKeywords(words) {
         LOGS_VIEW.innerHTML = words.error;
     }
 
+    /*
+        DEEP COPY {words} object here
+
+     */
+
+
     console.log("common:", getCommon(words.food, words.general, "name"));
 
     var food_servings = getFoodServings(words.food);
@@ -407,6 +421,13 @@ function processKeywords(words) {
             searchNutritionString = foodItemResult;          // # search for nutrition info
         }
     }
+
+    /*
+    once we use a keyword already,
+    REMOVE it from the temp. memory CLARIFAI_KEYWORD_RESULTS
+    so if it fails in Edamam,
+    we do the same search but with next in list, and so on...
+=    */
 
     // get nutrition info
     food_search(searchNutritionString, food_search_success, food_search_failure);

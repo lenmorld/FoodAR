@@ -112,3 +112,6 @@ function predictUsingModel(image, maxConcepts, minPredictionValue, successCallba
 //         }
 //     );
 }
+
+
+module.exports = predictUsingWorkflow;
