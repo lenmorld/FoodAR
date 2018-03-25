@@ -329,7 +329,6 @@ function prepareNutrientsView(nutrientsInfo) {
     renderNutritionAR(nutrientsObj);
 }
 
-
 function getCommon(arr1, arr2, attr) {
     return arr1.filter(function(e) {return (arr2.filter(function(f) {return f[attr] === e[attr] }) ).length > 0 });
 }
@@ -337,7 +336,6 @@ function getCommon(arr1, arr2, attr) {
 function getFoodServings(arr) {
     return arr.filter(function(e) {return food_serving.includes(e.name) });
 }
-
 
 
 function processKeywords(words) {
