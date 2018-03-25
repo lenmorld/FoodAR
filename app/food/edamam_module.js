@@ -12,7 +12,7 @@ var EdamamModule = function () {
             data: JSON.stringify({"query": searchString}),
             type: 'POST',
             success: function (data) {
-                Utils.smartLog("[edamam_api_calls]", data);
+                Utils.smartLog(["[edamam_api_calls]", data]);
 
                 if (data.parsed[0]) {
                     success_callback(data.parsed[0].food.uri);
@@ -22,7 +22,7 @@ var EdamamModule = function () {
 
             },
             error : function(xhr, status, exception){
-                Utils.smartLog("[edamam_api_calls]", status + " " + exception);
+                Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
                 failure_callback(status + " " + exception);
             }
         });
@@ -64,7 +64,7 @@ var EdamamModule = function () {
 
             },
             error : function(xhr, status, exception){
-                Utils.smartLog("[edamam_api_calls]", status + " " + exception);
+                Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
                 failure_callback(status + " " + exception);
             }
         });

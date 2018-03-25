@@ -17,8 +17,8 @@ var FoodHelperModule = function () {
 // food item search
     function foodSearchSuccess(foodItemUri) {
 
-        Utils.smartLog("success: ", foodItemUri);
-        Utils.smartLog("fetching nutrition info...");
+        Utils.smartLog(["success: ", foodItemUri]);
+        Utils.smartLog(["fetching nutrition info..."]);
 
         DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
 
@@ -26,7 +26,7 @@ var FoodHelperModule = function () {
     }
 
     function foodSearchFailure(msg) {
-        Utils.smartLog("failure: ", msg);
+        Utils.smartLog(["failure: ", msg]);
         DEBUG_VIEW.innerHTML += "[food_search_failure]" + msg;
     }
 
@@ -34,13 +34,13 @@ var FoodHelperModule = function () {
 // nutrient search
     function nutrientsFetchSuccess(nutrientsInfo) {
 
-        Utils.smartLog("success: ", nutrientsInfo);
+        Utils.smartLog(["success: ", nutrientsInfo]);
         DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
         prepareNutrientsView(nutrientsInfo);
     }
 
     function nutrientsFetchFailure(msg) {
-        Utils.smartLog("failure: ", msg);
+        Utils.smartLog(["failure: ", msg]);
         DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
     }
 
@@ -48,11 +48,11 @@ var FoodHelperModule = function () {
 
         var html = "";
 
-        Utils.smartLog("rendering...");
+        Utils.smartLog(["rendering..."]);
 
         for (var key in nutrientsObj) {
             if (nutrientsObj.hasOwnProperty(key)) {
-                Utils.smartLog(key, nutrientsObj[key]);
+                Utils.smartLog([key, nutrientsObj[key]]);
 
                 var item = nutrientsObj[key];
                 html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
@@ -63,7 +63,7 @@ var FoodHelperModule = function () {
 
         NUTR_INFO_VIEW.innerHTML += html;
         DEBUG_VIEW.innerHTML = "=D";
-        Utils.smartLog("done! press analyze again...");
+        Utils.smartLog(["done! press analyze again..."]);
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
 
         // document.getElementById('img_captured_thumb')
@@ -78,7 +78,7 @@ var FoodHelperModule = function () {
 // process nutrients for display
     function prepareNutrientsView(nutrientsInfo) {
 
-        Utils.smartLog("preparing nutrients info for rendering");
+        Utils.smartLog(["preparing nutrients info for rendering"]);
 
         var nutrientsObj = {};
 
@@ -121,7 +121,7 @@ var FoodHelperModule = function () {
             }
         }
         catch(err) {
-            Utils.smartLog(err);
+            Utils.smartLog([err]);
         }
         finally {
             // Utils.smartLog(nutrientsObj);

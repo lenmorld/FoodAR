@@ -6,7 +6,7 @@ $(function() {
 
         DEV_MODE = true;
 
-        Utils.smartLog('getUserMedia() is not supported in your browser');
+        Utils.smartLog(['getUserMedia() is not supported in your browser']);
         DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...'
 
         var searchString = "beer";
@@ -30,6 +30,7 @@ $(function() {
         // captureFoodItem = false;
         ArWebModule.setCaptureFoodItem(false);
         DEBUG_VIEW.innerHTML = "capture false";
+        Utils.smartLog(["Capturing food item..."]);
 
         // convert webGL image to base64 representation
         var dataURL = canvasObj.toDataURL();
@@ -43,17 +44,16 @@ $(function() {
     function processKeywords(words) {
 
         NUTR_INFO_VIEW.innerHTML = "";
-        Utils.smartLog("searching food item...");
+        Utils.smartLog(["searching food item..."]);
 
         if (words.error) {
-            Utils.smartLog(words.error);
+            Utils.smartLog([words.error]);
         }
-
         /*
             DEEP COPY {words} object here
          */
 
-        Utils.smartLog("common:", Utils.getCommon(words.food, words.general, "name"));
+        // Utils.smartLog("common:", Utils.getCommon(words.food, words.general, "name"));
 
         var food_servings = Utils.getFoodServings(words.food);
         food_servings.concat(Utils.getFoodServings(words.general));
@@ -66,7 +66,7 @@ $(function() {
         var searchNutritionString = "";
 
         if (food_servings.length > 0) {
-            Utils.smartLog("food servings:", food_servings);
+            Utils.smartLog(["food servings:", food_servings]);
 
             // e.g. 'fruit salad'
             // we don't want to individually get nutrition of strawberry, berry, etc.
