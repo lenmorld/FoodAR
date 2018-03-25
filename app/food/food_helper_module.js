@@ -28,7 +28,6 @@ var FoodHelperModule = function () {
 
     function foodSearchFailure(msg) {
         console.log("failure: ", msg);
-
         DEBUG_VIEW.innerHTML += "[food_search_failure]" + msg;
     }
 

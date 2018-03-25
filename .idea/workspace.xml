@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ca46bb7-c0f5-4b3c-92ab-9e5a2cd48275" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app2.js" afterPath="$PROJECT_DIR$/app/app2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/food/edamam_module.js" afterPath="$PROJECT_DIR$/app/food/edamam_module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/food/food_helper_module.js" afterPath="$PROJECT_DIR$/app/food/food_helper_module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -54,8 +55,8 @@
             <file leaf-file-name="edamam_module.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1330">
-                    <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+                  <state relative-caret-position="314">
+                    <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
                     <folding>
                       <element signature="n#!!doc" expanded="true" />
                     </folding>
@@ -125,8 +126,8 @@
       <file leaf-file-name="app2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/app2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="922">
-              <caret line="133" column="9" lean-forward="true" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
+            <state relative-caret-position="285">
+              <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="e#1300#1345#0" expanded="false" />
                 <element signature="e#2505#2563#0" expanded="false" />
@@ -138,16 +139,6 @@
                 <element signature="e#4786#5004#0" expanded="false" />
                 <element signature="e#5173#5272#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="globals.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/globals.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -165,14 +156,12 @@
       <file leaf-file-name="food_helper_module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-110">
-              <caret line="80" column="13" lean-forward="false" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+            <state relative-caret-position="676">
+              <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
               <folding>
                 <element signature="e#348#456#0" expanded="false" />
-                <element signature="e#953#1063#0" expanded="false" />
-                <element signature="e#1338#1451#0" expanded="false" />
-                <element signature="e#2740#2799#0" expanded="false" />
-                <element signature="e#3046#3106#0" expanded="false" />
+                <element signature="e#2739#2798#0" expanded="false" />
+                <element signature="e#3045#3105#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -223,14 +212,14 @@
       <find>renderNutritionAR</find>
       <find>prepareNutrientsView</find>
       <find>food_search</find>
-      <find>img_captured_thumb</find>
       <find>nutrients</find>
       <find>PREV_IMAGE_THUMBNAIL</find>
       <find>fetching</find>
       <find>[nutrient_fetch_success]</find>
-      <find>setA</find>
       <find>fetching</find>
       <find>captureFoodItem</find>
+      <find>setA</find>
+      <find>img_captured_thumb</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -265,10 +254,10 @@
         <option value="$PROJECT_DIR$/app/utils.js" />
         <option value="$PROJECT_DIR$/app/globals.js" />
         <option value="$PROJECT_DIR$/app/food/edamam_api_calls.js" />
-        <option value="$PROJECT_DIR$/app/food/edamam_module.js" />
-        <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
         <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
         <option value="$PROJECT_DIR$/app/app2.js" />
+        <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
+        <option value="$PROJECT_DIR$/app/food/edamam_module.js" />
       </list>
     </option>
   </component>
@@ -386,7 +375,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59120000" />
+    <option name="totallyTimeSpent" value="59617000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -571,10 +560,8 @@
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding>
             <element signature="e#348#456#0" expanded="false" />
-            <element signature="e#953#1063#0" expanded="false" />
-            <element signature="e#1338#1451#0" expanded="false" />
-            <element signature="e#2740#2799#0" expanded="false" />
-            <element signature="e#3046#3106#0" expanded="false" />
+            <element signature="e#2739#2798#0" expanded="false" />
+            <element signature="e#3045#3105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -777,20 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="80" column="13" lean-forward="false" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-          <folding>
-            <element signature="e#348#456#0" expanded="false" />
-            <element signature="e#953#1063#0" expanded="false" />
-            <element signature="e#1338#1451#0" expanded="false" />
-            <element signature="e#2740#2799#0" expanded="false" />
-            <element signature="e#3046#3106#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -801,12 +774,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
+    <entry file="file://$PROJECT_DIR$/app/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1330">
-          <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
+        <state relative-caret-position="209">
+          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="42" column="40" lean-forward="true" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#348#456#0" expanded="false" />
+            <element signature="e#2739#2798#0" expanded="false" />
+            <element signature="e#3045#3105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -819,18 +802,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="64" lean-forward="false" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="922">
-          <caret line="133" column="9" lean-forward="true" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
+        <state relative-caret-position="285">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding>
             <element signature="e#1300#1345#0" expanded="false" />
             <element signature="e#2505#2563#0" expanded="false" />
@@ -841,6 +816,16 @@
             <element signature="e#3975#4184#0" expanded="false" />
             <element signature="e#4786#5004#0" expanded="false" />
             <element signature="e#5173#5272#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/food/edamam_module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="46" column="76" lean-forward="false" selection-start-line="46" selection-start-column="76" selection-end-line="46" selection-end-column="76" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
