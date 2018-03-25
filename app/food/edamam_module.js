@@ -44,11 +44,11 @@ var EdamamModule = function () {
                 // totalNutrients is what we need
                 // check if at least one of the required nutrients is in the result object
 
-                DEBUG_VIEW.innerHTML = "[processing nutrient fetch json_data]";
+                DEBUG_VIEW.innerHTML += "[processing nutrient fetch json_data]";
 
                 if (json_data.totalNutrients) {
 
-                    DEBUG_VIEW.innerHTML = "[checking total nutrients]";
+                    DEBUG_VIEW.innerHTML += "[checking total nutrients]";
 
                     var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
 
