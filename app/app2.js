@@ -15,6 +15,8 @@ $(function() {
     }
 
     function buttonFunc() {
+        DEBUG_VIEW.innerHTML = "capture true";
+
         // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
         ANALYZE_BUTTON.prop('disabled', true);       // analyze while processing
@@ -22,13 +24,14 @@ $(function() {
 
     function analyzeObject(canvasObj) {
 
+        // captureFoodItem = false;
+        ArWebModule.setCaptureFoodItem(false);
+        DEBUG_VIEW.innerHTML = "capture false";
+
         // convert webGL image to base64 representation
         var dataURL = canvasObj.toDataURL();
         var base64img = dataURL.split("base64,")[1];
         PREV_IMAGE_THUMBNAIL = dataURL;
-
-        // captureFoodItem = false;
-        ArWebModule.setCaptureFoodItem(false);
 
         // predictUsingWorkflow(image, maxConcepts, minConfidence, successCallback)
         ClarifaiModule.predictUsingWorkflow({base64: base64img}, 10, 0.90, processKeywords);
