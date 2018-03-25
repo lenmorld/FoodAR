@@ -191,6 +191,7 @@ if (hasGetUserMedia()) {
 } else {
     LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
 }
+
 /*******************************/
 
 function buttonFunc() {
