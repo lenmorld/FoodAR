@@ -23,7 +23,11 @@ function food_search(searchString, success_callback, failure_callback) {
 }
 
 
-function nutrients_fetch(foodItemURI, success_callback, failure_callback) {
+function getCommon(arr1, arr2, attr) {
+    return arr1.filter(function(e) {return (arr2.filter(function(f) {return f[attr] === e[attr] }) ).length > 0 });
+}
+
+function nutrients_fetch(foodItemURI, nutrientsForDisplay, success_callback, failure_callback) {
 
     $.ajax({
         url: '/foodapi/nutrients',
@@ -37,10 +41,21 @@ function nutrients_fetch(foodItemURI, success_callback, failure_callback) {
             console.log("[edamam_api_calls]", json_data);
 
             // totalNutrients is what we need
+            // check if at least one of the required nutrients is in the result object
+
+
             if (json_data.totalNutrients) {
-                success_callback(json_data);
+
+                var requriedNutrientsReturned = getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
+
+                if (requriedNutrientsReturned.length) {
+                    success_callback(json_data);
+                } else {
+                    failure_callback("No nutrient info found for food");
+                }
+
             } else {
-                failure_callback("failed to get nutrients");
+                failure_callback("No match in nutrient database");
             }
 
         },

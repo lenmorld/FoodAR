@@ -62,3 +62,24 @@ offset=0&api_key=DEMO_KEY&ds=Standard+Reference
 nutrients fetch:
 https://api.nal.usda.gov/ndb/nutrients/?format=json&api_key=DEMO_KEY&
 nutrients=205&nutrients=204&nutrients=208&nutrients=269&ndbno=45258948
+
+
+====
+
+food serving search is very iffy
+-> 'fruit salad' image: https://www.clarifai.com/models/food-image-recognition-model-bd367be194cf45149e75f01d59f77ba7
+
+# Clarifai
+returns (in order of accuracy)
+- strawberry, berry, sweet, fruit salad
+
+we have a list of 'food servings' - fruit salad is one of them
+to try to avoid searching one by one the ingredients and
+searching as a whole
+
+# Edamam
+no totalDaily, no totalNutrients
+
+FIX: fallback to the first ingredient (strawberry)
+and search it in Edamam
+

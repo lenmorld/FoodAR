@@ -5,6 +5,7 @@ var NUTR_INFO_VIEW = document.getElementById('nut_info');
 var LOGS_VIEW = document.getElementById('logs');
 var DEBUG_VIEW = document.getElementById('debug');
 
+var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
 
 // food item search
 function food_search_success(foodItemUri) {
@@ -12,11 +13,10 @@ function food_search_success(foodItemUri) {
     console.log("success: ", foodItemUri);
     console.log("invoking nutrients fetch ");
 
-
     DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
     LOGS_VIEW.innerHTML = "fetching nutrition info...";
 
-    nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
+    nutrients_fetch(foodItemUri, nutrients_for_display, nutrients_fetch_success, nutrients_fetch_failure);
 }
 
 function food_search_failure(msg) {
@@ -71,7 +71,7 @@ function renderNutritionAR(nutrientsObj) {
 // process nutrients for display
 function prepareNutrientsView(nutrientsInfo) {
 
-    var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
+
 
     var total_daily = nutrientsInfo.totalDaily;
     var total_quantity = nutrientsInfo.totalNutrients;

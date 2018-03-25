@@ -8,7 +8,7 @@ var boxesAdded = false;
 var captureFoodItem = false;        // must press button on load
 
 /*
-DECLARE ALL HTML DOM ELEMENTS HERE TO BE
+DECLARE ALL GLOBAL VARS and HTML DOM ELEMENTS HERE TO BE
 FILLED WITH CONTENT IN AR
  */
 
@@ -20,6 +20,8 @@ var FOOD_ITEM_VIEW = document.getElementById('food_item');
 var NUTR_INFO_VIEW = document.getElementById('nut_info');
 var LOGS_VIEW = document.getElementById('logs');
 var DEBUG_VIEW = document.getElementById('debug');
+
+var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
 
 //////////////////////////////////////////////////////
 
@@ -227,7 +229,7 @@ function food_search_success(foodItemUri) {
     DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
     LOGS_VIEW.innerHTML = "fetching nutrition info...";
 
-    nutrients_fetch(foodItemUri, nutrients_fetch_success, nutrients_fetch_failure);
+    nutrients_fetch(foodItemUri, nutrients_for_display, nutrients_fetch_success, nutrients_fetch_failure);
 }
 
 function food_search_failure(msg) {
@@ -241,12 +243,14 @@ function food_search_failure(msg) {
 function nutrients_fetch_success(nutrientsInfo) {
 
     console.log("success: ", nutrientsInfo);
+    LOGS_VIEW.innerHTML = "nutrition fetch success";
     DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
     prepareNutrientsView(nutrientsInfo);
 }
 
 function nutrients_fetch_failure(msg) {
     console.log("failure: ", msg);
+    LOGS_VIEW.innerHTML = "nutrition fetch failed";
     DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
 }
 
@@ -288,10 +292,11 @@ function renderNutritionAR(nutrientsObj) {
     // PREV_IMAGE_THUMBNAIL = null;             // reset image
 }
 
+
 // process nutrients for display
 function prepareNutrientsView(nutrientsInfo) {
 
-    var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
+
 
     var total_daily = nutrientsInfo.totalDaily;
     var total_quantity = nutrientsInfo.totalNutrients;
@@ -329,9 +334,11 @@ function prepareNutrientsView(nutrientsInfo) {
     renderNutritionAR(nutrientsObj);
 }
 
+
 function getCommon(arr1, arr2, attr) {
     return arr1.filter(function(e) {return (arr2.filter(function(f) {return f[attr] === e[attr] }) ).length > 0 });
 }
+
 
 function getFoodServings(arr) {
     return arr.filter(function(e) {return food_serving.includes(e.name) });
@@ -370,7 +377,6 @@ function processKeywords(words) {
         // display first one (#1 result)
         var foodItemResult = food_servings[0].name;
 
-
         FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
         searchNutritionString = foodItemResult;          // # search for nutrition info
 
@@ -408,5 +414,4 @@ function processKeywords(words) {
     // then search them indiv. and sum up their nutrition
 
     // or when multiple just do recipe, not nutrition
-
 }
