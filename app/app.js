@@ -361,6 +361,8 @@ function processKeywords(words) {
     // to check for 'accuracy'
 //                var food_result_0 = results[0].name + "_" + results[0].value;
 
+    var searchNutritionString = "";
+
     if (food_servings.length > 0) {
         console.log("food servings:", food_servings);
 
@@ -370,8 +372,11 @@ function processKeywords(words) {
         // look this up
 
         // display first one (#1 result)
+        var foodItemResult = food_servings[0].name;
 
-        FOOD_ITEM_VIEW.innerHTML = food_servings[0].name;
+
+        FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
+        searchNutritionString = foodItemResult;          // # search for nutrition info
 
     } else {
         // look up food items, then sum up
@@ -392,16 +397,16 @@ function processKeywords(words) {
         // or just one item that resulted to different concepts (to get only one)
 
         // get first item for now
-        var searchString = 'banana';        // default banana search LOL
-        if (words.food.length > 0) {
-            searchString = words.food[0].name;
 
-            FOOD_ITEM_VIEW.innerHTML = words.food[0].name;
+        if (words.food.length > 0) {
+            var foodItemResult = food_servings[0].name;
+            FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
+            searchNutritionString = foodItemResult;          // # search for nutrition info
         }
     }
 
     // get nutrition info
-    food_search(searchString, food_search_success, food_search_failure);
+    food_search(searchNutritionString, food_search_success, food_search_failure);
 
     // TODO: must find a condition to detect multiple food items, other than single and/or food_serving
     // then search them indiv. and sum up their nutrition
