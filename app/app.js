@@ -341,8 +341,6 @@ function getFoodServings(arr) {
 
 
 function processKeywords(words) {
-//        console.log("words:", words);
-    // EXTRA_VIEW.innerHTML = 'Processing....';
 
     NUTR_INFO_VIEW.innerHTML = "";
     LOGS_VIEW.innerHTML = "searching food item...";
@@ -385,7 +383,7 @@ function processKeywords(words) {
 
         var text = "";
 
-        for (var index=0; index < KEYWORD_LIMIT; index++) {
+        for (var index = 0; index < KEYWORD_LIMIT; index++) {
             var food_result = words.food[index].name + ":" + words.food[index].value;
             // var food_result = words.food[index].name;
             text += food_result + " ";
@@ -413,30 +411,4 @@ function processKeywords(words) {
 
     // or when multiple just do recipe, not nutrition
 
-//        console.log("food servings:", getFoodServings(words.food));
-//        console.log("food servings:", getFoodServings(words.general));
 }
-
-
-// $(document).ready(function(){
-//     $("button").click(function(){
-//         food_search(searchString, food_search_success, food_search_failure);
-//     });
-// });
-
-/*************************************************************/
-/**************************************************************/
-
-// var searchString = "banana";
-
-//        const image = './food.jpg';       // THIS WONT WORK BECAUSE OF XSRF uploads,
-// var image = 'https://samples.clarifai.com/metro-north.jpg';
-// image = 'https://i.imgur.com/eTuCPxM.jpg';
-// image = 'https://i.imgur.com/r0xlLtK.jpg';          // apple
-// image = 'https://i.imgur.com/bQOombb.jpg';          // banana
-// image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';    // fruit salad
-// //    image = 'https://www.recipetineats.com/wp-content/uploads/2017/05/Bacon-Tomato-Pasta-3-landscape.jpg';  // pasta
-//
-
-
-// predictUsingWorkflow(image, 10, 0.90, logWords);
