@@ -39,9 +39,14 @@ var FoodHelperModule = function () {
         prepareNutrientsView(nutrientsInfo);
     }
 
-    function nutrientsFetchFailure(msg) {
-        Utils.smartLog(["failure: ", msg]);
-        DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure]" + msg;
+    function nutrientsFetchFailure(failedKeyword, msg) {
+        Utils.smartLog(["failure: ", failedKeyword, msg]);
+        DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure] " + failedKeyword + " " + msg;
+
+
+        // call fallback method on integration module
+        ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
+
     }
 
     function renderNutritionAR(nutrientsObj) {
@@ -61,7 +66,7 @@ var FoodHelperModule = function () {
 
         // SUCCESS!!!
 
-        NUTR_INFO_VIEW.innerHTML += html;
+        NUTR_INFO_VIEW.innerHTML = html;
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);

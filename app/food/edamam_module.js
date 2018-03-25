@@ -4,7 +4,12 @@
  */
 
 var EdamamModule = function () {
+
+    var previousKeyword = null;
+
     function foodSearch(searchString, success_callback, failure_callback) {
+
+        previousKeyword = searchString;
 
         $.ajax({
             url: '/foodapi/search',
@@ -55,17 +60,16 @@ var EdamamModule = function () {
                     if (requiredNutrientsReturned.length) {
                         success_callback(json_data);
                     } else {
-                        failure_callback("No nutrient info found for food");
+                        failure_callback(previousKeyword, "No nutrient info found for food");
                     }
 
                 } else {
-                    failure_callback("No match in nutrient database");
+                    failure_callback(previousKeyword, "No match in nutrient database");
                 }
-
             },
             error : function(xhr, status, exception){
                 Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
-                failure_callback(status + " " + exception);
+                failure_callback(previousKeyword, status + " " + exception);
             }
         });
     }

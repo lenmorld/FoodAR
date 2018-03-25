@@ -83,3 +83,7 @@ no totalDaily, no totalNutrients
 FIX: fallback to the first ingredient (strawberry)
 and search it in Edamam
 
+-> done!
+
+fruit salad - falls back to strawberry
+pasta - successfully gets nut. info for pasta, no need to fall back
