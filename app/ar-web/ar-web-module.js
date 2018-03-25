@@ -11,20 +11,22 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
-    /**
-     * Use the `getARDisplay()` utility to leverage the WebVR API
-     * to see if there are any AR-capable WebVR VRDisplays. Returns
-     * a valid display if found. Otherwise, display the unsupported
-     * browser message.
-     */
-    THREE.ARUtils.getARDisplay().then(function (display) {
-        if (display) {
-            vrDisplay = display;
-            init();
-        } else {
-            THREE.ARUtils.displayUnsupportedMessage();
-        }
-    });
+    function startAR() {
+        /**
+         * Use the `getARDisplay()` utility to leverage the WebVR API
+         * to see if there are any AR-capable WebVR VRDisplays. Returns
+         * a valid display if found. Otherwise, display the unsupported
+         * browser message.
+         */
+        THREE.ARUtils.getARDisplay().then(function (display) {
+            if (display) {
+                vrDisplay = display;
+                init();
+            } else {
+                THREE.ARUtils.displayUnsupportedMessage();
+            }
+        });
+    }
 
     function hasGetUserMedia() {
         return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -126,6 +128,6 @@ var ArWebModule = function () {
 
     // expose functions and objects here
     return {
-
+        startAR: startAR
     };
 }();

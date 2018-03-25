@@ -15,5 +15,7 @@ $(function() {
 
     FOOD_ITEM_VIEW.innerHTML = Utils.round(12.34);
 
+    ArWebModule.startAR();
+
 });
 
