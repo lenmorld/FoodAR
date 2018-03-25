@@ -81,11 +81,14 @@ var FoodHelperModule = function () {
 
         LOGS_VIEW.innerHTML = "preparing nutrients info for rendering";
 
+        var nutrientsObj = {};
+
         try {
             var total_daily = nutrientsInfo.totalDaily;
             var total_quantity = nutrientsInfo.totalNutrients;
 
-            var nutrientsObj = {};
+            // console.log(total_daily);
+            // console.log(total_quantity);
 
             for(var i=0; i< NUTRIENTS_FOR_DISPLAY.length; i++) {
                 var nutrient = NUTRIENTS_FOR_DISPLAY[i];
@@ -93,34 +96,37 @@ var FoodHelperModule = function () {
                 // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
                 // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
 
-                var total_daily_nutrient = total_daily[nutrient];
-                var total_quantity_nutrient = total_quantity[nutrient];
+                if (total_quantity[nutrient]) {
+                    var total_daily_nutrient = total_daily[nutrient];
+                    var total_quantity_nutrient = total_quantity[nutrient];
 
-                if (!nutrientsObj[nutrient]) {
-                    nutrientsObj[nutrient] = {};
+                    if (!nutrientsObj[nutrient]) {
+                        nutrientsObj[nutrient] = {};
+                    }
+
+                    var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
+                    var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
+
+                    nutrientsObj[nutrient]["daily"] = total_daily_string;
+                    nutrientsObj[nutrient]["quantity"] = total_quantity_string;
+                    nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
+
+                    // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
+                    // console.log(searchString);
+                    // console.log(total_daily_string);
+                    // console.log(total_quantity_string);
+                } else {
+                    // if certain nutrient not available, just skip
+                    continue;
                 }
-
-                var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
-                var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
-
-                nutrientsObj[nutrient]["daily"] = total_daily_string;
-                nutrientsObj[nutrient]["quantity"] = total_quantity_string;
-                nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
-
-                // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
-                // console.log(searchString);
-                // console.log(total_daily_string);
-                // console.log(total_quantity_string);
             }
-
-            // console.log(nutrientsObj);
-            renderNutritionAR(nutrientsObj);
         }
         catch(err) {
             LOGS_VIEW.innerHTML = err;
         }
         finally {
-
+            // console.log(nutrientsObj);
+            renderNutritionAR(nutrientsObj);
         }
 
     }

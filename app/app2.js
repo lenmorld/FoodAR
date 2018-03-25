@@ -6,7 +6,7 @@ $(function() {
         LOGS_VIEW.innerHTML = 'getUserMedia() is not supported in your browser';
         DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...'
 
-        var searchString = "banana";
+        var searchString = "beer";
 
         // add button listener
         ANALYZE_BUTTON.click(function() {
