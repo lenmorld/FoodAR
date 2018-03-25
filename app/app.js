@@ -398,11 +398,10 @@ function processKeywords(words) {
 
             FOOD_ITEM_VIEW.innerHTML = words.food[0].name;
         }
-
-        // get nutrition info
-        food_search(searchString, food_search_success, food_search_failure);
     }
 
+    // get nutrition info
+    food_search(searchString, food_search_success, food_search_failure);
 
     // TODO: must find a condition to detect multiple food items, other than single and/or food_serving
     // then search them indiv. and sum up their nutrition
