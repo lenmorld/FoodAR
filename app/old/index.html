@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Food AR app</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+  minimum-scale=1.0, maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+</head>
+<body>
+    <div id="results">
+        <h3>Food item:</h3>
+        <div id="food_item"></div>
+        <h3>Nutritional Info:</h3>
+        <div id="nut_info"></div>
+    </div>
+    <div id="img_captured">
+        <img id="img_captured_thumb" src="http://via.placeholder.com/140x140" width="140" height="140" />
+    </div>
+    <div class="controls">
+        <!--<span id="image_url">haha</span> <br/>-->
+        <!--<span id="image_url_2">haha</span><br/>-->
+        <!--<span id="image_url_4">haha</span><br/>-->
+        <div id="debug"></div>
+        <div id="logs">Press analyze...</div>
+        <button id="btn-analyze" onclick="buttonFunc()">Analyze</button>
+    </div>
+
+    <script src="../AR/third_party/three.js/three.js"></script>
+    <script src="../AR/third_party/three.js/VRControls.js"></script>
+    <script src="../AR/third_party/dat.gui/dat.gui.js"></script>
+    <script src="../AR/dist/three.ar.js"></script>
+
+    <!--<script src="upload/cloudinary.js"></script>-->
+    <script src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <!-- MY SCRIPTS -->
+    <!--<script src="clarifai/clarifai_app.js"></script>-->
+
+    <!--<script src="food/usda_api.js"></script>-->
+
+
+    <script src="../food/old/edamam_api_calls.js"></script>
+
+    <!--<script src="nutrition.js"></script>-->
+    <script src="app.js"></script>
+
+
+</body>
+</html>
