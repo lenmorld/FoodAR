@@ -19,6 +19,21 @@ $(function() {
         // // fridge with ingredients --> cooking!
         image = 'https://media1.popsugar-assets.com/files/thumbor/akQEIgPpxD53iljH35b-q16Sdgg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/04/12/985/n/42816840/6a7e5ef858eeac84566084.76358641_edit_img_cover_file_43423029_1492023907/i/Natural-Home-Beauty-Ingredients.jpg';
 
+        // multiple food items, non-recipe non-food serving -> 'meal'
+        // image = 'https://img.grouponcdn.com/deal/aneUsttzxMyem6Mg3ro5/YX-2048x1229/v1/c700x420.jpg';
+
+        // multiple fruits -> 'fruit'
+        // image = 'https://i.ytimg.com/vi/5wit1MJ6Ohk/maxresdefault.jpg';
+
+        // butter chickecn -> 'meal','dinner','lunch', ['cooking']!
+        // image ='http://goodtoknow.media.ipcdigital.co.uk/111/000016ef4/c0e9/Butter-chicken-recipe.jpg';
+
+        // fries -> french fries, lunch
+        image = 'https://blog.qad.com/wp-content/uploads/2016/11/Blog_11.22.2016b.jpg';
+
+        // burger
+        image = 'http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg';
+
         // add button listener
         ANALYZE_BUTTON.click(function() {
             ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);

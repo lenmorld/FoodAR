@@ -14,6 +14,8 @@ var KEYWORD_LIMIT = 5;
 var PREV_IMAGE_THUMBNAIL = null;
 
 var NUTRIENTS_FOR_DISPLAY = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
-var FOOD_SERVINGS_LIST = ['fruit salad', 'pasta'];
+var FOOD_SERVINGS_LIST = ['fruit salad', 'pasta', 'burger', 'hamburger', 'sandwich'];
+
+var MEALS_KEYWORD_LIST = ['meal', 'lunch', 'dinner'];
 
 var RECIPES_KEYWORD_LIST = ['cooking', 'preparation'];      // to use for General model
