@@ -10,7 +10,14 @@ $(function() {
         DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...'
 
         var searchString = "fruit salad";
-        var image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg'
+        var image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';
+        // image = 'https://blog.restaurantscanada.org/wp-content/uploads/2015/09/Barley-Pilaf-with-Fall-Vegetables-Chicken-ingredients.jpg';  // cooking
+        // image = 'https://www.familyfreshmeals.com/wp-content/uploads/2014/06/Creamy-Ranch-Pasta-Salad-Ingredients-FamilyFreshMeals.com_.png'; // preparation
+        // image = 'http://www.andyboy.com/wp-content/uploads/2014/08/pasta-ingredients.jpg';      // cooking
+        // image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJk_nwRQ-w98xFfaF9XzewsmNfU431PEv7Bs3P-JtdHUMFMVKb';     // cooking
+        //
+        // // fridge with ingredients --> cooking!
+        image = 'https://media1.popsugar-assets.com/files/thumbor/akQEIgPpxD53iljH35b-q16Sdgg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/04/12/985/n/42816840/6a7e5ef858eeac84566084.76358641_edit_img_cover_file_43423029_1492023907/i/Natural-Home-Beauty-Ingredients.jpg';
 
         // add button listener
         ANALYZE_BUTTON.click(function() {
@@ -31,7 +38,7 @@ $(function() {
 
         // captureFoodItem = false;
         ArWebModule.setCaptureFoodItem(false);
-        DEBUG_VIEW.innerHTML = "capture false";
+        // DEBUG_VIEW.innerHTML = "capture false";
         Utils.smartLog(["Capturing food item..."]);
 
         // convert webGL image to base64 representation

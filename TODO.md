@@ -27,12 +27,6 @@ next big feature
 
     must get as much food_serving to sniff as possible, since its not always the #1 in the keyword results
 
--> capturing multiple food items
-
--> searching recipes of multiple food items
-
-
-
 option:
 
 if single food item or "food serving"
@@ -40,3 +34,16 @@ determine nutrition
 
 or if multiple food items
 -> suggest recipe
+
+
+IDEA 4:
+
+-> capturing multiple food items
+-> searching recipes of multiple food items
+
+one way to do it:
+check General results for RECIPES_KEYWORD_LIST
+such as 'preparation', 'cooking'
+
+if obtained, then
+get all (how many?) from Food results

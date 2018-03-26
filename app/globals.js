@@ -15,3 +15,5 @@ var PREV_IMAGE_THUMBNAIL = null;
 
 var NUTRIENTS_FOR_DISPLAY = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
 var FOOD_SERVINGS_LIST = ['fruit salad', 'pasta'];
+
+var RECIPES_KEYWORD_LIST = ['cooking', 'preparation'];      // to use for General model

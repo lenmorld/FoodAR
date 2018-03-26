@@ -45,16 +45,37 @@ var ClarifaiFoodModule = function () {
 
         // Utils.smartLog("common:", Utils.getCommon(words.food, words.general, "name"));
 
-        // get food_servings from both models
-        var food_servings = Utils.getFoodServings(words.food);
-        food_servings.concat(Utils.getFoodServings(words.general));
+        // get possible food_servings from both models
+        var food_servings = Utils.getCategoryKeywords(words.food, FOOD_SERVINGS_LIST);
+        food_servings.concat(Utils.getCategoryKeywords(words.general, FOOD_SERVINGS_LIST));
+
+        // get possible recipe keywords from GENERAL model
+        var recipe_keywords = Utils.getCategoryKeywords(words.general, RECIPES_KEYWORD_LIST);
 
         // TODO: look for common concepts (or know needed concepts and look for them)
         // to check for 'accuracy': var food_result_0 = results[0].name + "_" + results[0].value;
 
-        var searchNutritionString = "";
+        /*
+            3 cases for now
 
-        if (food_servings.length > 0) {
+            1. if recipe keyword found in GENERAL model, get all ingredients from FOOD model
+            2. if food serving keyword found in either of the models, search that food serving
+            3. either get nutrients info of top item, or top 5 if decided multiple
+                TODO: must decide algorithm on deciding if multiple, based on keywords or accuracy
+         */
+
+
+        if (recipe_keywords.length > 0) {
+            // TODO: get recipe using Edamam API
+
+            /*
+                formulate request by getting (all 20 or just a few?) items from words.food
+             */
+
+
+            
+        }
+        else if (food_servings.length > 0) {
             Utils.smartLog(["food servings:", food_servings]);
 
             // e.g. 'fruit salad'
@@ -66,14 +87,16 @@ var ClarifaiFoodModule = function () {
             var foodItemResult = food_servings[0].name;
 
             FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
-            searchNutritionString = foodItemResult;          // # search for nutrition info
+            var searchNutritionString = foodItemResult;          // # search for nutrition info
+
+            // get nutrition info
+            EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
 
         } else {
-            // look up food items, then sum up
-
-            // TODO: determine which is better: words.food or words.general
+            // case 3
 
             var text = "";
+            var searchNutritionString = '';
 
             for (var index = 0; index < KEYWORD_LIMIT; index++) {
                 var food_result = words.food[index].name + ":" + words.food[index].value;
@@ -83,32 +106,24 @@ var ClarifaiFoodModule = function () {
 
             DEBUG_VIEW.innerHTML = text;    // top 5
 
+            // TODO: sum up top 5 nutrient info if decided multiple -> find condition to decide if multipl
+            // else assume individual
             // TODO: must have a way to determine multiple food items in photo (to get each one)
             // or just one item that resulted to different concepts (to get only one)
 
-            // get first item for now
+            // FOR NOW: get first item
 
             if (words.food.length > 0) {
                 var foodItemResult = words.food[0].name;
                 FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
                 searchNutritionString = foodItemResult;          // # search for nutrition info
             }
+
+            // get nutrition info
+            EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         }
 
-        /*
-        once we use a keyword already,
-        REMOVE it from the temp. memory CLARIFAI_KEYWORD_RESULTS
-        so if it fails in Edamam,
-        we do the same search but with next in list, and so on...
-    =    */
 
-        // get nutrition info
-        EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
-
-        // TODO: must find a condition to detect multiple food items, other than single and/or food_serving
-        // then search them indiv. and sum up their nutrition
-
-        // or when multiple just do recipe, not nutrition
     }
 
 

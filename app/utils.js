@@ -8,8 +8,12 @@ var Utils = function () {
     }
 
 
-    function getFoodServings(arr) {
-        return arr.filter(function(e) {return FOOD_SERVINGS_LIST.includes(e.name) });
+    /*
+        given array of food item objects list and list of keywords to look for
+        return the keywords found on the objects list
+     */
+    function getCategoryKeywords(arr, keywordList) {
+        return arr.filter(function(e) {return keywordList.includes(e.name) });
     }
 
     function smartLog(msg) {
@@ -24,7 +28,7 @@ var Utils = function () {
     return {
         round: round,
         getCommon: getCommon,
-        getFoodServings: getFoodServings,
+        getCategoryKeywords: getCategoryKeywords,
         smartLog: smartLog
     }
 }();
