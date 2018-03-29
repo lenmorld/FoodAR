@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ca46bb7-c0f5-4b3c-92ab-9e5a2cd48275" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LIMITATIONS.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ARtext.html" afterPath="$PROJECT_DIR$/app/ARtext.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ar-web/ar-web-module.js" afterPath="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -18,13 +16,55 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="3">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="ARtext.html" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/app/ARtext.html">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="197">
+                    <caret line="379" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
+                    <folding>
+                      <element signature="e#947#952#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <caret line="28" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/index2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="732">
+              <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app2.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/app2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1634">
+              <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -43,18 +83,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="clarifai_food_module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/integration/clarifai_food_module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="-266">
+              <caret line="21" column="32" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -65,16 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
               <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="globals.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/globals.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -100,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="153" column="57" lean-forward="false" selection-start-line="153" selection-start-column="57" selection-end-line="153" selection-end-column="57" />
+            <state relative-caret-position="10">
+              <caret line="204" column="31" lean-forward="true" selection-start-line="204" selection-start-column="31" selection-end-line="204" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -112,13 +132,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ARtext.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/ARtext.html">
+      <file leaf-file-name="ARtext2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/ARtext2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3316">
-              <caret line="344" column="26" lean-forward="true" selection-start-line="344" selection-start-column="26" selection-end-line="344" selection-end-column="26" />
+            <state relative-caret-position="472">
+              <caret line="344" column="13" lean-forward="false" selection-start-line="344" selection-start-column="13" selection-end-line="344" selection-end-column="13" />
               <folding>
-                <element signature="e#947#952#0" expanded="true" />
+                <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#256#419#0" expanded="false" />
+                <element signature="e#434#610#0" expanded="false" />
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#2970#3115#0" expanded="false" />
+                <element signature="e#4043#4099#0" expanded="false" />
+                <element signature="e#5965#6044#0" expanded="false" />
+                <element signature="e#7530#7804#0" expanded="false" />
+                <element signature="e#7835#7870#0" expanded="false" />
+                <element signature="e#7903#8113#0" expanded="false" />
+                <element signature="e#8155#8512#0" expanded="false" />
+                <element signature="e#8185#8254#0" expanded="false" />
+                <element signature="e#8555#8824#0" expanded="false" />
+                <element signature="e#8644#8693#0" expanded="false" />
+                <element signature="e#8699#8817#0" expanded="false" />
+                <element signature="e#11834#12214#0" expanded="false" />
+                <element signature="e#12258#12406#0" expanded="false" />
+                <element signature="e#12448#12694#0" expanded="false" />
+                <element signature="e#12737#12983#0" expanded="false" />
+                <element signature="e#13028#13257#0" expanded="false" />
+                <element signature="e#13072#13250#0" expanded="false" />
+                <element signature="e#13301#13559#0" expanded="false" />
+                <element signature="e#13345#13552#0" expanded="false" />
+                <element signature="e#13584#13678#0" expanded="false" />
+                <element signature="e#13702#13894#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -137,17 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>btn-analyze</find>
-      <find>buttonFunc</find>
-      <find>IMAGE_CAPTURED</find>
-      <find>prepareNutrientsView</find>
-      <find>food_search</find>
-      <find>nutrients</find>
-      <find>PREV_IMAGE_THUMBNAIL</find>
-      <find>fetching</find>
-      <find>[nutrient_fetch_success]</find>
-      <find>setA</find>
-      <find>nutrient_fetch_succ</find>
       <find>renderNutritionAR</find>
       <find>quantity</find>
       <find>captureFoodItem</find>
@@ -166,7 +200,18 @@
       <find>foodSearch</find>
       <find>capture false</find>
       <find>getFoodServings</find>
+      <find>fonts</find>
       <find>scene.add</find>
+      <find>permalink</find>
+      <find>text</find>
+      <find>createText</find>
+      <find>refreshText</find>
+      <find>loadFont</find>
+      <find>fontMap</find>
+      <find>font: font</find>
+      <find>addBoxes</find>
+      <find>textGeo</find>
+      <find>textMesh1</find>
     </findStrings>
     <replaceStrings>
       <replace>Utils.smartLog</replace>
@@ -198,8 +243,6 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/app/index3.html" />
         <option value="$PROJECT_DIR$/app/food/edamam_api_calls.js" />
-        <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
-        <option value="$PROJECT_DIR$/app/app2.js" />
         <option value="$PROJECT_DIR$/app/food/edamam_module.js" />
         <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
         <option value="$PROJECT_DIR$/app/styles.css" />
@@ -215,6 +258,10 @@
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/ar-web/test.html" />
         <option value="$PROJECT_DIR$/app/ARtext.html" />
+        <option value="$PROJECT_DIR$/app/index2.html" />
+        <option value="$PROJECT_DIR$/app/app2.js" />
+        <option value="$PROJECT_DIR$/app/ARtext2.html" />
+        <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
       </list>
     </option>
   </component>
@@ -276,19 +323,6 @@
               <item name="FoodAR" type="b2602c69:ProjectViewProjectNode" />
               <item name="FoodAR" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="AR" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodAR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodAR" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="AR" type="462c0819:PsiDirectoryNode" />
-              <item name="third_party" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FoodAR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FoodAR" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="ar-web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -342,7 +376,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80483000" />
+    <option name="totallyTimeSpent" value="82686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -389,29 +423,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/food/old/usda_api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/old/edamam_sample.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/glue.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -753,20 +764,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
+    <entry file="file://$PROJECT_DIR$/app/ARtext.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="153" column="57" lean-forward="false" selection-start-line="153" selection-start-column="57" selection-end-line="153" selection-end-column="57" />
+        <state relative-caret-position="197">
+          <caret line="379" column="37" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#947#952#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="732">
+          <caret line="52" column="17" lean-forward="false" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="-266">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -774,17 +793,60 @@
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <caret line="28" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ARtext.html">
+    <entry file="file://$PROJECT_DIR$/app/app2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3316">
-          <caret line="344" column="26" lean-forward="true" selection-start-line="344" selection-start-column="26" selection-end-line="344" selection-end-column="26" />
+        <state relative-caret-position="1634">
+          <caret line="88" column="5" lean-forward="true" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ARtext2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="344" column="13" lean-forward="false" selection-start-line="344" selection-start-column="13" selection-end-line="344" selection-end-column="13" />
           <folding>
-            <element signature="e#947#952#0" expanded="true" />
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#256#419#0" expanded="false" />
+            <element signature="e#434#610#0" expanded="false" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2970#3115#0" expanded="false" />
+            <element signature="e#4043#4099#0" expanded="false" />
+            <element signature="e#5965#6044#0" expanded="false" />
+            <element signature="e#7530#7804#0" expanded="false" />
+            <element signature="e#7835#7870#0" expanded="false" />
+            <element signature="e#7903#8113#0" expanded="false" />
+            <element signature="e#8155#8512#0" expanded="false" />
+            <element signature="e#8185#8254#0" expanded="false" />
+            <element signature="e#8555#8824#0" expanded="false" />
+            <element signature="e#8644#8693#0" expanded="false" />
+            <element signature="e#8699#8817#0" expanded="false" />
+            <element signature="e#11834#12214#0" expanded="false" />
+            <element signature="e#12258#12406#0" expanded="false" />
+            <element signature="e#12448#12694#0" expanded="false" />
+            <element signature="e#12737#12983#0" expanded="false" />
+            <element signature="e#13028#13257#0" expanded="false" />
+            <element signature="e#13072#13250#0" expanded="false" />
+            <element signature="e#13301#13559#0" expanded="false" />
+            <element signature="e#13345#13552#0" expanded="false" />
+            <element signature="e#13584#13678#0" expanded="false" />
+            <element signature="e#13702#13894#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="204" column="31" lean-forward="true" selection-start-line="204" selection-start-column="31" selection-end-line="204" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

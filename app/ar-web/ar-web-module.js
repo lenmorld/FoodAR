@@ -11,6 +11,29 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
+    var group, textMesh1, textMesh2, textGeo, materials;    // textGeo
+    var font = undefined,
+        fontName = "optimer", // helvetiker, optimer, gentilis, droid sans, droid serif
+        fontWeight = "bold";
+
+    var fontMap = {
+        "helvetiker": 0,
+        "optimer": 1,
+        "gentilis": 2,
+        "droid/droid_sans": 3,
+        "droid/droid_serif": 4
+    };
+
+    var reverseFontMap = [];
+    var reverseWeightMap = [];
+
+    for ( var i in fontMap ) reverseFontMap[ fontMap[i] ] = i;
+    for ( var i in weightMap ) reverseWeightMap[ weightMap[i] ] = i;
+
+
+
+    //#########################################
+
     var analyzeObject = null;
     var captureFoodItem = false;        // must press button on load
 
@@ -121,6 +144,8 @@ var ArWebModule = function () {
         // and the camera's Y position is not undefined or 0, create boxes
         if (!boxesAdded && !camera.position.y) {
             // addBoxes();           // SUPPRESS THE BOXES FOR NOW
+
+            addText();
         }
 
         // Render our three.js virtual scene
@@ -167,6 +192,50 @@ var ArWebModule = function () {
         // Flip this switch so that we only perform this once
         boxesAdded = true;
     }
+
+
+    function addText() {
+
+        materials = [
+            new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
+            new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+        ];
+
+        group = new THREE.Group();
+        group.position.y = 100;
+
+        scene.add( group );
+
+        // loadFont
+        var loader = new THREE.FontLoader();
+        loader.load( 'AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
+            font = response;
+            // refreshText();
+
+            textGeo = new THREE.TextGeometry( "lennty", {
+                font: font,
+                size: 20,
+                height: 10,
+            });
+
+            textGeo.computeBoundingBox();
+            textGeo.computeVertexNormals();
+
+            var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+
+            textMesh1 = new THREE.Mesh( textGeo, materials );
+
+            textMesh1.position.x = centerOffset;
+            textMesh1.position.y = hover;
+            textMesh1.position.z = 0;
+
+            textMesh1.rotation.x = 0;
+            textMesh1.rotation.y = Math.PI * 2;
+
+            group.add( textMesh1 );
+
+        } );
+
 
     // expose functions and objects here
     return {
