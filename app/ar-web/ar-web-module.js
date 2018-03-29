@@ -198,9 +198,9 @@ var ArWebModule = function () {
         boxesAdded = true;
 
         var loader = new THREE.FontLoader();
-        loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (response) {
+        loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (font) {
             try {
-                var font = response;
+                // var font = response;
                 // refreshText();
 
                 var angle = Math.PI * 2 * (i / 1);
@@ -218,8 +218,6 @@ var ArWebModule = function () {
                 DEBUG_VIEW.innerHTML = err.message;
             }
 
-        }, function(err) {
-            DEBUG_VIEW.innerHTML = err;
         });
     }
 
