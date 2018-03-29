@@ -149,7 +149,7 @@ var ArWebModule = function () {
         // information applied to our camera (it can take a few seconds),
         // and the camera's Y position is not undefined or 0, create boxes
         if (!boxesAdded && !camera.position.y) {
-            // addBoxes();           // SUPPRESS THE BOXES FOR NOW
+            addBoxes();           // SUPPRESS THE BOXES FOR NOW
 
             addText();
         }
