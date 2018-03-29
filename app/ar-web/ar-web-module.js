@@ -194,8 +194,7 @@ var ArWebModule = function () {
         //     scene.add(cube);
         // }
 
-        // Flip this switch so that we only perform this once
-        boxesAdded = true;
+
 
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (font) {
@@ -229,6 +228,9 @@ var ArWebModule = function () {
             }
 
         });
+
+        // Flip this switch so that we only perform this once
+        boxesAdded = true;
     }
 
 
