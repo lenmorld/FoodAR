@@ -185,7 +185,7 @@ var ArWebModule = function () {
      */
     function addBoxes () {
         // Create some cubes around the origin point
-        for (var i = 0; i < BOX_QUANTITY; i++) {
+        // for (var i = 0; i < BOX_QUANTITY; i++) {
         //     var angle = Math.PI * 2 * (i / BOX_QUANTITY);
         //     var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
         //     var material = new THREE.MeshNormalMaterial();
