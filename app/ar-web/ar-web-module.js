@@ -220,17 +220,18 @@ var ArWebModule = function () {
                 text3D.position.y = Math.PI * 2;;
                 text3D.position.z = 0;
 
-
                 // text3D.position.set(0, 90, 90);
                 scene.add(text3D);
+
+                // Flip this switch so that we only perform this once
+                boxesAdded = true;
             } catch(err) {
                 DEBUG_VIEW.innerHTML = err.message;
             }
 
         });
 
-        // Flip this switch so that we only perform this once
-        boxesAdded = true;
+
     }
 
 
