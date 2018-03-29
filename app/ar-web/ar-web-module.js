@@ -209,16 +209,18 @@ var ArWebModule = function () {
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
+                textGeo.center();
+                
                 var material = new THREE.MeshNormalMaterial();
                 var text3D = new THREE.Mesh(textGeo, material);
 
-                        var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-
-                        // textMesh1 = new THREE.Mesh(textGeo, materials);
-
-                text3D.position.x = centerOffset;
-                text3D.position.y = Math.PI;
-                text3D.position.z = 0;
+                //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+                //
+                //         // textMesh1 = new THREE.Mesh(textGeo, materials);
+                //
+                // text3D.position.x = centerOffset;
+                // text3D.position.y = Math.PI;
+                // text3D.position.z = 0;
 
                 // text3D.position.set(0, 90, 90);
                 scene.add(text3D);
