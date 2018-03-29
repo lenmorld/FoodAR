@@ -116,6 +116,9 @@ var ArWebModule = function () {
         // Bind our event handlers
         window.addEventListener('resize', onWindowResize, false);
 
+
+        // addText();
+
         // Kick off the render loop!
         update();
     }
@@ -145,7 +148,7 @@ var ArWebModule = function () {
         if (!boxesAdded && !camera.position.y) {
             // addBoxes();           // SUPPRESS THE BOXES FOR NOW
 
-            addText();
+            // addText();
         }
 
         // Render our three.js virtual scene
