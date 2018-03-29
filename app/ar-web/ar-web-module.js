@@ -203,12 +203,11 @@ var ArWebModule = function () {
                 // var font = response;
                 // refreshText();
 
-                // var angle = Math.PI * 2 * (i / 1);
 
                 textGeo = new THREE.TextGeometry("lenny", {
                     font: font,
-                    size: 60,
-                    height: 30
+                    size: 30,
+                    height: 15
                 });
                         textGeo.computeBoundingBox();
                         textGeo.computeVertexNormals();
