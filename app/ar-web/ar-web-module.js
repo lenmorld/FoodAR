@@ -4,7 +4,7 @@
  */
 
 var ArWebModule = function () {
-    var vrDisplay, vrControls, arView;
+    var vrDisplay, vrFrameData, vrControls, arView;
     var canvas, camera, scene, renderer;
     var BOX_DISTANCE = 1.5;
     var BOX_SIZE = 0.25;
@@ -54,6 +54,7 @@ var ArWebModule = function () {
          */
         THREE.ARUtils.getARDisplay().then(function (display) {
             if (display) {
+                vrFrameData = new VRFrameData();
                 vrDisplay = display;
                 analyzeObject = analyzeObjectFunc;
                 init();
@@ -142,6 +143,10 @@ var ArWebModule = function () {
         // the near or far planes have updated
         camera.updateProjectionMatrix();
 
+        // From the WebVR API, populate `vrFrameData` with
+        // updated information for the frame
+        vrDisplay.getFrameData(vrFrameData);
+
         // Update our perspective camera's positioning
         vrControls.update();
 
@@ -194,48 +199,47 @@ var ArWebModule = function () {
         //     scene.add(cube);
         // }
 
-
-        // Fetch the pose data from the current frame
-        var pose = vrFrameData.pose;
-
-        // Convert the pose orientation and position into
-        // THREE.Quaternion and THREE.Vector3 respectively
-        var ori = new THREE.Quaternion(
-            pose.orientation[0],
-            pose.orientation[1],
-            pose.orientation[2],
-            pose.orientation[3]
-        );
-        var pos = new THREE.Vector3(
-            pose.position[0],
-            pose.position[1],
-            pose.position[2]
-        );
-
-        var dirMtx = new THREE.Matrix4();
-        dirMtx.makeRotationFromQuaternion(ori);
-        var push = new THREE.Vector3(0, 0, -1.0);
-        push.transformDirection(dirMtx);
-        pos.addScaledVector(push, 0.125);
-
-        // Clone our cube object and place it at the camera's
-        // current position
-        // var clone = cube.clone();
-        // scene.add(clone);
-        // clone.position.copy(pos);
-        // clone.quaternion.copy(ori);
-
-
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (font) {
             try {
                 // var font = response;
                 // refreshText();
 
+                // Fetch the pose data from the current frame
+                var pose = vrFrameData.pose;
+
+                // Convert the pose orientation and position into
+                // THREE.Quaternion and THREE.Vector3 respectively
+                var ori = new THREE.Quaternion(
+                    pose.orientation[0],
+                    pose.orientation[1],
+                    pose.orientation[2],
+                    pose.orientation[3]
+                );
+                var pos = new THREE.Vector3(
+                    pose.position[0],
+                    pose.position[1],
+                    pose.position[2]
+                );
+
+                var dirMtx = new THREE.Matrix4();
+                dirMtx.makeRotationFromQuaternion(ori);
+
+                var push = new THREE.Vector3(0, 0, -1.0);
+                push.transformDirection(dirMtx);
+                pos.addScaledVector(push, 0.125);
+
+                // Clone our cube object and place it at the camera's
+                // current position
+                // var clone = cube.clone();
+                // scene.add(clone);
+                // clone.position.copy(pos);
+                // clone.quaternion.copy(ori);
+
                 textGeo = new THREE.TextGeometry("lenny", {
                     font: font,
-                    size: 0.1,
-                    height: 0.1
+                    size: 0.0025,
+                    height: 0.0025
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
