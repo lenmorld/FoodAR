@@ -217,7 +217,7 @@ var ArWebModule = function () {
                         // textMesh1 = new THREE.Mesh(textGeo, materials);
 
                 text3D.position.x = centerOffset;
-                text3D.position.y = Math.PI * 2;;
+                text3D.position.y = Math.PI;
                 text3D.position.z = 0;
 
                 // text3D.position.set(0, 90, 90);
