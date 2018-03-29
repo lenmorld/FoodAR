@@ -11,29 +11,29 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
-    var group, textMesh1, textMesh2, textGeo, materials;    // textGeo
-    var font = undefined,
-        fontName = "optimer", // helvetiker, optimer, gentilis, droid sans, droid serif
-        fontWeight = "bold";
-
-    var fontMap = {
-        "helvetiker": 0,
-        "optimer": 1,
-        "gentilis": 2,
-        "droid/droid_sans": 3,
-        "droid/droid_serif": 4
-    };
-
-    var weightMap = {
-        "regular": 0,
-        "bold": 1
-    };
-
-    var reverseFontMap = [];
-    var reverseWeightMap = [];
-
-    for ( var i in fontMap ) reverseFontMap[ fontMap[i] ] = i;
-    for ( var i in weightMap ) reverseWeightMap[ weightMap[i] ] = i;
+    // var group, textMesh1, textMesh2, textGeo, materials;    // textGeo
+    // var font = undefined,
+    //     fontName = "optimer", // helvetiker, optimer, gentilis, droid sans, droid serif
+    //     fontWeight = "bold";
+    //
+    // var fontMap = {
+    //     "helvetiker": 0,
+    //     "optimer": 1,
+    //     "gentilis": 2,
+    //     "droid/droid_sans": 3,
+    //     "droid/droid_serif": 4
+    // };
+    //
+    // var weightMap = {
+    //     "regular": 0,
+    //     "bold": 1
+    // };
+    //
+    // var reverseFontMap = [];
+    // var reverseWeightMap = [];
+    //
+    // for ( var i in fontMap ) reverseFontMap[ fontMap[i] ] = i;
+    // for ( var i in weightMap ) reverseWeightMap[ weightMap[i] ] = i;
 
     //#########################################
 
@@ -151,7 +151,7 @@ var ArWebModule = function () {
         if (!boxesAdded && !camera.position.y) {
             addBoxes();           // SUPPRESS THE BOXES FOR NOW
 
-            addText();
+            // addText();
         }
 
         // Render our three.js virtual scene
@@ -197,51 +197,69 @@ var ArWebModule = function () {
 
         // Flip this switch so that we only perform this once
         boxesAdded = true;
-    }
 
-
-    function addText() {
-
-        materials = [
-            new THREE.MeshPhongMaterial({color: 0xffffff, flatShading: true}), // front
-            new THREE.MeshPhongMaterial({color: 0xffffff}) // side
-        ];
-
-        group = new THREE.Group();
-        group.position.y = 100;
-
-        scene.add(group);
-
-        // loadFont
         var loader = new THREE.FontLoader();
-        loader.load('AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function (response) {
+        loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (response) {
             font = response;
             // refreshText();
 
-            textGeo = new THREE.TextGeometry("lennty", {
+            var angle = Math.PI * 2 * (i / 1);
+
+            textGeo = new THREE.TextGeometry("lenny", {
                 font: font,
                 size: 20,
-                height: 10,
+                height: 10
             });
-
-            textGeo.computeBoundingBox();
-            textGeo.computeVertexNormals();
-
-            var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-
-            textMesh1 = new THREE.Mesh(textGeo, materials);
-
-            textMesh1.position.x = centerOffset;
-            textMesh1.position.y = hover;
-            textMesh1.position.z = 0;
-
-            textMesh1.rotation.x = 0;
-            textMesh1.rotation.y = Math.PI * 2;
-
-            group.add(textMesh1);
-
+            var material = new THREE.MeshNormalMaterial();
+            var text3D = new THREE.Mesh(textGeo, material);
+            text3D.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
+            scene.add(text3D);
         });
     }
+
+
+    // function addText() {
+    //
+    //     materials = [
+    //         new THREE.MeshPhongMaterial({color: 0xffffff, flatShading: true}), // front
+    //         new THREE.MeshPhongMaterial({color: 0xffffff}) // side
+    //     ];
+    //
+    //     group = new THREE.Group();
+    //     group.position.y = 100;
+    //
+    //     scene.add(group);
+    //
+    //     // loadFont
+    //     var loader = new THREE.FontLoader();
+    //     loader.load('AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function (response) {
+    //         font = response;
+    //         // refreshText();
+    //
+    //         textGeo = new THREE.TextGeometry("lennty", {
+    //             font: font,
+    //             size: 20,
+    //             height: 10,
+    //         });
+    //
+    //         textGeo.computeBoundingBox();
+    //         textGeo.computeVertexNormals();
+    //
+    //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+    //
+    //         textMesh1 = new THREE.Mesh(textGeo, materials);
+    //
+    //         textMesh1.position.x = centerOffset;
+    //         textMesh1.position.y = hover;
+    //         textMesh1.position.z = 0;
+    //
+    //         textMesh1.rotation.x = 0;
+    //         textMesh1.rotation.y = Math.PI * 2;
+    //
+    //         group.add(textMesh1);
+    //
+    //     });
+    // }
 
 
     // expose functions and objects here

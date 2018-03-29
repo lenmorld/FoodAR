@@ -121,8 +121,8 @@
       <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+            <state relative-caret-position="513">
+              <caret line="207" column="50" lean-forward="false" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -133,8 +133,8 @@
       <file leaf-file-name="ARtext2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/ARtext2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="77" selection-end-column="6" />
+            <state relative-caret-position="412">
+              <caret line="416" column="0" lean-forward="true" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -143,25 +143,27 @@
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="e#2970#3115#0" expanded="false" />
                 <element signature="e#4043#4099#0" expanded="false" />
-                <element signature="e#5965#6044#0" expanded="false" />
-                <element signature="e#7530#7804#0" expanded="false" />
-                <element signature="e#7835#7870#0" expanded="false" />
-                <element signature="e#7903#8113#0" expanded="false" />
-                <element signature="e#8155#8512#0" expanded="false" />
-                <element signature="e#8185#8254#0" expanded="false" />
-                <element signature="e#8555#8824#0" expanded="false" />
-                <element signature="e#8644#8693#0" expanded="false" />
-                <element signature="e#8699#8817#0" expanded="false" />
-                <element signature="e#11834#12214#0" expanded="false" />
-                <element signature="e#12258#12406#0" expanded="false" />
-                <element signature="e#12448#12694#0" expanded="false" />
-                <element signature="e#12737#12983#0" expanded="false" />
-                <element signature="e#13028#13257#0" expanded="false" />
-                <element signature="e#13072#13250#0" expanded="false" />
-                <element signature="e#13301#13559#0" expanded="false" />
-                <element signature="e#13345#13552#0" expanded="false" />
-                <element signature="e#13584#13678#0" expanded="false" />
-                <element signature="e#13702#13894#0" expanded="false" />
+                <element signature="e#5979#6058#0" expanded="false" />
+                <element signature="e#7544#7818#0" expanded="false" />
+                <element signature="e#7849#7884#0" expanded="false" />
+                <element signature="e#7917#8127#0" expanded="false" />
+                <element signature="e#8169#8526#0" expanded="false" />
+                <element signature="e#8199#8268#0" expanded="false" />
+                <element signature="e#8569#8838#0" expanded="false" />
+                <element signature="e#8658#8707#0" expanded="false" />
+                <element signature="e#8713#8831#0" expanded="false" />
+                <element signature="e#9531#9602#0" expanded="false" />
+                <element signature="e#9706#9739#0" expanded="false" />
+                <element signature="e#11879#12259#0" expanded="false" />
+                <element signature="e#12303#12451#0" expanded="false" />
+                <element signature="e#12493#12739#0" expanded="false" />
+                <element signature="e#12782#13028#0" expanded="false" />
+                <element signature="e#13073#13302#0" expanded="false" />
+                <element signature="e#13117#13295#0" expanded="false" />
+                <element signature="e#13346#13604#0" expanded="false" />
+                <element signature="e#13390#13597#0" expanded="false" />
+                <element signature="e#13629#13723#0" expanded="false" />
+                <element signature="e#13747#13939#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -180,8 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log</find>
-      <find>done! press</find>
       <find>Press analyze...</find>
       <find>LOGS_VIEW</find>
       <find>Utils.smartLog</find>
@@ -209,6 +209,8 @@
       <find>textMesh1</find>
       <find>materials</find>
       <find>fontWeight</find>
+      <find>addText</find>
+      <find>camera</find>
       <find>weightMap</find>
     </findStrings>
     <replaceStrings>
@@ -387,7 +389,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83597000" />
+    <option name="totallyTimeSpent" value="84258000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -819,8 +821,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ARtext2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="77" selection-end-column="6" />
+        <state relative-caret-position="412">
+          <caret line="416" column="0" lean-forward="true" selection-start-line="416" selection-start-column="0" selection-end-line="416" selection-end-column="0" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
@@ -829,33 +831,35 @@
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#2970#3115#0" expanded="false" />
             <element signature="e#4043#4099#0" expanded="false" />
-            <element signature="e#5965#6044#0" expanded="false" />
-            <element signature="e#7530#7804#0" expanded="false" />
-            <element signature="e#7835#7870#0" expanded="false" />
-            <element signature="e#7903#8113#0" expanded="false" />
-            <element signature="e#8155#8512#0" expanded="false" />
-            <element signature="e#8185#8254#0" expanded="false" />
-            <element signature="e#8555#8824#0" expanded="false" />
-            <element signature="e#8644#8693#0" expanded="false" />
-            <element signature="e#8699#8817#0" expanded="false" />
-            <element signature="e#11834#12214#0" expanded="false" />
-            <element signature="e#12258#12406#0" expanded="false" />
-            <element signature="e#12448#12694#0" expanded="false" />
-            <element signature="e#12737#12983#0" expanded="false" />
-            <element signature="e#13028#13257#0" expanded="false" />
-            <element signature="e#13072#13250#0" expanded="false" />
-            <element signature="e#13301#13559#0" expanded="false" />
-            <element signature="e#13345#13552#0" expanded="false" />
-            <element signature="e#13584#13678#0" expanded="false" />
-            <element signature="e#13702#13894#0" expanded="false" />
+            <element signature="e#5979#6058#0" expanded="false" />
+            <element signature="e#7544#7818#0" expanded="false" />
+            <element signature="e#7849#7884#0" expanded="false" />
+            <element signature="e#7917#8127#0" expanded="false" />
+            <element signature="e#8169#8526#0" expanded="false" />
+            <element signature="e#8199#8268#0" expanded="false" />
+            <element signature="e#8569#8838#0" expanded="false" />
+            <element signature="e#8658#8707#0" expanded="false" />
+            <element signature="e#8713#8831#0" expanded="false" />
+            <element signature="e#9531#9602#0" expanded="false" />
+            <element signature="e#9706#9739#0" expanded="false" />
+            <element signature="e#11879#12259#0" expanded="false" />
+            <element signature="e#12303#12451#0" expanded="false" />
+            <element signature="e#12493#12739#0" expanded="false" />
+            <element signature="e#12782#13028#0" expanded="false" />
+            <element signature="e#13073#13302#0" expanded="false" />
+            <element signature="e#13117#13295#0" expanded="false" />
+            <element signature="e#13346#13604#0" expanded="false" />
+            <element signature="e#13390#13597#0" expanded="false" />
+            <element signature="e#13629#13723#0" expanded="false" />
+            <element signature="e#13747#13939#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+        <state relative-caret-position="513">
+          <caret line="207" column="50" lean-forward="false" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
