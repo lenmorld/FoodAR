@@ -238,8 +238,8 @@ var ArWebModule = function () {
 
                 textGeo = new THREE.TextGeometry("lenny", {
                     font: font,
-                    size: 0.0025,
-                    height: 0.0025
+                    size: 0.05,
+                    height: 0.05
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
