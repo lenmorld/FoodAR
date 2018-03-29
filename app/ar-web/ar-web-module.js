@@ -186,13 +186,13 @@ var ArWebModule = function () {
     function addBoxes () {
         // Create some cubes around the origin point
         for (var i = 0; i < BOX_QUANTITY; i++) {
-            var angle = Math.PI * 2 * (i / BOX_QUANTITY);
-            var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
-            var material = new THREE.MeshNormalMaterial();
-            var cube = new THREE.Mesh(geometry, material);
-            cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
-            scene.add(cube);
-        }
+        //     var angle = Math.PI * 2 * (i / BOX_QUANTITY);
+        //     var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
+        //     var material = new THREE.MeshNormalMaterial();
+        //     var cube = new THREE.Mesh(geometry, material);
+        //     cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
+        //     scene.add(cube);
+        // }
 
         // Flip this switch so that we only perform this once
         boxesAdded = true;
@@ -207,12 +207,12 @@ var ArWebModule = function () {
 
                 textGeo = new THREE.TextGeometry("lenny", {
                     font: font,
-                    size: 20,
-                    height: 10
+                    size: 60,
+                    height: 30
                 });
                 var material = new THREE.MeshNormalMaterial();
                 var text3D = new THREE.Mesh(textGeo, material);
-                text3D.position.set(0, 0);
+                text3D.position.set(0, 0, 0);
                 scene.add(text3D);
             } catch(err) {
                 DEBUG_VIEW.innerHTML = err.message;
