@@ -150,7 +150,6 @@ var ArWebModule = function () {
         // and the camera's Y position is not undefined or 0, create boxes
         if (!boxesAdded && !camera.position.y) {
             addBoxes();           // SUPPRESS THE BOXES FOR NOW
-
             // addText();
         }
 
@@ -200,20 +199,27 @@ var ArWebModule = function () {
 
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (response) {
-            font = response;
-            // refreshText();
+            try {
+                var font = response;
+                // refreshText();
 
-            var angle = Math.PI * 2 * (i / 1);
+                var angle = Math.PI * 2 * (i / 1);
 
-            textGeo = new THREE.TextGeometry("lenny", {
-                font: font,
-                size: 20,
-                height: 10
-            });
-            var material = new THREE.MeshNormalMaterial();
-            var text3D = new THREE.Mesh(textGeo, material);
-            text3D.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
-            scene.add(text3D);
+                textGeo = new THREE.TextGeometry("lenny", {
+                    font: font,
+                    size: 20,
+                    height: 10
+                });
+                var material = new THREE.MeshNormalMaterial();
+                var text3D = new THREE.Mesh(textGeo, material);
+                text3D.position.set(0, 0);
+                scene.add(text3D);
+            } catch(err) {
+                DEBUG_VIEW.innerHTML = err.message;
+            }
+
+        }, function(err) {
+            DEBUG_VIEW.innerHTML = err;
         });
     }
 
