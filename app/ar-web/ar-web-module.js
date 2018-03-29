@@ -195,6 +195,36 @@ var ArWebModule = function () {
         // }
 
 
+        // Fetch the pose data from the current frame
+        var pose = vrFrameData.pose;
+
+        // Convert the pose orientation and position into
+        // THREE.Quaternion and THREE.Vector3 respectively
+        var ori = new THREE.Quaternion(
+            pose.orientation[0],
+            pose.orientation[1],
+            pose.orientation[2],
+            pose.orientation[3]
+        );
+        var pos = new THREE.Vector3(
+            pose.position[0],
+            pose.position[1],
+            pose.position[2]
+        );
+
+        var dirMtx = new THREE.Matrix4();
+        dirMtx.makeRotationFromQuaternion(ori);
+        var push = new THREE.Vector3(0, 0, -1.0);
+        push.transformDirection(dirMtx);
+        pos.addScaledVector(push, 0.125);
+
+        // Clone our cube object and place it at the camera's
+        // current position
+        // var clone = cube.clone();
+        // scene.add(clone);
+        // clone.position.copy(pos);
+        // clone.quaternion.copy(ori);
+
 
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (font) {
@@ -209,7 +239,7 @@ var ArWebModule = function () {
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
-                textGeo.center();
+                // textGeo.center();
 
                 var material = new THREE.MeshNormalMaterial();
                 var text3D = new THREE.Mesh(textGeo, material);
@@ -224,6 +254,10 @@ var ArWebModule = function () {
 
                 // text3D.position.set(0, 90, 90);
                 scene.add(text3D);
+
+                // place geometry at camera's current position
+                text3D.position.copy(pos);
+                text3D.quaternion.copy(ori);
 
                 // Flip this switch so that we only perform this once
                 boxesAdded = true;
