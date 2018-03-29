@@ -204,13 +204,13 @@ var ArWebModule = function () {
 
                 textGeo = new THREE.TextGeometry("lenny", {
                     font: font,
-                    size: 1,
-                    height: 1
+                    size: 0.1,
+                    height: 0.1
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
                 textGeo.center();
-                
+
                 var material = new THREE.MeshNormalMaterial();
                 var text3D = new THREE.Mesh(textGeo, material);
 
