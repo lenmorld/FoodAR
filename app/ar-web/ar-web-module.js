@@ -24,13 +24,16 @@ var ArWebModule = function () {
         "droid/droid_serif": 4
     };
 
+    var weightMap = {
+        "regular": 0,
+        "bold": 1
+    };
+
     var reverseFontMap = [];
     var reverseWeightMap = [];
 
     for ( var i in fontMap ) reverseFontMap[ fontMap[i] ] = i;
     for ( var i in weightMap ) reverseWeightMap[ weightMap[i] ] = i;
-
-
 
     //#########################################
 
@@ -200,22 +203,22 @@ var ArWebModule = function () {
     function addText() {
 
         materials = [
-            new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-            new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+            new THREE.MeshPhongMaterial({color: 0xffffff, flatShading: true}), // front
+            new THREE.MeshPhongMaterial({color: 0xffffff}) // side
         ];
 
         group = new THREE.Group();
         group.position.y = 100;
 
-        scene.add( group );
+        scene.add(group);
 
         // loadFont
         var loader = new THREE.FontLoader();
-        loader.load( 'AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function ( response ) {
+        loader.load('AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function (response) {
             font = response;
             // refreshText();
 
-            textGeo = new THREE.TextGeometry( "lennty", {
+            textGeo = new THREE.TextGeometry("lennty", {
                 font: font,
                 size: 20,
                 height: 10,
@@ -226,7 +229,7 @@ var ArWebModule = function () {
 
             var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
 
-            textMesh1 = new THREE.Mesh( textGeo, materials );
+            textMesh1 = new THREE.Mesh(textGeo, materials);
 
             textMesh1.position.x = centerOffset;
             textMesh1.position.y = hover;
@@ -235,9 +238,10 @@ var ArWebModule = function () {
             textMesh1.rotation.x = 0;
             textMesh1.rotation.y = Math.PI * 2;
 
-            group.add( textMesh1 );
+            group.add(textMesh1);
 
-        } );
+        });
+    }
 
 
     // expose functions and objects here
