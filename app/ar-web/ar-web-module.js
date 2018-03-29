@@ -151,7 +151,7 @@ var ArWebModule = function () {
         if (!boxesAdded && !camera.position.y) {
             // addBoxes();           // SUPPRESS THE BOXES FOR NOW
 
-            // addText();
+            addText();
         }
 
         // Render our three.js virtual scene
