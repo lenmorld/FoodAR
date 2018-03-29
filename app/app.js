@@ -32,7 +32,7 @@ $(function() {
         image = 'https://blog.qad.com/wp-content/uploads/2016/11/Blog_11.22.2016b.jpg';
 
         // burger
-        image = 'http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg';
+        // image = 'http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg';
 
         // add button listener
         ANALYZE_BUTTON.click(function() {
