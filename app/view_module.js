@@ -20,6 +20,32 @@ var ViewModule = function () {
     var NUTR_INFO_LABEL_VIEW = document.getElementById('nut_info_label');
 
 
+    /*
+        banana                      0.50
+                                                0.15 3d text height - FoodItemName
+        carbs = 10 % 100 g          0.35        0.10 3d text height - NutirionInfo
+        ...                         0.25
+        ...
+
+
+     */
+
+    var ARfoodItemNameYposition = 0.50;       // make it close to the top, to give space for the NutritionInfo
+    // 0.25, a bit higher than middle, 0 is middle
+
+    var ARfoodItemNameSize = 0.012;
+    var ARfoodItemNameHeight = 0.012;
+
+    var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.15;      // start NutritionInfo at 0.35
+
+    var ARnutritionInfoItemSize = 0.006;
+    var ARnutritionInfoItemHeight = 0.006;
+    var ARnutritionInfoItemYoffset = 0.10;              // give each item 0.10 space
+
+
+
+
+
     function updateFoodItemNameLabelView(foodItemNameLabel) {
         FOOD_ITEM_LABEL_VIEW.innerHTML = foodItemNameLabel;
     }
@@ -33,8 +59,7 @@ var ViewModule = function () {
         FOOD_ITEM_VIEW.innerHTML = foodItemName;
 
         // render as AR Content to center of screen
-        // 0.025, 0.025
-        ArWebModule.addArText(foodItemName, 0.012, 0.012, 0.50);        // YOffset=0.25, a bit higher than middle
+        ArWebModule.addArText(foodItemName, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
     }
 
     function updateFoodNutritionView(nutInfoStringList) {
@@ -47,11 +72,12 @@ var ViewModule = function () {
             // render for HTML
             nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
 
-            // start at 0.5, then go down with 0.10 increments
+            // FoodItemName is at 0.5, give
+            // start at 0.35, then go down with 0.10 increments
 
             // calculate offset based on current index
-            var Yoffset = 0.4 - (i*0.10);     // +1 since 0 is reserved for the FoodItemName
-            ArWebModule.addArText(nutInfoStringList[i], 0.006, 0.006, Yoffset);        // YOffset=0.25, a bit higher than middle
+            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
+            ArWebModule.addArText(nutInfoStringList[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
         }
 
         NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
