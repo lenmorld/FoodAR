@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ca46bb7-c0f5-4b3c-92ab-9e5a2cd48275" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/integration/clarifai_food_module.js" afterPath="$PROJECT_DIR$/app/integration/clarifai_food_module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/ar-web/ar-web-module.js" afterPath="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,10 +56,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clarifai_food_module.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="clarifai_food_module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/integration/clarifai_food_module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
+            <state relative-caret-position="-376">
               <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
               <folding />
             </state>
@@ -86,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="226" column="39" lean-forward="true" selection-start-line="226" selection-start-column="39" selection-end-line="226" selection-end-column="39" />
+            <state relative-caret-position="447">
+              <caret line="239" column="36" lean-forward="false" selection-start-line="239" selection-start-column="36" selection-end-line="239" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -149,8 +149,8 @@
       <find>canvas</find>
       <find>window.addEve</find>
       <find>FOOD_ITEM_VIEW</find>
-      <find>NUTR_INFO_VIEW</find>
       <find>searching food</find>
+      <find>NUTR_INFO_VIEW</find>
     </findStrings>
     <replaceStrings>
       <replace>Utils.smartLog</replace>
@@ -200,8 +200,8 @@
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
         <option value="$PROJECT_DIR$/app/view_module.js" />
-        <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
         <option value="$PROJECT_DIR$/app/integration/clarifai_food_module.js" />
+        <option value="$PROJECT_DIR$/app/ar-web/ar-web-module.js" />
       </list>
     </option>
   </component>
@@ -316,7 +316,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94384000" />
+    <option name="totallyTimeSpent" value="94532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -773,21 +773,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
+    <entry file="file://$PROJECT_DIR$/app/integration/clarifai_food_module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="226" column="39" lean-forward="true" selection-start-line="226" selection-start-column="39" selection-end-line="226" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="-376">
+          <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/integration/clarifai_food_module.js">
+    <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="68" column="39" lean-forward="true" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="447">
+          <caret line="239" column="36" lean-forward="false" selection-start-line="239" selection-start-column="36" selection-end-line="239" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
