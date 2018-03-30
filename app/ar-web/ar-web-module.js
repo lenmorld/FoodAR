@@ -237,7 +237,7 @@ var ArWebModule = function () {
 
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
-                var x=-1.0, y=-1.0, z=-1.0;
+                var x=-0.5, y=-0.5, z=-1.0;
                 var push = new THREE.Vector3(x, y, z);
                 // var push = new THREE.Vector3(-0.5, 0, -0.5);
 
