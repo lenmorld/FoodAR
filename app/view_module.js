@@ -43,9 +43,6 @@ var ViewModule = function () {
     var ARnutritionInfoItemYoffset = 0.10;              // give each item 0.10 space
 
 
-
-
-
     function updateFoodItemNameLabelView(foodItemNameLabel) {
         FOOD_ITEM_LABEL_VIEW.innerHTML = foodItemNameLabel;
     }
@@ -56,7 +53,9 @@ var ViewModule = function () {
 
     function updateFoodItemNameView(foodItemName) {
         // can do further styling, render prep, here, etc
-        FOOD_ITEM_VIEW.innerHTML = foodItemName;
+
+        // XXX remove for now in lieu of AR content
+        // FOOD_ITEM_VIEW.innerHTML = foodItemName;
 
         // render as AR Content to center of screen
         ArWebModule.addArText(foodItemName, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
@@ -64,13 +63,17 @@ var ViewModule = function () {
 
     function updateFoodNutritionView(nutInfoStringList) {
 
-        var nutritionInfoHTML = "";
+        // render as AR Content to center of screen, below the FoodItemName
+
+        // XXX remove for now in lieu of AR content
+        // var nutritionInfoHTML = "";
+
         // AR 3d text must be renderd indiv. with proper offset Y so they would stack
         // up properly in screen
 
         for (var i=0; i < nutInfoStringList.length; i++) {
-            // render for HTML
-            nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
+            // XXX remove for now in lieu of AR content
+            // nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
 
             // FoodItemName is at 0.5, give
             // start at 0.35, then go down with 0.10 increments
@@ -80,9 +83,8 @@ var ViewModule = function () {
             ArWebModule.addArText(nutInfoStringList[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
         }
 
-        NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
-
-        // render as AR Content to center of screen, below the FoodItemName
+        // XXX remove for now in lieu of AR content
+        // NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
     }
 
 

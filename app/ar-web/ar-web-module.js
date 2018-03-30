@@ -1,4 +1,19 @@
 /*
+ * Copyright 2017 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
     singleton pattern for modular ES5 JS
     can avoid IIFE at the end, so it will become constructor
  */
@@ -11,37 +26,12 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
+    var removable_items = [];
+
     var canAddARObjectsAlready = false;
-
-    // var group, textMesh1, textMesh2, textGeo, materials;    // textGeo
-    // var font = undefined,
-    //     fontName = "optimer", // helvetiker, optimer, gentilis, droid sans, droid serif
-    //     fontWeight = "bold";
-    //
-    // var fontMap = {
-    //     "helvetiker": 0,
-    //     "optimer": 1,
-    //     "gentilis": 2,
-    //     "droid/droid_sans": 3,
-    //     "droid/droid_serif": 4
-    // };
-    //
-    // var weightMap = {
-    //     "regular": 0,
-    //     "bold": 1
-    // };
-    //
-    // var reverseFontMap = [];
-    // var reverseWeightMap = [];
-    //
-    // for ( var i in fontMap ) reverseFontMap[ fontMap[i] ] = i;
-    // for ( var i in weightMap ) reverseWeightMap[ weightMap[i] ] = i;
-
-    //#########################################
 
     var analyzeObject = null;
     var captureFoodItem = false;        // must press button on load
-
 
     function setCaptureFoodItemStatus(bool) {
         captureFoodItem = bool;
@@ -122,10 +112,13 @@ var ArWebModule = function () {
         // Bind our event handlers
         window.addEventListener('resize', onWindowResize, false);
 
+        /*
+        // +++ can add a touch even here, but is not very practical the way the spawned objects appear with the
+        // food item to be captured
         // touchstart Event  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
-
         // USE THIS or ANALYZE_BUTTON?
         // canvas.addEventListener('touchstart', addArText, false);
+        */
 
         // Kick off the render loop!
         update();
@@ -198,10 +191,13 @@ var ArWebModule = function () {
             var cube = new THREE.Mesh(geometry, material);
             cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
             scene.add(cube);
+            removable_items.push(cube);     // garbage collect 3d objects
         }
     }
 
-
+    /*
+        do this everytime there is an update of FoodItemName and NutritionInfo
+     */
     function addArText(ARtext, size, height, Yoffset) {
 
         // if scene and camera not ready yet
@@ -280,18 +276,25 @@ var ArWebModule = function () {
 
                 // text3D.position.set(0, 90, 90);
                 scene.add(text3D);
+                removable_items.push(text3D);     // garbage collect 3d objects
 
                 // place geometry at camera's current position
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
 
-                // TODO: is it okay to do it more than once
-                // Flip this switch so that we only perform this once
-                // boxesAdded = true;
             } catch(err) {
                 DEBUG_VIEW.innerHTML = err.message;
             }
         });
+    }
+
+    function cleanARcontent() {
+        if (removable_items.length >0) {
+            removable_items.forEach(function(v,i) {
+               v.parent.remove(v);
+            });
+            removable_items = [];
+        }
     }
 
 
@@ -300,6 +303,7 @@ var ArWebModule = function () {
         startAR: startAR,
         checkArBrowser: checkArBrowser,
         setCaptureFoodItem: setCaptureFoodItemStatus,
-        addArText: addArText
+        addArText: addArText,
+        cleanARcontent: cleanARcontent
     };
 }();

@@ -51,6 +51,9 @@ $(function() {
 
     function analyzeObject(canvasObj) {
 
+        // first and foremost, clear all ARcontent for garbage collection
+        ArWebModule.cleanARcontent();
+
         // AR TEST
         // ArWebModule.addArText("lenny");
 
