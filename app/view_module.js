@@ -22,7 +22,7 @@ var ViewModule = function () {
 
         // render as AR Content to center of screen
         // 0.025, 0.025
-        ArWebModule.addArText(foodItemName, 0.012, 0.012, 0);
+        ArWebModule.addArText(foodItemName, 0.012, 0.012, 0.25);        // YOffset=0.25, a bit higher than middle
     }
     
     function updateFoodNutritionView(nutritionInfoText) {

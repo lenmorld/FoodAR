@@ -209,6 +209,9 @@ var ArWebModule = function () {
             return;
         }
 
+        // y=0 for exact middle
+        var x=-0.25, y= 0 + Yoffset, z=-1.0;
+
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
             try {
@@ -237,7 +240,7 @@ var ArWebModule = function () {
 
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
-                var x=-0.25, y=0, z=-1.0;
+
                 var push = new THREE.Vector3(x, y, z);
                 // var push = new THREE.Vector3(-0.5, 0, -0.5);
 
