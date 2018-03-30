@@ -19,6 +19,9 @@ var ViewModule = function () {
     function updateFoodItemView(foodItemName) {
         // can do further styling, render prep, here, etc
         FOOD_ITEM_VIEW.innerHTML = foodItemName;
+
+        // render as AR Content to center of screen
+        ArWebModule.addArText(foodItemName);
     }
     
     function updateFoodNutritionView(nutritionInfoText) {

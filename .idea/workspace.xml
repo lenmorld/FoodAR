@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ca46bb7-c0f5-4b3c-92ab-9e5a2cd48275" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.js" afterPath="$PROJECT_DIR$/app/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/food/food_helper_module.js" afterPath="$PROJECT_DIR$/app/food/food_helper_module.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/globals.js" afterPath="$PROJECT_DIR$/app/globals.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/integration/clarifai_food_module.js" afterPath="$PROJECT_DIR$/app/integration/clarifai_food_module.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view_module.js" afterPath="$PROJECT_DIR$/app/view_module.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -61,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view_module.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="view_module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view_module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="22" />
+            <state relative-caret-position="437">
+              <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -81,7 +76,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="food_helper_module.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="food_helper_module.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/food/food_helper_module.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
@@ -214,9 +209,9 @@
         <option value="$PROJECT_DIR$/app/globals.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/integration/clarifai_food_module.js" />
-        <option value="$PROJECT_DIR$/app/view_module.js" />
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/food/food_helper_module.js" />
+        <option value="$PROJECT_DIR$/app/view_module.js" />
       </list>
     </option>
   </component>
@@ -331,7 +326,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92145000" />
+    <option name="totallyTimeSpent" value="92386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -774,14 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view_module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/integration/clarifai_food_module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -802,6 +789,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="26" column="53" lean-forward="true" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view_module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding />
         </state>
       </provider>
