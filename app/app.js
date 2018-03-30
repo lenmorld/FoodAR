@@ -41,7 +41,10 @@ $(function() {
         });
     }
 
-    function buttonFunc() {
+    function analyzeButtonClicked() {
+        // first and foremost, clear all ARcontent for garbage collection
+        ArWebModule.cleanARcontent();
+
         DEBUG_VIEW.innerHTML = "capturing...";
 
         // captureFoodItem = true;
@@ -50,10 +53,6 @@ $(function() {
     }
 
     function analyzeObject(canvasObj) {
-
-        // first and foremost, clear all ARcontent for garbage collection
-        ArWebModule.cleanARcontent();
-
         // AR TEST
         // ArWebModule.addArText("lenny");
 
@@ -78,11 +77,11 @@ $(function() {
 
 
     if (ArWebModule.checkArBrowser()) {
-        ArWebModule.startAR(analyzeObject, testing);-
+        ArWebModule.startAR(analyzeObject, testing);
 
         // add button listener
         ANALYZE_BUTTON.click(function() {
-            buttonFunc();
+            analyzeButtonClicked();
         });
 
     } else {

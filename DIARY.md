@@ -11,7 +11,7 @@ improved performance, always on and reserved resources compared to free (pool of
 
 [-] disable HTML FoodItemName and NutritionInfo
 
-[ ] must clear "view buffer" before activating it again
+[+] must clear "view buffer" before activating it again
 
 [ ] improve performance of 3Dtext geometry loading
 
@@ -28,7 +28,7 @@ even just the pic
 -> flow (like the one in proposal)
     but now more of an async nature, using JS callbacks
 
-    analyzeObject -> clear all AR content -> Clarifai -> processKeywords -> fetchNutritionalInfo -> display
+    ANALYZE BUTTON press -> clear all AR content -> analyzeobject -> Clarifai -> processKeywords -> fetchNutritionalInfo -> display
 
 
 -> rendered 3dtext gets in the way of the capture, so
