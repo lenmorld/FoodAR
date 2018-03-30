@@ -58,6 +58,8 @@ var ClarifaiFoodModule = function () {
 
         if (recipe_keywords.length > 0) {
 
+            Utils.smartLog(["recipe keywords..."]);
+
             // TODO: get recipe using Edamam API
 
             /*
@@ -87,6 +89,8 @@ var ClarifaiFoodModule = function () {
         } else {
             // case 3
 
+            Utils.smartLog(["regular single/multiple food item..."]);
+
             var text = "";
             var searchNutritionString = '';
 
@@ -100,17 +104,18 @@ var ClarifaiFoodModule = function () {
             DEBUG_VIEW.innerHTML = text;
 
             // get first item
-
             if (words.food.length > 0) {
                 var foodItemResult = words.food[0].name;
                 // FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
                 ViewModule.updateFoodItemView(foodItemResult);
-
                 searchNutritionString = foodItemResult;          // # search for nutrition info
-            }
 
-            // get nutrition info
-            EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
+
+                // get nutrition info
+                EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
+            } else {
+                ViewModule.updateFoodItemView("Try again!");
+            }
         }
     }
 
