@@ -78,8 +78,7 @@ var ClarifaiFoodModule = function () {
             var foodItemResult = food_servings[0].name;
 
             // FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
-            ViewModule.updateFoodItemView(foodItemResult);
-
+            ViewModule.updateFoodItemNameView(foodItemResult);
 
             var searchNutritionString = foodItemResult;          // # search for nutrition info
 
@@ -107,14 +106,14 @@ var ClarifaiFoodModule = function () {
             if (words.food.length > 0) {
                 var foodItemResult = words.food[0].name;
                 // FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
-                ViewModule.updateFoodItemView(foodItemResult);
+                ViewModule.updateFoodItemNameView(foodItemResult);
                 searchNutritionString = foodItemResult;          // # search for nutrition info
 
 
                 // get nutrition info
                 EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
             } else {
-                ViewModule.updateFoodItemView("Try again!");
+                ViewModule.updateNutritionLabelView("Try again!");
             }
         }
     }

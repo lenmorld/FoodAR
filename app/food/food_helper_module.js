@@ -41,7 +41,7 @@ var FoodHelperModule = function () {
 
     function renderNutritionAR(nutrientsObj) {
 
-        var html = "";
+        var nutInfoStringList = [];
 
         Utils.smartLog(["rendering..."]);
 
@@ -50,15 +50,16 @@ var FoodHelperModule = function () {
                 Utils.smartLog([key, nutrientsObj[key]]);
 
                 var item = nutrientsObj[key];
-                html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
+                nutInfoStringList.push([item.name, ": ", item.daily, " ", item.quantity].join(""));
+
+                // html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
             }
         }
 
         // SUCCESS!!!
 
         // NUTR_INFO_VIEW.innerHTML = html;
-        ViewModule.updateFoodNutritionView(html);
-
+        ViewModule.updateFoodNutritionView(nutInfoStringList);
 
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);

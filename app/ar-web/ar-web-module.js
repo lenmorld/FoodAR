@@ -191,14 +191,14 @@ var ArWebModule = function () {
 
     function addBoxes () {
         // Create some cubes around the origin point
-        // for (var i = 0; i < BOX_QUANTITY; i++) {
-        //     var angle = Math.PI * 2 * (i / BOX_QUANTITY);
-        //     var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
-        //     var material = new THREE.MeshNormalMaterial();
-        //     var cube = new THREE.Mesh(geometry, material);
-        //     cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
-        //     scene.add(cube);
-        // }
+        for (var i = 0; i < BOX_QUANTITY; i++) {
+            var angle = Math.PI * 2 * (i / BOX_QUANTITY);
+            var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
+            var material = new THREE.MeshNormalMaterial();
+            var cube = new THREE.Mesh(geometry, material);
+            cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
+            scene.add(cube);
+        }
     }
 
 
@@ -209,7 +209,7 @@ var ArWebModule = function () {
             return;
         }
 
-        // y=0 for exact middle
+        // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
         var x=-0.25, y= 0 + Yoffset, z=-1.0;
 
         var loader = new THREE.FontLoader();
@@ -240,13 +240,12 @@ var ArWebModule = function () {
 
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
-
                 var push = new THREE.Vector3(x, y, z);
                 // var push = new THREE.Vector3(-0.5, 0, -0.5);
 
                 push.transformDirection(dirMtx);
 
-                // 0.125
+                // var scale = 0.125
                 var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
                 pos.addScaledVector(push, scale);
 
@@ -257,8 +256,7 @@ var ArWebModule = function () {
                 // clone.position.copy(pos);
                 // clone.quaternion.copy(ori);
 
-                // size: 0.025,
-                //     height: 0.025
+                // size: 0.025, height: 0.025
 
                 textGeo = new THREE.TextGeometry(ARtext, {
                     font: font,
@@ -286,7 +284,6 @@ var ArWebModule = function () {
                 // place geometry at camera's current position
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
-
 
                 // TODO: is it okay to do it more than once
                 // Flip this switch so that we only perform this once
