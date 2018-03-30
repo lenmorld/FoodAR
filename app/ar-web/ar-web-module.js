@@ -237,11 +237,15 @@ var ArWebModule = function () {
 
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
-                var push = new THREE.Vector3(0, 0, 0);
+                var x=0, y=0, z=0;
+                var push = new THREE.Vector3(x, y, z);
                 // var push = new THREE.Vector3(-0.5, 0, -0.5);
 
                 push.transformDirection(dirMtx);
-                pos.addScaledVector(push, 0.125);
+
+                // 0.125
+                var scale = 0.05;
+                pos.addScaledVector(push, scale);
 
                 // Clone our cube object and place it at the camera's
                 // current position
