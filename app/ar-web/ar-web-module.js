@@ -11,6 +11,8 @@ var ArWebModule = function () {
     var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
+    var canAddARObjectsAlready = false;
+
     // var group, textMesh1, textMesh2, textGeo, materials;    // textGeo
     // var font = undefined,
     //     fontName = "optimer", // helvetiker, optimer, gentilis, droid sans, droid serif
@@ -120,8 +122,10 @@ var ArWebModule = function () {
         // Bind our event handlers
         window.addEventListener('resize', onWindowResize, false);
 
+        // touchstart Event  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
 
-        // addText();
+        // USE THIS or ANALYZE_BUTTON?
+        // canvas.addEventListener('touchstart', addArText, false);
 
         // Kick off the render loop!
         update();
@@ -154,7 +158,8 @@ var ArWebModule = function () {
         // information applied to our camera (it can take a few seconds),
         // and the camera's Y position is not undefined or 0, create boxes
         if (!boxesAdded && !camera.position.y) {
-            addBoxes();           // SUPPRESS THE BOXES FOR NOW
+            canAddARObjectsAlready = true;
+            // addBoxes();           // SUPPRESS THE BOXES FOR NOW
             // addText();
         }
 
@@ -184,10 +189,6 @@ var ArWebModule = function () {
         renderer.setSize(window.innerWidth, window.innerHeight);
     }
 
-    /**
-     * Once we have position information applied to our camera,
-     * create some boxes at the same height as the camera
-     */
     function addBoxes () {
         // Create some cubes around the origin point
         // for (var i = 0; i < BOX_QUANTITY; i++) {
@@ -198,9 +199,18 @@ var ArWebModule = function () {
         //     cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
         //     scene.add(cube);
         // }
+    }
+
+
+    function addArText(ARtext, size, height, Yoffset) {
+
+        // if scene and camera not ready yet
+        if (!canAddARObjectsAlready) {
+            return;
+        }
 
         var loader = new THREE.FontLoader();
-        loader.load('AR/third_party/fonts/' + "optimer" + '_' + "bold" + '.typeface.json', function (font) {
+        loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
             try {
                 // var font = response;
                 // refreshText();
@@ -236,7 +246,7 @@ var ArWebModule = function () {
                 // clone.position.copy(pos);
                 // clone.quaternion.copy(ori);
 
-                textGeo = new THREE.TextGeometry("lenny", {
+                textGeo = new THREE.TextGeometry(ARtext, {
                     font: font,
                     size: 0.025,
                     height: 0.025
@@ -263,66 +273,22 @@ var ArWebModule = function () {
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
 
+
+                // TODO: is it okay to do it more than once
                 // Flip this switch so that we only perform this once
-                boxesAdded = true;
+                // boxesAdded = true;
             } catch(err) {
                 DEBUG_VIEW.innerHTML = err.message;
             }
-
         });
-
-
     }
-
-
-    // function addText() {
-    //
-    //     materials = [
-    //         new THREE.MeshPhongMaterial({color: 0xffffff, flatShading: true}), // front
-    //         new THREE.MeshPhongMaterial({color: 0xffffff}) // side
-    //     ];
-    //
-    //     group = new THREE.Group();
-    //     group.position.y = 100;
-    //
-    //     scene.add(group);
-    //
-    //     // loadFont
-    //     var loader = new THREE.FontLoader();
-    //     loader.load('AR/third_party/fonts/' + fontName + '_' + fontWeight + '.typeface.json', function (response) {
-    //         font = response;
-    //         // refreshText();
-    //
-    //         textGeo = new THREE.TextGeometry("lennty", {
-    //             font: font,
-    //             size: 20,
-    //             height: 10,
-    //         });
-    //
-    //         textGeo.computeBoundingBox();
-    //         textGeo.computeVertexNormals();
-    //
-    //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-    //
-    //         textMesh1 = new THREE.Mesh(textGeo, materials);
-    //
-    //         textMesh1.position.x = centerOffset;
-    //         textMesh1.position.y = hover;
-    //         textMesh1.position.z = 0;
-    //
-    //         textMesh1.rotation.x = 0;
-    //         textMesh1.rotation.y = Math.PI * 2;
-    //
-    //         group.add(textMesh1);
-    //
-    //     });
-    // }
 
 
     // expose functions and objects here
     return {
         startAR: startAR,
         checkArBrowser: checkArBrowser,
-        setCaptureFoodItem: setCaptureFoodItemStatus
+        setCaptureFoodItem: setCaptureFoodItemStatus,
+        addArText: addArText
     };
 }();

@@ -42,7 +42,7 @@ $(function() {
     }
 
     function buttonFunc() {
-        DEBUG_VIEW.innerHTML = "capture true";
+        DEBUG_VIEW.innerHTML = "capturing...";
 
         // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
@@ -50,6 +50,9 @@ $(function() {
     }
 
     function analyzeObject(canvasObj) {
+
+        // AR TEST
+        ArWebModule.addArText("lenny");
 
         // captureFoodItem = false;
         ArWebModule.setCaptureFoodItem(false);
