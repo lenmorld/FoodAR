@@ -56,17 +56,17 @@ var ClarifaiFoodModule = function () {
 
         // TODO: sett SIMPLE_TODO.md for details
 
-        if (recipe_keywords.length > 0) {
-
-            Utils.smartLog(["recipe keywords..."]);
-
-            // TODO: get recipe using Edamam API
-
-            /*
-                formulate request by getting (all 20 or just a few?) items from words.food
-             */
-        }
-        else if (food_servings.length > 0) {
+        // if (recipe_keywords.length > 0) {
+        //
+        //     Utils.smartLog(["recipe keywords..."]);
+        //
+        //     // TODO: get recipe using Edamam API
+        //
+        //     /*
+        //         formulate request by getting (all 20 or just a few?) items from words.food
+        //      */
+        // } // else if
+        if (food_servings.length > 0) {
             Utils.smartLog(["food servings:", food_servings]);
 
             // e.g. 'fruit salad'
