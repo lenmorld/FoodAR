@@ -9,8 +9,8 @@ var DEV_MODE = false;
 
 
 var ANALYZE_BUTTON = $("#btn-analyze");
-var IMAGE_CAPTURED = $("#img_captured");
-var IMAGE_CAPTURED_THUMB = $("#img_captured_thumb");
+// var IMAGE_CAPTURED = $("#img_captured");
+// var IMAGE_CAPTURED_THUMB = $("#img_captured_thumb");
 
 var KEYWORD_LIMIT = 5;
 var PREV_IMAGE_THUMBNAIL = null;

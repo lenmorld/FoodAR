@@ -56,20 +56,22 @@ var FoodHelperModule = function () {
             }
         }
 
-        // SUCCESS!!!
+        // SUCCESS!!! =D =D =D
 
         // NUTR_INFO_VIEW.innerHTML = html;
         ViewModule.updateFoodNutritionView(nutInfoStringList);
 
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);
+
+        // uncomment to enable Image capture on right hand side,
+        // not needed when AR content
+        /*
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
 
-        // document.getElementById('img_captured_thumb')
-        //     .setAttribute(
-        //         'src', PREV_IMAGE_THUMBNAIL );
-
         IMAGE_CAPTURED.show();          // show top-right captured image
+        */
+
         ANALYZE_BUTTON.prop('disabled', false);
     }
 
