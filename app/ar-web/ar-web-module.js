@@ -33,6 +33,11 @@ var ArWebModule = function () {
     var analyzeObject = null;
     var captureFoodItem = false;        // must press button on load
 
+    // 3d text geometry
+    var textMaterial = new THREE.MeshNormalMaterial();
+    var dirMtx = new THREE.Matrix4();
+
+
     function setCaptureFoodItemStatus(bool) {
         captureFoodItem = bool;
     }
@@ -231,9 +236,8 @@ var ArWebModule = function () {
                     pose.position[2]
                 );
 
-                var dirMtx = new THREE.Matrix4();
-                dirMtx.makeRotationFromQuaternion(ori);
 
+                dirMtx.makeRotationFromQuaternion(ori);
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
                 var push = new THREE.Vector3(x, y, z);
@@ -263,8 +267,8 @@ var ArWebModule = function () {
                 textGeo.computeVertexNormals();
                 // textGeo.center();
 
-                var material = new THREE.MeshNormalMaterial();
-                var text3D = new THREE.Mesh(textGeo, material);
+
+                var text3D = new THREE.Mesh(textGeo, textMaterial);
 
                 //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
                 //
