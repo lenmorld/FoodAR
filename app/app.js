@@ -75,7 +75,7 @@ $(function() {
 
 
     if (ArWebModule.checkArBrowser()) {
-        ArWebModule.startAR(analyzeObject, testing);
+        ArWebModule.startAR(analyzeObject, testing);-
 
         // add button listener
         ANALYZE_BUTTON.click(function() {
@@ -85,9 +85,6 @@ $(function() {
     } else {
         testing();
     }
-
-
-
 
 
 });
