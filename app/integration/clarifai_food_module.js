@@ -32,7 +32,10 @@ var ClarifaiFoodModule = function () {
 
     function processKeywords(words) {
 
-        NUTR_INFO_VIEW.innerHTML = "";
+        // NUTR_INFO_VIEW.innerHTML = "";
+        ViewModule.updateFoodNutritionView("");
+
+
         Utils.smartLog(["searching food item..."]);
 
         if (words.error) {
@@ -72,7 +75,10 @@ var ClarifaiFoodModule = function () {
             // display first one (#1 result)
             var foodItemResult = food_servings[0].name;
 
-            FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
+            // FOOD_ITEM_VIEW.innerHTML = foodItemResult;       // # display food item result
+            ViewModule.updateFoodItemView(foodItemResult);
+
+
             var searchNutritionString = foodItemResult;          // # search for nutrition info
 
             // get nutrition info
@@ -97,7 +103,9 @@ var ClarifaiFoodModule = function () {
 
             if (words.food.length > 0) {
                 var foodItemResult = words.food[0].name;
-                FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
+                // FOOD_ITEM_VIEW.innerHTML = foodItemResult;        // # display food item result
+                ViewModule.updateFoodItemView(foodItemResult);
+
                 searchNutritionString = foodItemResult;          // # search for nutrition info
             }
 

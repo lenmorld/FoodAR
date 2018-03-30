@@ -52,7 +52,7 @@ $(function() {
     function analyzeObject(canvasObj) {
 
         // AR TEST
-        ArWebModule.addArText("lenny");
+        // ArWebModule.addArText("lenny");
 
         // captureFoodItem = false;
         ArWebModule.setCaptureFoodItem(false);
@@ -70,14 +70,9 @@ $(function() {
 
     //####################################################
 
-    // Utils.smartLog(FOOD_ITEM_VIEW);
-    // Utils.smartLog(LOGS_VIEW);
-    //
-    // Utils.smartLog(Utils.round(12.34));
-    // Utils.smartLog(EdamamModule);
-    // Utils.smartLog(FoodHelperModule);
+   ViewModule.updateFoodItemView("Capture food to start");
+    ViewModule.updateFoodNutritionView("FoodAR gives the nutritional value of your food!");
 
-    FOOD_ITEM_VIEW.innerHTML = Utils.round(12.34);
 
     if (ArWebModule.checkArBrowser()) {
         ArWebModule.startAR(analyzeObject, testing);

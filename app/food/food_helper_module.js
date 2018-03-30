@@ -1,13 +1,3 @@
-// var searchString = "banana";
-
-// var FOOD_ITEM_VIEW = document.getElementById('food_item');
-// var NUTR_INFO_VIEW = document.getElementById('nut_info');
-// var LOGS_VIEW = document.getElementById('logs');
-// var DEBUG_VIEW = document.getElementById('debug');
-
-// var nutrients_for_display = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
-
-
 /*
     singleton pattern for modular ES5 JS
     can avoid IIFE at the end, so it will become constructor
@@ -66,7 +56,10 @@ var FoodHelperModule = function () {
 
         // SUCCESS!!!
 
-        NUTR_INFO_VIEW.innerHTML = html;
+        // NUTR_INFO_VIEW.innerHTML = html;
+        ViewModule.updateFoodNutritionView(html);
+
+
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
