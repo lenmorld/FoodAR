@@ -237,7 +237,9 @@ var ArWebModule = function () {
 
                 // var push = new THREE.Vector3(0, 0, -1.0);
 
-                var push = new THREE.Vector3(-0.5, 0, -0.5);
+                var push = new THREE.Vector3(0, 0, 0);
+                // var push = new THREE.Vector3(-0.5, 0, -0.5);
+
                 push.transformDirection(dirMtx);
                 pos.addScaledVector(push, 0.125);
 

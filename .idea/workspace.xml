@@ -99,8 +99,8 @@
       <file leaf-file-name="ar-web-module.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="236" column="0" lean-forward="true" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
+            <state relative-caret-position="276">
+              <caret line="239" column="52" lean-forward="false" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -326,7 +326,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93172000" />
+    <option name="totallyTimeSpent" value="93264000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -793,8 +793,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/ar-web/ar-web-module.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="236" column="0" lean-forward="true" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
+        <state relative-caret-position="276">
+          <caret line="239" column="52" lean-forward="false" selection-start-line="239" selection-start-column="52" selection-end-line="239" selection-end-column="52" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
