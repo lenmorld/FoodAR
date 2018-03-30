@@ -235,7 +235,9 @@ var ArWebModule = function () {
                 var dirMtx = new THREE.Matrix4();
                 dirMtx.makeRotationFromQuaternion(ori);
 
-                var push = new THREE.Vector3(-1.0, 0, -1.0);
+                // var push = new THREE.Vector3(0, 0, -1.0);
+
+                var push = new THREE.Vector3(-0.5, 0, -0.5);
                 push.transformDirection(dirMtx);
                 pos.addScaledVector(push, 0.125);
 
