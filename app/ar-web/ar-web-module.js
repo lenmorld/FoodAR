@@ -235,7 +235,7 @@ var ArWebModule = function () {
                 var dirMtx = new THREE.Matrix4();
                 dirMtx.makeRotationFromQuaternion(ori);
 
-                var push = new THREE.Vector3(0, 0, -1.0);
+                var push = new THREE.Vector3(-1.0, 0, -1.0);
                 push.transformDirection(dirMtx);
                 pos.addScaledVector(push, 0.125);
 
@@ -246,10 +246,13 @@ var ArWebModule = function () {
                 // clone.position.copy(pos);
                 // clone.quaternion.copy(ori);
 
+                // size: 0.025,
+                //     height: 0.025
+
                 textGeo = new THREE.TextGeometry(ARtext, {
                     font: font,
-                    size: 0.025,
-                    height: 0.025
+                    size: size,
+                    height: height
                 });
                 textGeo.computeBoundingBox();
                 textGeo.computeVertexNormals();
