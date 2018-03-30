@@ -34,7 +34,7 @@ var ViewModule = function () {
 
         // render as AR Content to center of screen
         // 0.025, 0.025
-        ArWebModule.addArText(foodItemName, 0.012, 0.012, 0.25);        // YOffset=0.25, a bit higher than middle
+        ArWebModule.addArText(foodItemName, 0.012, 0.012, 0.75);        // YOffset=0.25, a bit higher than middle
     }
 
     function updateFoodNutritionView(nutInfoStringList) {
@@ -47,8 +47,10 @@ var ViewModule = function () {
             // render for HTML
             nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
 
+            // start at 0.5, then go down with 0.10 increments
+
             // calculate offset based on current index
-            var Yoffset = 0.25 * (i+1);     // +1 since 0 is reserved for the FoodItemName
+            var Yoffset = 0.5 + (i*0.10);     // +1 since 0 is reserved for the FoodItemName
             ArWebModule.addArText(nutInfoStringList[i], 0.006, 0.006, Yoffset);        // YOffset=0.25, a bit higher than middle
         }
 
