@@ -244,7 +244,7 @@ var ArWebModule = function () {
                 push.transformDirection(dirMtx);
 
                 // 0.125
-                var scale = 0.05;
+                var scale = 0.5;        // smaller -> inwards, bigger -> outwards  from camera
                 pos.addScaledVector(push, scale);
 
                 // Clone our cube object and place it at the camera's
