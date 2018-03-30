@@ -23,6 +23,7 @@ var ViewModule = function () {
     /*
         banana                      0.50
                                                 0.15 3d text height - FoodItemName
+                                                    a bit of space of margin between them
         carbs = 10 % 100 g          0.35        0.10 3d text height - NutirionInfo
         ...                         0.25
         ...
@@ -36,7 +37,7 @@ var ViewModule = function () {
     var ARfoodItemNameSize = 0.012;
     var ARfoodItemNameHeight = 0.012;
 
-    var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.15;      // start NutritionInfo at 0.35
+    var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.20;      // start NutritionInfo at 0.30
 
     var ARnutritionInfoItemSize = 0.006;
     var ARnutritionInfoItemHeight = 0.006;
