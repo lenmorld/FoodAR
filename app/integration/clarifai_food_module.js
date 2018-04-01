@@ -33,7 +33,7 @@ var ClarifaiFoodModule = function () {
     function processKeywords(words) {
 
         // NUTR_INFO_VIEW.innerHTML = "";
-        ViewModule.updateNutritionInfoView("");
+        // ViewModule.updateNutritionInfoView("");
 
 
         Utils.smartLog(["searching food item..."]);
