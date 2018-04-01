@@ -33,7 +33,7 @@ var ClarifaiFoodModule = function () {
     function processKeywords(words) {
 
         // NUTR_INFO_VIEW.innerHTML = "";
-        ViewModule.updateFoodNutritionView("");
+        ViewModule.updateNutritionInfoView("");
 
 
         Utils.smartLog(["searching food item..."]);
@@ -57,15 +57,19 @@ var ClarifaiFoodModule = function () {
         // TODO: sett SIMPLE_TODO.md for details
 
         // if (recipe_keywords.length > 0) {
-        //
         //     Utils.smartLog(["recipe keywords..."]);
-        //
         //     // TODO: get recipe using Edamam API
-        //
-        //     /*
-        //         formulate request by getting (all 20 or just a few?) items from words.food
-        //      */
+        //         // formulate request by getting (all 20 or just a few?) items from words.food
         // } // else if
+
+
+        /*
+            first prototype: as simple as possible
+            1 basic use case of food recognition
+            try to get food serving keywords frmo Clarifai (limited list)
+            and fetch nutrition, if fail try next keyword on list
+         */
+
         if (food_servings.length > 0) {
             Utils.smartLog(["food servings:", food_servings]);
 

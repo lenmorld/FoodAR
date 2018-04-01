@@ -19,6 +19,8 @@ var ViewModule = function () {
     var FOOD_ITEM_LABEL_VIEW = document.getElementById('food_item_label');
     var NUTR_INFO_LABEL_VIEW = document.getElementById('nut_info_label');
 
+    var FOOD_ITEM_NAME = null;
+
 
     /*
         banana                      0.50
@@ -56,25 +58,38 @@ var ViewModule = function () {
         // can do further styling, render prep, here, etc
 
         // XXX remove for now in lieu of AR content
-        // FOOD_ITEM_VIEW.innerHTML = foodItemName;
+        FOOD_ITEM_VIEW.innerHTML = foodItemName;
 
         // render as AR Content to center of screen
-        ArWebModule.addArText(foodItemName, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+        // ArWebModule.addArText(foodItemName, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+
+        // delay rendering of FoofItemName since NutritionFetch might fail
+
+        setFoodItemName(foodItemName);
     }
 
-    function updateFoodNutritionView(nutInfoStringList) {
+    function setFoodItemName(foodItemName) {
+        FOOD_ITEM_NAME = foodItemName;
+    }
+
+
+    function updateNutritionInfoView(nutInfoStringList) {
+
+        // reaching this point means FoodItemName is good to go
+        // display it first, then NutritionInfo
+        ArWebModule.addArText(FOOD_ITEM_NAME, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
 
         // render as AR Content to center of screen, below the FoodItemName
 
         // XXX remove for now in lieu of AR content
-        // var nutritionInfoHTML = "";
+        var nutritionInfoHTML = "";
 
         // AR 3d text must be renderd indiv. with proper offset Y so they would stack
         // up properly in screen
 
         for (var i=0; i < nutInfoStringList.length; i++) {
             // XXX remove for now in lieu of AR content
-            // nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
+            nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
 
             // FoodItemName is at 0.5, give
             // start at 0.35, then go down with 0.10 increments
@@ -85,14 +100,15 @@ var ViewModule = function () {
         }
 
         // XXX remove for now in lieu of AR content
-        // NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
+        NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
     }
 
 
     return {
         updateFoodItemNameView: updateFoodItemNameView,
-        updateFoodNutritionView: updateFoodNutritionView,
+        updateNutritionInfoView: updateNutritionInfoView,
         updateFoodItemNameLabelView: updateFoodItemNameLabelView,
-        updateNutritionLabelView: updateNutritionLabelView
+        updateNutritionLabelView: updateNutritionLabelView,
+        setFoodItemName: setFoodItemName
     };
 }();

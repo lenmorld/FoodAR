@@ -15,6 +15,21 @@ improved performance, always on and reserved resources compared to free (pool of
 
 [ ] improve performance of 3Dtext geometry loading
 
+[ ] have 10 instead of 5 available global NUTRIENTS_FOR_DISPLAY, but always display 5 most important if available(possilby with rank of priority)
+    so there would be a backup nutrient when some are not available
+
+[ ] add attribution Clarifai and Edamam
+https://developer.edamam.com/attribution
+
+[ ] BONUS: red font if bad, green font if good, i.e. if more than 15% DV is apparently a lot
+https://www.canada.ca/en/health-canada/services/understanding-food-labels/percent-daily-value.html
+
+[ ] BONUS: include dietLabels
+
+[ ] try in different light conditions
+
+[ ]
+
 
 DOCU
 

@@ -17,7 +17,7 @@ $(function() {
         // image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJk_nwRQ-w98xFfaF9XzewsmNfU431PEv7Bs3P-JtdHUMFMVKb';     // cooking
         //
         // // fridge with ingredients --> cooking!
-        image = 'https://media1.popsugar-assets.com/files/thumbor/akQEIgPpxD53iljH35b-q16Sdgg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/04/12/985/n/42816840/6a7e5ef858eeac84566084.76358641_edit_img_cover_file_43423029_1492023907/i/Natural-Home-Beauty-Ingredients.jpg';
+        // image = 'https://media1.popsugar-assets.com/files/thumbor/akQEIgPpxD53iljH35b-q16Sdgg/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2017/04/12/985/n/42816840/6a7e5ef858eeac84566084.76358641_edit_img_cover_file_43423029_1492023907/i/Natural-Home-Beauty-Ingredients.jpg';
 
         // multiple food items, non-recipe non-food serving -> 'meal'
         // image = 'https://img.grouponcdn.com/deal/aneUsttzxMyem6Mg3ro5/YX-2048x1229/v1/c700x420.jpg';
@@ -29,7 +29,7 @@ $(function() {
         // image ='http://goodtoknow.media.ipcdigital.co.uk/111/000016ef4/c0e9/Butter-chicken-recipe.jpg';
 
         // fries -> french fries, lunch
-        image = 'https://blog.qad.com/wp-content/uploads/2016/11/Blog_11.22.2016b.jpg';
+        // image = 'https://blog.qad.com/wp-content/uploads/2016/11/Blog_11.22.2016b.jpg';
 
         // burger
         // image = 'http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg';
@@ -64,7 +64,7 @@ $(function() {
         // convert webGL image to base64 representation
         var dataURL = canvasObj.toDataURL();
         var base64img = dataURL.split("base64,")[1];
-        PREV_IMAGE_THUMBNAIL = dataURL;
+        // PREV_IMAGE_THUMBNAIL = dataURL;
 
         // predictUsingWorkflow(image, maxConcepts, minConfidence, successCallback)
         ClarifaiModule.predictUsingWorkflow({base64: base64img}, 10, 0.90, ClarifaiFoodModule.processKeywords);

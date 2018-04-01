@@ -59,7 +59,7 @@ var FoodHelperModule = function () {
         // SUCCESS!!! =D =D =D
 
         // NUTR_INFO_VIEW.innerHTML = html;
-        ViewModule.updateFoodNutritionView(nutInfoStringList);
+        ViewModule.updateNutritionInfoView(nutInfoStringList);
 
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);
