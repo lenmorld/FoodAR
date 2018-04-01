@@ -87,22 +87,22 @@ var FoodHelperModule = function () {
             // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
             // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
 
-            try {
+            // try {
                 if (totalDaily[nutrient]) {     // totalDaily is more important since it's more useful to user
                     var total_daily_nutrient = totalDaily[nutrient];
                     var total_quantity_nutrient = totalQuantity[nutrient];
-
-                    if (!nutrientsObj[nutrient]) {
-                        nutrientsObj[nutrient] = {};
-                    }
 
                     var dblDaily = Utils.round(total_daily_nutrient.quantity);
                     var dblQuantity = Utils.round(total_quantity_nutrient.quantity);
 
                     // if both 0, its like its not included, it shouldnt be displayed
-                    // if (dblDaily === 0 && dblQuantity === 0) {
-                    //     continue;
-                    // }
+                    if (dblDaily === 0 && dblQuantity === 0) {
+                        continue;
+                    }
+
+                    if (!nutrientsObj[nutrient]) {
+                        nutrientsObj[nutrient] = {};
+                    }
 
                     var total_daily_string = [dblDaily, total_daily_nutrient.unit].join(" ");
                     var total_quantity_string = [dblQuantity, total_quantity_nutrient.unit].join(" ");
@@ -115,8 +115,6 @@ var FoodHelperModule = function () {
 
                     if (neededItems === collected) {
                         return nutrientsObj;
-                    } else {
-
                     }
 
                     // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
@@ -127,11 +125,11 @@ var FoodHelperModule = function () {
                     // if certain nutrient not available, just skip
                     continue;
                 }
-            }
-            catch(err) {
-                Utils.smartLog([err]);
-                return nutrientsObj;            // dont stop when error, just return what's completed
-            }
+            // }
+            // catch(err) {
+            //     Utils.smartLog([err]);
+            //     return nutrientsObj;            // dont stop when error, just return what's completed
+            // }
             // finally {
             //     // Utils.smartLog(nutrientsObj);
             //     // renderNutritionAR(nutrientsObj);

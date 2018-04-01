@@ -39,7 +39,8 @@ https://www.canada.ca/en/health-canada/services/understanding-food-labels/percen
 
 [ ] try in different light conditions
 
-[ ]
+[ ] !!! Put an HTML faux "guide" on where users would put their food
+    basically just a shape on the center of the screen
 
 
 DOCU

@@ -1,5 +1,5 @@
 body {
-    background-color: darkgreen;
+    background-color: transparent;
     margin: 0;
     overflow: hidden;
     position: fixed;
@@ -15,8 +15,23 @@ body {
 }
 
 h3 {
-    font-size: 25px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+
+#food-capture-center {
+    position: absolute;
+    border: 5px solid green;
+    width: 95%;
+    height: 75%;
+    top: 12%;
+    left: 5px;
+    /*margin-top: -50%;*/
+    /*margin-left: -50%;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+
 }
 
 
