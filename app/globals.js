@@ -15,7 +15,13 @@ var ANALYZE_BUTTON = $("#btn-analyze");
 var KEYWORD_LIMIT = 5;
 var PREV_IMAGE_THUMBNAIL = null;
 
-var NUTRIENTS_FOR_DISPLAY = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT'];
+var CORE_NUTRIENTS_FOR_DISPLAY = ['CHOCDF', 'ENERC_KCAL', 'FAT', 'FIBTG', 'PROCNT', 'SUGAR', 'NA'];
+var OTHER_CORE_NUTRIENTS_FOR_DISPLAY = ['CHOLE', 'CA', 'FE', 'FATRN', 'FASAT', 'VITA_RAE', 'VITC'];
+var ALL_ELSE = ['K', 'FAMS', 'MG', 'NIA', 'P', 'RIBF', 'THIA', 'TOCPHA', 'VITB12', 'VITB6A', 'VITD', 'VITK1', 'ZN'];
+
+var DESIRED_NUTRIENTS_LENGTH = 7;       // depends on how much 3D text can be rendered
+
+
 var FOOD_SERVINGS_LIST = ['fruit salad', 'pasta', 'burger', 'hamburger', 'sandwich'];
 
 var MEALS_KEYWORD_LIST = ['meal', 'lunch', 'dinner'];

@@ -12,7 +12,7 @@ var FoodHelperModule = function () {
 
         DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
 
-        EdamamModule.nutrientsFetch(foodItemUri, NUTRIENTS_FOR_DISPLAY, nutrientsFetchSuccess, nutrientsFetchFailure);
+        EdamamModule.nutrientsFetch(foodItemUri, CORE_NUTRIENTS_FOR_DISPLAY, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
 
     function foodSearchFailure(msg) {
@@ -76,40 +76,48 @@ var FoodHelperModule = function () {
     }
 
 
-// process nutrients for display
-    function prepareNutrientsView(nutrientsInfo) {
-
-        Utils.smartLog(["preparing nutrients info for rendering"]);
+    function getCommonDesiredNutrientsList(desiredList, neededItems, totalDaily, totalQuantity) {
 
         var nutrientsObj = {};
+        var collected = 0;
 
-        try {
-            var total_daily = nutrientsInfo.totalDaily;
-            var total_quantity = nutrientsInfo.totalNutrients;
+        for(var i=0; i< desiredList.length; i++) {
+            var nutrient = desiredList[i];
 
-            // Utils.smartLog(total_daily);
-            // Utils.smartLog(total_quantity);
+            // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
+            // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
 
-            for(var i=0; i< NUTRIENTS_FOR_DISPLAY.length; i++) {
-                var nutrient = NUTRIENTS_FOR_DISPLAY[i];
-
-                // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
-                // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
-
-                if (total_quantity[nutrient]) {
-                    var total_daily_nutrient = total_daily[nutrient];
-                    var total_quantity_nutrient = total_quantity[nutrient];
+            try {
+                if (totalDaily[nutrient]) {     // totalDaily is more important since it's more useful to user
+                    var total_daily_nutrient = totalDaily[nutrient];
+                    var total_quantity_nutrient = totalQuantity[nutrient];
 
                     if (!nutrientsObj[nutrient]) {
                         nutrientsObj[nutrient] = {};
                     }
 
-                    var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
-                    var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
+                    var dblDaily = Utils.round(total_daily_nutrient.quantity);
+                    var dblQuantity = Utils.round(total_quantity_nutrient.quantity);
+
+                    // if both 0, its like its not included, it shouldnt be displayed
+                    // if (dblDaily === 0 && dblQuantity === 0) {
+                    //     continue;
+                    // }
+
+                    var total_daily_string = [dblDaily, total_daily_nutrient.unit].join(" ");
+                    var total_quantity_string = [dblQuantity, total_quantity_nutrient.unit].join(" ");
 
                     nutrientsObj[nutrient]["daily"] = total_daily_string;
                     nutrientsObj[nutrient]["quantity"] = total_quantity_string;
                     nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
+
+                    collected++;
+
+                    if (neededItems === collected) {
+                        return nutrientsObj;
+                    } else {
+
+                    }
 
                     // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
                     // Utils.smartLog(searchString);
@@ -120,14 +128,106 @@ var FoodHelperModule = function () {
                     continue;
                 }
             }
+            catch(err) {
+                Utils.smartLog([err]);
+                return nutrientsObj;            // dont stop when error, just return what's completed
+            }
+            // finally {
+            //     // Utils.smartLog(nutrientsObj);
+            //     // renderNutritionAR(nutrientsObj);
+            // }
         }
-        catch(err) {
-            Utils.smartLog([err]);
+
+        return nutrientsObj;
+    }
+
+
+// process nutrients for display
+    function prepareNutrientsView(nutrientsInfo) {
+
+        Utils.smartLog(["preparing nutrients info for rendering"]);
+
+        var collectedNutrients = {};
+        var collectedNutrientsSize;
+
+        // var total_daily = nutrientsInfo.totalDaily;
+        // var total_quantity = nutrientsInfo.totalNutrients;
+
+        var core = getCommonDesiredNutrientsList(CORE_NUTRIENTS_FOR_DISPLAY, DESIRED_NUTRIENTS_LENGTH, nutrientsInfo.totalDaily, nutrientsInfo.totalNutrients);
+        // collectedNutrients = collectedNutrients.concat(core);
+        collectedNutrients = $.extend({}, collectedNutrients, core);
+        collectedNutrientsSize = Object.keys(collectedNutrients).length;
+
+        // if not enough, try adding secondary core
+        if (collectedNutrientsSize < DESIRED_NUTRIENTS_LENGTH) {
+            var other_core = getCommonDesiredNutrientsList(OTHER_CORE_NUTRIENTS_FOR_DISPLAY, DESIRED_NUTRIENTS_LENGTH - collectedNutrientsSize,  nutrientsInfo.totalDaily, nutrientsInfo.totalNutrients);
+            // collectedNutrients = collectedNutrients.concat(other_core);
+            collectedNutrients = $.extend({}, collectedNutrients, other_core);
+            collectedNutrientsSize = Object.keys(collectedNutrients).length;
         }
-        finally {
-            // Utils.smartLog(nutrientsObj);
-            renderNutritionAR(nutrientsObj);
+
+
+        // if still not enough, add everything else that's there
+        if (collectedNutrientsSize < DESIRED_NUTRIENTS_LENGTH) {
+            var all_else = getCommonDesiredNutrientsList(ALL_ELSE, DESIRED_NUTRIENTS_LENGTH - collectedNutrientsSize  , nutrientsInfo.totalDaily, nutrientsInfo.totalNutrients);
+            // collectedNutrients = collectedNutrients.concat(all_else);
+            collectedNutrients = $.extend({}, collectedNutrients, all_else);
         }
+
+        // if still not enough, not much we could do
+
+        renderNutritionAR(collectedNutrients);
+
+        // var nutrientsObj = {};
+
+        // try {
+        //     var total_daily = nutrientsInfo.totalDaily;
+        //     var total_quantity = nutrientsInfo.totalNutrients;
+        //
+        //     // Utils.smartLog(total_daily);
+        //     // Utils.smartLog(total_quantity);
+        //
+        //
+        //
+        //
+        //     // for(var i=0; i< CORE_NUTRIENTS_FOR_DISPLAY.length; i++) {
+        //     //     var nutrient = CORE_NUTRIENTS_FOR_DISPLAY[i];
+        //     //
+        //     //     // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
+        //     //     // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
+        //     //
+        //     //     if (total_quantity[nutrient]) {
+        //     //         var total_daily_nutrient = total_daily[nutrient];
+        //     //         var total_quantity_nutrient = total_quantity[nutrient];
+        //     //
+        //     //         if (!nutrientsObj[nutrient]) {
+        //     //             nutrientsObj[nutrient] = {};
+        //     //         }
+        //     //
+        //     //         var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
+        //     //         var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
+        //     //
+        //     //         nutrientsObj[nutrient]["daily"] = total_daily_string;
+        //     //         nutrientsObj[nutrient]["quantity"] = total_quantity_string;
+        //     //         nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
+        //     //
+        //     //         // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
+        //     //         // Utils.smartLog(searchString);
+        //     //         // Utils.smartLog(total_daily_string);
+        //     //         // Utils.smartLog(total_quantity_string);
+        //     //     } else {
+        //     //         // if certain nutrient not available, just skip
+        //     //         continue;
+        //     //     }
+        //     // }
+        // }
+        // catch(err) {
+        //     Utils.smartLog([err]);
+        // }
+        // finally {
+        //     // Utils.smartLog(nutrientsObj);
+        //     renderNutritionAR(nutrientsObj);
+        // }
 
     }
 

@@ -9,8 +9,13 @@ $(function() {
         Utils.smartLog(['getUserMedia() is not supported in your browser']);
         DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...'
 
-        var searchString = "fruit salad";
-        var image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';
+        // var searchString = "tea";
+
+        // var image = 'http://del.h-cdn.co/assets/17/26/980x490/landscape-1498854508-delish-mimosa-fruit-salad-3.jpg';
+
+        //tea
+        image = 'https://img-new.cgtrader.com/items/35108/c57508cfd2/china-tea-cup-and-saucer-3d-model-obj.jpg';
+
         // image = 'https://blog.restaurantscanada.org/wp-content/uploads/2015/09/Barley-Pilaf-with-Fall-Vegetables-Chicken-ingredients.jpg';  // cooking
         // image = 'https://www.familyfreshmeals.com/wp-content/uploads/2014/06/Creamy-Ranch-Pasta-Salad-Ingredients-FamilyFreshMeals.com_.png'; // preparation
         // image = 'http://www.andyboy.com/wp-content/uploads/2014/08/pasta-ingredients.jpg';      // cooking

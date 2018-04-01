@@ -51,17 +51,24 @@ var EdamamModule = function () {
 
                 DEBUG_VIEW.innerHTML += "[processing nutrient fetch json_data]";
 
-                if (json_data.totalNutrients) {
+                if (Object.keys(json_data.totalNutrients).length) {
+                    // debugger;
 
                     DEBUG_VIEW.innerHTML += "[checking total nutrients]";
 
-                    var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
 
-                    if (requiredNutrientsReturned.length) {
+                    /*
+                        disable this check for now, its better to have the calling function decide
+                        on which nutrients to display
+                     */
+
+                    // var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
+
+                    // if (requiredNutrientsReturned.length) {
                         success_callback(json_data);
-                    } else {
-                        failure_callback(previousKeyword, "No nutrient info found for food");
-                    }
+                    // } else {
+                    //     failure_callback(previousKeyword, "No nutrient info found for food");
+                    // }
 
                 } else {
                     failure_callback(previousKeyword, "No match in nutrient database");

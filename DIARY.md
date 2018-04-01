@@ -13,10 +13,21 @@ improved performance, always on and reserved resources compared to free (pool of
 
 [+] must clear "view buffer" before activating it again
 
+[ ] !!! test/ make the 3Dtext stay with food at all costs! even when camera moves away --> VERY BUGGY! works sometimes
+
 [ ] improve performance of 3Dtext geometry loading
 
-[ ] have 10 instead of 5 available global NUTRIENTS_FOR_DISPLAY, but always display 5 most important if available(possilby with rank of priority)
+[ ] made CORE NUTRIENTS 7 instead of 5, to add SUGAR and SODIUM
+
+[-] disabled the check for matching NUTRIENTS_FOR_DISPLAY (limited to 5/7), to let calling function decide
+    on nect
+
+
+[+] have 10 instead of 5 available global NUTRIENTS_FOR_DISPLAY, but always display 5 most important if available(possilby with rank of priority)
     so there would be a backup nutrient when some are not available
+    -> always show at least 5 nutrients
+
+[ ] fix 0 errors on line 012:103 on food-helper-module.js
 
 [ ] add attribution Clarifai and Edamam
 https://developer.edamam.com/attribution
@@ -70,4 +81,3 @@ X tracking is not as good (however, ARCore has lots of options to explore, less 
 -> LECTURES : scan for possibly relevant topic to relate here
 e.g. Fitt's law may not apply, but [AR framework] on 1st week would definitely be the backbone
     of discussion
-
