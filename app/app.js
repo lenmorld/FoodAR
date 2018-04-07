@@ -77,8 +77,12 @@ $(function() {
 
     //####################################################
 
-    ViewModule.updateFoodItemNameLabelView("FoodAR gives the nutritional value of your food!");
-    ViewModule.updateNutritionLabelView("Capture food to start");
+
+    // ViewModule.updateFoodItemNameLabelView("FoodAR gives the nutritional value of your food!");
+    // ViewModule.updateNutritionLabelView("Capture food to start");
+
+    ViewModule.updateFoodItemNameLabelView("Food item:");
+    ViewModule.updateNutritionLabelView("Nutritional Info:");
 
 
     if (ArWebModule.checkArBrowser()) {
