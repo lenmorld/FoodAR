@@ -47,18 +47,24 @@ var ViewModule = function () {
 
 
     function updateFoodItemNameLabelView(foodItemNameLabel) {
-        FOOD_ITEM_LABEL_VIEW.innerHTML = foodItemNameLabel;
+        if (DEV_MODE) {
+            FOOD_ITEM_LABEL_VIEW.innerHTML = foodItemNameLabel;
+        }
     }
 
     function updateNutritionLabelView(nutritionInfoLabel) {
-        NUTR_INFO_LABEL_VIEW.innerHTML = nutritionInfoLabel;
+        if (DEV_MODE) {
+            NUTR_INFO_LABEL_VIEW.innerHTML = nutritionInfoLabel;
+        }
     }
 
     function updateFoodItemNameView(foodItemName) {
         // can do further styling, render prep, here, etc
 
         // XXX remove for now in lieu of AR content
-        FOOD_ITEM_VIEW.innerHTML = foodItemName;
+        if (DEV_MODE) {
+            FOOD_ITEM_VIEW.innerHTML = foodItemName;
+        }
 
         // render as AR Content to center of screen
         // ArWebModule.addArText(foodItemName, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
@@ -100,7 +106,9 @@ var ViewModule = function () {
         }
 
         // XXX remove for now in lieu of AR content
-        NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
+        if (DEV_MODE) {
+            NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
+        }
     }
 
 
