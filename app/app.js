@@ -80,7 +80,7 @@ $(function() {
         // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
 
-        document.getElementById("btn-roller").style.display = "none";
+        document.getElementById("btn-roller").style.display = "block";
         $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
@@ -123,6 +123,9 @@ $(function() {
     } else {
         testing();
     }
+
+
+    document.getElementById("btn-roller").style.display = "none";
 
 
 });
