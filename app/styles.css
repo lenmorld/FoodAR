@@ -1,8 +1,8 @@
 body {
-    background-image: url("http://cdn1.wallpapersok.com/uploads/picture/776/208/208776/picture-208776.jpg?width=412&height=732&crop=true");
+    /*background-image: url("http://cdn1.wallpapersok.com/uploads/picture/776/208/208776/picture-208776.jpg?width=412&height=732&crop=true");*/
     /*background-repeat: no-repeat;*/
-    background-attachment: fixed;
-    background-position: center;
+    /*background-attachment: fixed;*/
+    /*background-position: center;*/
 
     /*background-color: rgba(76, 175, 80, 0.3);*/
     margin: 0;
@@ -75,7 +75,7 @@ h3 {
     /*z-index: 20;*/
     position: absolute;
     background-color: transparent;
-    border: 1px solid red;
+    /*border: 1px solid red;*/
     top: 10%;
     left: 10%;
     width: 80%;
