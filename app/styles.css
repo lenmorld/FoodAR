@@ -150,8 +150,8 @@ h3 {
 }
 
 #btn-roller {
-    z-index: 11;
-    visibility: hidden;
+    z-index: 20;
+    /*visibility: hidden;*/
     /*background-image: url("roller.gif");*/
     /*background-color: lawngreen;*/
     position: absolute;

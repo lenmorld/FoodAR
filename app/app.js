@@ -11,7 +11,7 @@ $(function() {
 
         // $("#btn-analyze").show();
         // $("#btn-roller").hide();
-        $("#btn-roller").css("visibility", "hidden");
+        // $("#btn-roller").css("visibility", "hidden");
 
         DEV_MODE = true;
 
