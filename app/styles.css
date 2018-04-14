@@ -185,17 +185,15 @@ h3 {
     /*border-top: 9px solid transparent;*/
 
     /* spinner */
-    animation: spin 2s linear infinite;
+    /*animation: spin 2s linear infinite;*/
     -webkit-animation: spin 2s linear infinite; /* Safari */
-    -moz-animation: spin 2s linear infinite;
 
-    animation-play-state: paused;
+    /*animation-play-state: paused;*/
     -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
 
 }
 
-@keyframes spin {
+@-webkit-keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
