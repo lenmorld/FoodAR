@@ -7,8 +7,11 @@ $(function() {
         // $("#btn-analyze").show();
         // $("#btn-analyze-spinner").hide().css("animation-play-state", "paused");
 
-        $("#btn-analyze").css("border-bottom-color", "transparent");
-        $("#button-circle").show();
+        // $("#btn-analyze").css("border-bottom-color", "transparent");
+
+        // $("#btn-analyze").show();
+        $("#btn-roller").hide();
+
 
         DEV_MODE = true;
 
@@ -53,9 +56,10 @@ $(function() {
             // $("#btn-analyze").hide();
             // $("#btn-analyze-spinner").show().css("animation-play-state", "running");
 
-            $("#btn-analyze").css("border-bottom-color", "lawngreen");
+            // $("#btn-analyze").css("border-bottom-color", "lawngreen");
             // $("#btn-analyze").toggle().toggle();
-            $("#button-circle").hide();
+            // $("#btn-analyze").hide();
+            $("#btn-roller").show();
 
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         });
