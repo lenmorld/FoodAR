@@ -83,6 +83,12 @@ var FoodHelperModule = function () {
         // $("#btn-analyze").prop('disabled', false).css("border-bottom-color", "transparent");
 
         // $("#btn-roller").hide();
+
+        document.getElementById("background-top").style.display = "none";
+        document.getElementById("background-right").style.display = "none";
+        document.getElementById("background-bottom").style.display = "none";
+        document.getElementById("background-left").style.display = "none";
+
         ROLLER.css("visibility", "hidden");
         ROLLER.css("display", "none");
         ROLLER.hide();
