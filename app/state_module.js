@@ -3,14 +3,14 @@ var StateModule = function() {
 
     function analyzeButtonClicked() {
         // first and foremost, clear all ARcontent for garbage collection
-        ArWebModule.cleanARcontent();
+        // ArWebModule.cleanARcontent();
         DEBUG_VIEW.innerHTML = "capturing...";
         ArWebModule.setCaptureFoodItem(true);
     }
 
     function prepareCapture() {
         $("#btn-analyze").off();
-        $("#btn-analyze").click(function(event) {
+        $("#btn-analyze").click(function() {
             if (!DEV_MODE) {
                 analyzeButtonClicked();
                 StateModule.duringCapture();
@@ -43,10 +43,12 @@ var StateModule = function() {
         $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
-
     function afterCapture() {
         $("#btn-analyze").off();
-        $("#btn-analyze").click(function(event) {
+        $("#btn-analyze").click(function() {
+
+            // first and foremost, clear all ARcontent for garbage collection
+            ArWebModule.cleanARcontent();
             prepareCapture();
         });
 
