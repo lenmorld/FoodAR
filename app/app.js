@@ -11,7 +11,7 @@ $(function() {
 
         // $("#btn-analyze").show();
         // $("#btn-roller").hide();
-        $("#btn-roller").css("visibility", "hidden");
+        // ROLLER.css("visibility", "hidden");
 
         DEV_MODE = true;
 
@@ -61,7 +61,9 @@ $(function() {
             // $("#btn-analyze").hide();
 
             // $("#btn-roller").show();
-            $("#btn-roller").css("visibility", "visible");
+            ROLLER.css("visibility", "visible");
+            ROLLER.css("display", "block");
+            ROLLER.show();
 
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         });

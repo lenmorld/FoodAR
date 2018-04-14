@@ -9,6 +9,7 @@ var DEV_MODE = false;
 
 
 var ANALYZE_BUTTON = $("#btn-analyze");
+var ROLLER = $("#btn-roller");
 // var IMAGE_CAPTURED = $("#img_captured");
 // var IMAGE_CAPTURED_THUMB = $("#img_captured_thumb");
 
