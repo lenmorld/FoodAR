@@ -140,6 +140,7 @@ h3 {
 }
 
 #btn-analyze {
+    z-index: 10;
     background-color: #C8C8C8;
     margin: 10% auto;
     height: 80%;
@@ -149,6 +150,7 @@ h3 {
 }
 
 #btn-roller {
+    z-index: 11;
     visibility: hidden;
     /*background-image: url("roller.gif");*/
     /*background-color: lawngreen;*/
