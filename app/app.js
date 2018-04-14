@@ -13,8 +13,6 @@ $(function() {
         // $("#btn-roller").hide();
         // ROLLER.css("visibility", "hidden");
 
-        document.getElementById("btn-roller").style.display = "none";
-
         DEV_MODE = true;
 
         Utils.smartLog(['getUserMedia() is not supported in your browser']);
@@ -81,6 +79,8 @@ $(function() {
 
         // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
+
+        document.getElementById("btn-roller").style.display = "none";
         $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
