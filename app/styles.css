@@ -151,10 +151,7 @@ h3 {
 
 #btn-roller {
     z-index: 20;
-    /*visibility: hidden;*/
     display: block;
-    /*background-image: url("roller.gif");*/
-    /*background-color: lawngreen;*/
     position: absolute;
     top:0;
     left:0;
@@ -166,6 +163,23 @@ h3 {
 #btn-roller img {
     width: 80px;
 }
+
+.icono-leftArrow {
+    color: white;
+}
+
+/*#btn-back {*/
+    /*position: absolute;*/
+    /*z-index: 10;*/
+    /*background-color: #C8C8C8;*/
+    /*height: 80%;*/
+    /*width: 80%;*/
+    /*border-radius: 50%;*/
+    /*border: 9px solid transparent;*/
+/*}*/
+
+
+
 
 /*#btn-analyze {*/
     /*position: relative;*/

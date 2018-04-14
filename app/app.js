@@ -4,15 +4,6 @@
 $(function() {
     function testing() {
 
-        // $("#btn-analyze").show();
-        // $("#btn-analyze-spinner").hide().css("animation-play-state", "paused");
-
-        // $("#btn-analyze").css("border-bottom-color", "transparent");
-
-        // $("#btn-analyze").show();
-        // $("#btn-roller").hide();
-        // ROLLER.css("visibility", "hidden");
-
         DEV_MODE = true;
 
         Utils.smartLog(['getUserMedia() is not supported in your browser']);
@@ -49,24 +40,9 @@ $(function() {
         // image = 'http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg';
 
         // add button listener
-        ANALYZE_BUTTON.click(function() {
+        $("#btn-analyze").click(function() {
+            StateModule.duringCapture();
             ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);
-            // $(this).css("background-color", "blue");
-
-            // $("#btn-analyze").hide();
-            // $("#btn-analyze-spinner").show().css("animation-play-state", "running");
-
-            // $("#btn-analyze").css("border-bottom-color", "lawngreen");
-            // $("#btn-analyze").toggle().toggle();
-            // $("#btn-analyze").hide();
-
-            // $("#btn-roller").show();
-            // ROLLER.css("visibility", "visible");
-            // ROLLER.css("display", "block");
-            // ROLLER.show();
-
-            document.getElementById("btn-roller").style.display = "block";
-
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         });
     }
@@ -77,11 +53,7 @@ $(function() {
 
         DEBUG_VIEW.innerHTML = "capturing...";
 
-        // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
-
-        document.getElementById("btn-roller").style.display = "block";
-        $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
     function analyzeObject(canvasObj) {
@@ -104,28 +76,48 @@ $(function() {
 
     //####################################################
 
-
     // ViewModule.updateFoodItemNameLabelView("FoodAR gives the nutritional value of your food!");
     // ViewModule.updateNutritionLabelView("Capture food to start");
 
-    ViewModule.updateFoodItemNameLabelView("Food item:");
-    ViewModule.updateNutritionLabelView("Nutritional Info:");
+    // ViewModule.updateFoodItemNameLabelView("Food item:");
+    // ViewModule.updateNutritionLabelView("Nutritional Info:");
 
+    StateModule.prepareCapture(analyzeButtonClicked);
 
     if (ArWebModule.checkArBrowser()) {
         ArWebModule.startAR(analyzeObject, testing);
-
         // add button listener
-        ANALYZE_BUTTON.click(function() {
-            analyzeButtonClicked();
-        });
+        // ANALYZE_BUTTON.click(function() {
+        //
+        //     if (READY_TO_CAPTURE) {
+        //         analyzeButtonClicked();
+        //     } else if (!READY_TO_CAPTURE) {
+        //         debugger;
+        //         // restart and put the "blinders" again and reset everything
+        //         // document.getElementById("background-top").style.display = "block";
+        //         // document.getElementById("background-right").style.display = "block";
+        //         // document.getElementById("background-bottom").style.display = "block";
+        //         // document.getElementById("background-left").style.display = "block";
+        //
+        //         $(".icono-leftArrow").hide();       // show back button
+        //         READY_TO_CAPTURE = true;
+        //
+        //         document.getElementById("btn-roller").style.display = "none";
+        //         $("#btn-analyze").css("background-color", "#C8C8C8");
+        //     }
+        //
+        //
+        // });
 
     } else {
         testing();
     }
 
 
-    document.getElementById("btn-roller").style.display = "none";
+
+
+
+
 
 
 });

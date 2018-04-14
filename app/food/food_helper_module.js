@@ -72,6 +72,9 @@ var FoodHelperModule = function () {
         IMAGE_CAPTURED.show();          // show top-right captured image
         */
 
+        debugger;
+        StateModule.afterCapture();
+
 
         // ### FINISH ROUND ###
         // TODO: put in module together with init functions (analyze-button-clicked)
@@ -79,18 +82,9 @@ var FoodHelperModule = function () {
 
         // $("#btn-analyze").show();
         // $("#btn-analyze-spinner").css("animation-play-state", "paused").hide();
-
         // $("#btn-analyze").prop('disabled', false).css("border-bottom-color", "transparent");
-
         // $("#btn-roller").hide();
 
-        document.getElementById("background-top").style.display = "none";
-        document.getElementById("background-right").style.display = "none";
-        document.getElementById("background-bottom").style.display = "none";
-        document.getElementById("background-left").style.display = "none";
-
-
-        document.getElementById("btn-roller").style.display = "none";
         // ROLLER.css("visibility", "hidden");
         // ROLLER.css("display", "none");
         // ROLLER.hide();

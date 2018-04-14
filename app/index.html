@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no,
   minimum-scale=1.0, maximum-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="http://icono-49d6.kxcdn.com/icono.min.css">
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
@@ -21,8 +22,6 @@
         <div id="capture-border">
         </div>
 
-
-
         <div id="background-top"></div>
         <div id="background-right"></div>
         <div id="background-bottom"></div>
@@ -36,17 +35,15 @@
             <div id="logs">Press analyze...</div>
 
             <div class="button-container">
-                <button id="btn-analyze"></button>
+                <button id="btn-analyze"><div class="icono-leftArrow"></button>
                 <!--<div id="button-circle"></div>-->
                 <div id="btn-roller"><img src="roller_2.gif"/></div>
                 <!--<button id="btn-analyze-spinner"></button>-->
-
+                <!--<div id="btn-back"><div class="icono-leftArrow"></div></div>-->
             </div>
         </div>
         <!---------------->
     </div>
-
-
 
 
     <script src="AR/third_party/three.js/three.js"></script>
@@ -67,6 +64,7 @@
     <script src="globals.js"></script>
     <script src="utils.js"></script>
     <script src="ar-web/ar-web-module.js"></script>
+    <script src="state_module.js"></script>
     <script src="food/edamam_module.js"></script>
     <script src="food/food_helper_module.js"></script>
     <script src="integration/clarifai_food_module.js"></script>
