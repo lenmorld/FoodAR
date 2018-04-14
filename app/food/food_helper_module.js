@@ -72,7 +72,17 @@ var FoodHelperModule = function () {
         IMAGE_CAPTURED.show();          // show top-right captured image
         */
 
-        ANALYZE_BUTTON.prop('disabled', false);
+
+        // ### FINISH ROUND ###
+        // TODO: put in module together with init functions (analyze-button-clicked)
+        // ANALYZE_BUTTON.prop('disabled', false).css("background-color", "#C8C8C8");
+
+        // $("#btn-analyze").show();
+        // $("#btn-analyze-spinner").css("animation-play-state", "paused").hide();
+
+        $("#btn-analyze").prop('disabled', false).css("animation-play-state", "paused").css("border-bottom-color", "transparent");
+        $("#button-circle").show();
+
     }
 
 

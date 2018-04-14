@@ -4,6 +4,12 @@
 $(function() {
     function testing() {
 
+        // $("#btn-analyze").show();
+        // $("#btn-analyze-spinner").hide().css("animation-play-state", "paused");
+
+        $("#btn-analyze").css("animation-play-state", "paused").css("border-bottom-color", "transparent");
+        $("#button-circle").show();
+
         DEV_MODE = true;
 
         Utils.smartLog(['getUserMedia() is not supported in your browser']);
@@ -42,6 +48,14 @@ $(function() {
         // add button listener
         ANALYZE_BUTTON.click(function() {
             ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);
+            // $(this).css("background-color", "blue");
+
+            // $("#btn-analyze").hide();
+            // $("#btn-analyze-spinner").show().css("animation-play-state", "running");
+
+            $("#btn-analyze").css("animation-play-state", "running").css("border-bottom-color", "lawngreen");
+            $("#button-circle").hide();
+
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         });
     }
@@ -54,7 +68,7 @@ $(function() {
 
         // captureFoodItem = true;
         ArWebModule.setCaptureFoodItem(true);
-        ANALYZE_BUTTON.prop('disabled', true);       // analyze while processing
+        $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
     function analyzeObject(canvasObj) {
