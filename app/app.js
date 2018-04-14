@@ -53,9 +53,8 @@ $(function() {
             // $("#btn-analyze").hide();
             // $("#btn-analyze-spinner").show().css("animation-play-state", "running");
 
-            $("#btn-analyze").css("animation-play-state", "running")
-                .css("-webkit-animation-play-state", "running")
-                .css("border-bottom-color", "lawngreen");
+            $("#btn-analyze").css("border-bottom-color", "lawngreen");
+            // $("#btn-analyze").toggle().toggle();
             $("#button-circle").hide();
 
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
