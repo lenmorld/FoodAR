@@ -149,6 +149,7 @@ h3 {
 }
 
 #btn-roller {
+    visibility: hidden;
     /*background-image: url("roller.gif");*/
     /*background-color: lawngreen;*/
     position: absolute;
