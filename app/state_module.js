@@ -1,20 +1,31 @@
 var StateModule = function() {
 
-    var READY_TO_CAPTURE = true;
 
+    function analyzeButtonClicked() {
+        // first and foremost, clear all ARcontent for garbage collection
+        ArWebModule.cleanARcontent();
+        DEBUG_VIEW.innerHTML = "capturing...";
+        ArWebModule.setCaptureFoodItem(true);
+    }
 
-    function prepareCapture(exec) {
-
-        READY_TO_CAPTURE = true;
-
-        $("#btn-analyze").click(function() {
-            if (READY_TO_CAPTURE) {
-                exec();
+    function prepareCapture() {
+        $("#btn-analyze").off();
+        $("#btn-analyze").click(function(event) {
+            if (!DEV_MODE) {
+                analyzeButtonClicked();
                 StateModule.duringCapture();
             } else {
-                StateModule.prepareCapture();
+                Utils.smartLog(['getUserMedia() is not supported in your browser']);
+                DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...';
+                var image = 'https://img-new.cgtrader.com/items/35108/c57508cfd2/china-tea-cup-and-saucer-3d-model-obj.jpg';
+
+                StateModule.duringCapture();
+                ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);
+                // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
             }
         });
+
+        $("#btn-analyze").prop('disabled', false);       // analyze while processing
 
         $("#btn-roller").hide();
         $(".icono-leftArrow").hide();       // hide back button
@@ -34,8 +45,10 @@ var StateModule = function() {
 
 
     function afterCapture() {
-
-        READY_TO_CAPTURE = false;
+        $("#btn-analyze").off();
+        $("#btn-analyze").click(function(event) {
+            prepareCapture();
+        });
 
         document.getElementById("background-top").style.display = "none";
         document.getElementById("background-right").style.display = "none";
