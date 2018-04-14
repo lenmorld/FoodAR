@@ -72,6 +72,7 @@ h3 {
 }
 
 #capture-border {
+    z-index: 10;
     /*z-index: 20;*/
     position: absolute;
     background-color: transparent;
@@ -86,6 +87,7 @@ h3 {
 
 
 #background-top {
+    z-index: 10;
     position: absolute;
     top: 0;
     height: 10%;
@@ -94,6 +96,7 @@ h3 {
 }
 
 #background-right {
+    z-index: 10;
     position: absolute;
     top: 10%;
     right: 0;
@@ -103,6 +106,7 @@ h3 {
 }
 
 #background-bottom {
+    z-index: 10;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -112,6 +116,7 @@ h3 {
 }
 
 #background-left{
+    z-index: 10;
     position: absolute;
     top: 10%;
     left: 0;
