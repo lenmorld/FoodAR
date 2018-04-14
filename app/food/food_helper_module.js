@@ -89,9 +89,11 @@ var FoodHelperModule = function () {
         document.getElementById("background-bottom").style.display = "none";
         document.getElementById("background-left").style.display = "none";
 
-        ROLLER.css("visibility", "hidden");
-        ROLLER.css("display", "none");
-        ROLLER.hide();
+
+        document.getElementById("btn-roller").style.display = "none";
+        // ROLLER.css("visibility", "hidden");
+        // ROLLER.css("display", "none");
+        // ROLLER.hide();
     }
 
 

@@ -13,6 +13,8 @@ $(function() {
         // $("#btn-roller").hide();
         // ROLLER.css("visibility", "hidden");
 
+        document.getElementById("btn-roller").style.display = "none";
+
         DEV_MODE = true;
 
         Utils.smartLog(['getUserMedia() is not supported in your browser']);
@@ -61,9 +63,11 @@ $(function() {
             // $("#btn-analyze").hide();
 
             // $("#btn-roller").show();
-            ROLLER.css("visibility", "visible");
-            ROLLER.css("display", "block");
-            ROLLER.show();
+            // ROLLER.css("visibility", "visible");
+            // ROLLER.css("display", "block");
+            // ROLLER.show();
+
+            document.getElementById("btn-roller").style.display = "block";
 
             // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         });
