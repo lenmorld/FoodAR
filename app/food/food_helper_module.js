@@ -72,7 +72,6 @@ var FoodHelperModule = function () {
         IMAGE_CAPTURED.show();          // show top-right captured image
         */
 
-        debugger;
         StateModule.afterCapture();
 
 
