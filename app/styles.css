@@ -129,6 +129,8 @@ h3 {
 
 
 .controls .button-container {
+    z-index: 10;
+
     position: relative;
     left: -50%;
     display:block;
@@ -164,6 +166,7 @@ h3 {
 
 
 #btn-analyze {
+    z-index: 10;
     position: absolute;
     /*background-color: #C8C8C8;*/
     left:0;
@@ -195,6 +198,7 @@ h3 {
 }
 
 #button-circle {
+    z-index: 10;
     /*position: absolute;*/
     /*position: relative;*/
     background-color: #C8C8C8;
