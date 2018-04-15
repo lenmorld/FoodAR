@@ -340,7 +340,7 @@ var ArWebModule = function () {
         Utils.smartLog([food_name]);
         Utils.smartLog(nutr_list);
 
-        Utils.debug("rendering 3d " + ARtext);
+        Utils.debug("rendering 3d ");
 
         // if scene and camera not ready yet
         if (!canAddARObjectsAlready) {

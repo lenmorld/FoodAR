@@ -98,7 +98,7 @@ var ViewModule = function () {
     function updateNutritionInfoView(nutInfoStringList) {
 
         if (!nutInfoStringList.length || !FOOD_ITEM_NAME) {
-            Utils.smartLog("food item name or nutrition info not ready yet!");
+            Utils.smartLog(["food item name or nutrition info not ready yet!"]);
             return;
         }
 

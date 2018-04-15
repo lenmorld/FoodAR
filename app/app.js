@@ -72,7 +72,7 @@ $(function() {
     }
 
 
-    Utils.smartLog("press analyze...")
+    Utils.smartLog(["press analyze..."]);
 
     //####################################################
 
