@@ -102,7 +102,9 @@ var ViewModule = function () {
             return;
         }
 
-        ArWebModule.render3DTextGroup(FOOD_ITEM_NAME, nutInfoStringList);
+        // ArWebModule.render3DTextGroup(FOOD_ITEM_NAME, nutInfoStringList);
+
+        ArWebModule.render3dArText(FOOD_ITEM_NAME, nutInfoStringList);
 
         // if (!nutInfoStringList.length) {
         //     return;

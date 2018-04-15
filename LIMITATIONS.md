@@ -36,3 +36,8 @@ https://github.com/google-ar/arcore-android-sdk/issues/200
    three.js does not provide a "Text Group" object
    thus, must render each 3d text object independently
 
+   also because each character is a special 3d object by itself
+   and not like a cube that can be cloned easily
+
+   see spawn-at-camera.html that is very fast because of 3d object cloning
+

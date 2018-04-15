@@ -31,14 +31,11 @@ var ArWebModule = function () {
 
     /* 3dtext stuff */
 
-    var pose = null, ori = null, pos = null;
-
+    // var pose = null, ori = null, pos = null;
     var ARfoodItemNameYposition = 0.45;       // make it close to the top, to give space for the NutritionInfo
     // 0.25, a bit higher than middle, 0 is middle
 
-
     // 3d text font sizes
-
     var ARfoodItemNameSize = 0.01;
     var ARfoodItemNameHeight = 0.01;
 
@@ -47,8 +44,6 @@ var ArWebModule = function () {
     var ARnutritionInfoItemSize = 0.005;
     var ARnutritionInfoItemHeight = 0.005;
     var ARnutritionInfoItemYoffset = 0.08;              // give each item 0.10 space
-
-
 
     var loader = new THREE.FontLoader();
     var font = null;
@@ -333,9 +328,101 @@ var ArWebModule = function () {
         });
     }
 
+
+    function addAr3dText(ARtext, size, height, Yoffset) {
+
+        Utils.debug("rendering 3d " + ARtext);
+
+        // if scene and camera not ready yet
+        if (!canAddARObjectsAlready) {
+            return;
+        }
+
+        // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
+        var x=-0.25, y= 0 + Yoffset, z=-1.0;
+
+        Utils.debug("font loaded");
+
+        // var font = response;
+        // refreshText();
+
+        // TODO: pose data can be reused? NO IT CANT
+        // since frame is same anyways and taken already
+
+        // Fetch the pose data from the current frame
+        var pose = vrFrameData.pose;
+
+        // Convert the pose orientation and position into
+        // THREE.Quaternion and THREE.Vector3 respectively
+        var ori = new THREE.Quaternion(
+            pose.orientation[0],
+            pose.orientation[1],
+            pose.orientation[2],
+            pose.orientation[3]
+        );
+        var pos = new THREE.Vector3(
+            pose.position[0],
+            pose.position[1],
+            pose.position[2]
+        );
+
+        dirMtx.makeRotationFromQuaternion(ori);
+        // var push = new THREE.Vector3(0, 0, -1.0);
+
+        var push = new THREE.Vector3(x, y, z);
+        // var push = new THREE.Vector3(-0.5, 0, -0.5);
+
+        push.transformDirection(dirMtx);
+        pos.addScaledVector(push, scale);
+
+        // Clone our cube object and place it at the camera's
+        // current position
+        // var clone = cube.clone();
+        // scene.add(clone);
+        // clone.position.copy(pos);
+        // clone.quaternion.copy(ori);
+
+        // size: 0.025, height: 0.025
+
+        textGeo = new THREE.TextGeometry(ARtext, {
+            font: font,
+            size: size,
+            height: height
+        });
+        textGeo.computeBoundingBox();
+        textGeo.computeVertexNormals();
+        // textGeo.center();
+
+        var text3D = new THREE.Mesh(textGeo, textMaterial);
+
+        // text3D.position.set(0, 90, 90);
+        scene.add(text3D);
+        removable_items.push(text3D);     // garbage collect 3d objects
+
+        // place geometry at camera's current position
+        text3D.position.copy(pos);
+        text3D.quaternion.copy(ori);
+    }
+
+    function render3dArText(food_name, nutr_list) {
+
+        addAr3dText(food_name, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+
+        for (var i=0; i < nutr_list.length; i++) {
+
+            // FoodItemName is at 0.5, give
+            // start at 0.35, then go down with 0.10 increments
+
+            // calculate offset based on current index
+            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
+            addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
+        }
+    }
+
+
     function render3DTextGroup(food_name, nutr_list) {
 
-        loadFont();
+        // loadFont();
 
         Utils.smartLog([food_name]);
         Utils.smartLog(nutr_list);
@@ -351,33 +438,30 @@ var ArWebModule = function () {
         // var x=-0.25, y= 0 + Yoffset, z=-1.0;
         var x=-0.25, z=-1.0;
 
-        // loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
+        // get pose only if not set yet
+        if (!pose) {
+            Utils.smartLog(["pose not set"]);
+            // Fetch the pose data from the current frame
+            pose = vrFrameData.pose;
 
-            // get pose only if not set yet
-            if (!pose) {
-                Utils.smartLog(["pose not set"]);
-                // Fetch the pose data from the current frame
-                pose = vrFrameData.pose;
+            // Convert the pose orientation and position into
+            // THREE.Quaternion and THREE.Vector3 respectively
+            ori = new THREE.Quaternion(
+                pose.orientation[0],
+                pose.orientation[1],
+                pose.orientation[2],
+                pose.orientation[3]
+            );
+            pos = new THREE.Vector3(
+                pose.position[0],
+                pose.position[1],
+                pose.position[2]
+            );
 
-                // Convert the pose orientation and position into
-                // THREE.Quaternion and THREE.Vector3 respectively
-                ori = new THREE.Quaternion(
-                    pose.orientation[0],
-                    pose.orientation[1],
-                    pose.orientation[2],
-                    pose.orientation[3]
-                );
-                pos = new THREE.Vector3(
-                    pose.position[0],
-                    pose.position[1],
-                    pose.position[2]
-                );
-
-                dirMtx.makeRotationFromQuaternion(ori);
-            } else {
-                Utils.smartLog(["pose set"]);
-            }
-        // });
+            dirMtx.makeRotationFromQuaternion(ori);
+        } else {
+            Utils.smartLog(["pose set"]);
+        }
 
         // AR 3d text must be rendered indiv. with proper offset Y so they would stack
         // up properly in screen
@@ -456,6 +540,7 @@ var ArWebModule = function () {
         addArText: addArText,
         cleanARcontent: cleanARcontent,
         render3DTextGroup: render3DTextGroup,
-        loadFont: loadFont
+        loadFont: loadFont,
+        render3dArText: render3dArText
     };
 }();
