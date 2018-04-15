@@ -63,7 +63,8 @@ var StateModule = function() {
         $("#btn-roller").hide();
         $("#btn-analyze").prop('disabled', false);       // analyze while processing
         $("#btn-analyze").css("background-color", "orange");        // orange
-        $(".icono-leftArrow").show();
+
+            $(".icono-leftArrow").show();
     }
 
     return {

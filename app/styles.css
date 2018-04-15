@@ -151,7 +151,7 @@ h3 {
 }
 
 #btn-roller {
-    z-index: 20;
+    z-index: 10;
     display: block;
     position: absolute;
     top:0;
@@ -166,7 +166,9 @@ h3 {
 }
 
 .icono-leftArrow {
-    z-index: 40;
+    /*position: absolute;*/
+    /*z-index: 10;*/
+    font-size: 12px;
     color: white;
 }
 
