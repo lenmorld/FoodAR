@@ -35,7 +35,6 @@ var ClarifaiFoodModule = function () {
         // NUTR_INFO_VIEW.innerHTML = "";
         ViewModule.updateNutritionInfoView("");
 
-
         Utils.smartLog(["searching food item..."]);
 
         if (words.error) {

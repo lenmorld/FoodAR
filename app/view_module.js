@@ -83,7 +83,10 @@ var ViewModule = function () {
 
         // reaching this point means FoodItemName is good to go
         // display it first, then NutritionInfo
-        ArWebModule.addArText(FOOD_ITEM_NAME, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+
+        if (FOOD_ITEM_NAME) {
+            ArWebModule.addArText(FOOD_ITEM_NAME, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+        }
 
         // render as AR Content to center of screen, below the FoodItemName
 
