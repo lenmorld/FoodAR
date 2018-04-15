@@ -42,18 +42,11 @@ var StateModule = function() {
 
     function duringCapture() {
         $("#btn-roller").show();       // show spinners
-        $("#btn-analyze").css("background-color", "#C8C8C8");
         $("#btn-analyze").prop('disabled', true);       // analyze while processing
+        $("#btn-analyze").css("background-color", "#C8C8C8");
     }
 
     function afterCapture() {
-        $("#btn-analyze").off();
-        $("#btn-analyze").click(function() {
-
-            // first and foremost, clear all ARcontent for garbage collection
-            ArWebModule.cleanARcontent();
-            prepareCapture();
-        });
 
         document.getElementById("background-top").style.display = "none";
         document.getElementById("background-right").style.display = "none";
@@ -61,17 +54,22 @@ var StateModule = function() {
         document.getElementById("background-left").style.display = "none";
 
         $("#btn-roller").hide();
-
         $("#btn-analyze").prop('disabled', false);       // analyze while processing
         $("#btn-analyze").css("background-color", "lawngreen");        // orange
         $(".icono-leftArrow").show();
+
+        $("#btn-analyze").off();
+        $("#btn-analyze").click(function() {
+            // first and foremost, clear all ARcontent for garbage collection
+            ArWebModule.cleanARcontent();
+            prepareCapture();
+        });
     }
 
     return {
         prepareCapture: prepareCapture,
         duringCapture: duringCapture,
         afterCapture: afterCapture
-
     }
 }();
 

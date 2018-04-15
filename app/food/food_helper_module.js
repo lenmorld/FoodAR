@@ -59,12 +59,12 @@ var FoodHelperModule = function () {
         }
 
         // SUCCESS!!! =D =D =D
-
         // NUTR_INFO_VIEW.innerHTML = html;
-        ViewModule.updateNutritionInfoView(nutInfoStringList);
 
         DEBUG_VIEW.innerHTML = "=D";
         Utils.smartLog(["done! press analyze again..."]);
+
+        ViewModule.updateNutritionInfoView(nutInfoStringList);
 
         // uncomment to enable Image capture on right hand side,
         // not needed when AR content

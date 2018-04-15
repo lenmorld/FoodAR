@@ -205,6 +205,8 @@ var ArWebModule = function () {
      */
     function addArText(ARtext, size, height, Yoffset) {
 
+        DEBUG_VIEW.innerHTML = "rendering 3d " + ARtext;
+
         // if scene and camera not ready yet
         if (!canAddARObjectsAlready) {
             return;
@@ -215,7 +217,10 @@ var ArWebModule = function () {
 
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
+            DEBUG_VIEW.innerHTML = "loading font";
             try {
+                DEBUG_VIEW.innerHTML = "font loaded";
+
                 // var font = response;
                 // refreshText();
 
@@ -267,6 +272,8 @@ var ArWebModule = function () {
                 // textGeo.center();
 
 
+                DEBUG_VIEW.innerHTML = "after computing vertex";
+
                 var text3D = new THREE.Mesh(textGeo, textMaterial);
 
                 //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
@@ -284,6 +291,8 @@ var ArWebModule = function () {
                 // place geometry at camera's current position
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
+
+                DEBUG_VIEW.innerHTML = "finish this 3d text";
 
             } catch(err) {
                 DEBUG_VIEW.innerHTML = err.message;
