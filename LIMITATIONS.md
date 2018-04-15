@@ -32,5 +32,7 @@ https://github.com/google-ar/arcore-android-sdk/issues/200
   -> failing keywords are also recorded to avoid mistakes in subsequent searches
     (although does not persist between sessions since no DB for now)
 
-
+[ ] slow performance is mostly due to the 3d text rendering
+   three.js does not provide a "Text Group" object
+   thus, must render each 3d text object independently
 
