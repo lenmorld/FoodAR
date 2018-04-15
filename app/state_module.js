@@ -29,7 +29,7 @@ var StateModule = function() {
         $("#btn-analyze").prop('disabled', false);       // analyze while processing
 
         $("#btn-roller").hide();
-        $(".icono-leftArrow").hide();       // hide back button
+        $(".left-arrow").hide();       // hide back button
 
         document.getElementById("background-top").style.display = "block";
         document.getElementById("background-right").style.display = "block";
@@ -64,7 +64,7 @@ var StateModule = function() {
         $("#btn-analyze").prop('disabled', false);       // analyze while processing
         $("#btn-analyze").css("background-color", "orange");        // orange
 
-            $(".icono-leftArrow").show();
+            $(".left-arrow").show();
     }
 
     return {

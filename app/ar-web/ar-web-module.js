@@ -225,6 +225,8 @@ var ArWebModule = function () {
                 // var font = response;
                 // refreshText();
 
+                // TODO: pose data can be reused? since frame is same anyways and taken already
+
                 // Fetch the pose data from the current frame
                 var pose = vrFrameData.pose;
 

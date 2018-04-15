@@ -165,11 +165,18 @@ h3 {
     width: 80px;
 }
 
-.icono-leftArrow {
+.left-arrow {
+    font-size: 30px;
+    color: white;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 40px;*/
+
     /*position: absolute;*/
     /*z-index: 10;*/
-    font-size: 40px;
-    color: white;
+    /*font-size: 40px;*/
+    /*color: white;*/
 }
 
 /*#btn-back {*/
