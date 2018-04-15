@@ -341,8 +341,6 @@ var ArWebModule = function () {
         // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
         var x=-0.25, y= 0 + Yoffset, z=-1.0;
 
-        Utils.debug("font loaded");
-
         // var font = response;
         // refreshText();
 
