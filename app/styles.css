@@ -142,7 +142,7 @@ h3 {
 #btn-analyze {
     outline:none;
     z-index: 10;
-    background-color: #C8C8C8;
+    background-color: lawngreen;      /* #C8C8C8 */
     margin: 10% auto;
     height: 80%;
     width: 80%;

@@ -98,7 +98,9 @@ var ViewModule = function () {
 
         for (var i=0; i < nutInfoStringList.length; i++) {
             // XXX remove for now in lieu of AR content
-            nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
+            if (DEV_MODE) {
+                nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
+            }
 
             // FoodItemName is at 0.5, give
             // start at 0.35, then go down with 0.10 increments

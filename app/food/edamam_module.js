@@ -22,9 +22,8 @@ var EdamamModule = function () {
                 if (data.parsed[0]) {
                     success_callback(data.parsed[0].food.uri);
                 } else {
-                    failure_callback("unknown food item");
+                    failure_callback(previousKeyword, "no nutrition info found on food [edamam 1]");
                 }
-
             },
             error : function(xhr, status, exception){
                 Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
@@ -33,7 +32,7 @@ var EdamamModule = function () {
         });
     }
 
-    function nutrientsFetch(foodItemURI, nutrientsForDisplay, success_callback, failure_callback) {
+    function nutrientsFetch(foodItemURI, success_callback, failure_callback) {
 
         $.ajax({
             url: '/foodapi/nutrients',
@@ -56,7 +55,6 @@ var EdamamModule = function () {
 
                     DEBUG_VIEW.innerHTML += "[checking total nutrients]";
 
-
                     /*
                         disable this check for now, its better to have the calling function decide
                         on which nutrients to display
@@ -71,7 +69,7 @@ var EdamamModule = function () {
                     // }
 
                 } else {
-                    failure_callback(previousKeyword, "No match in nutrient database");
+                    failure_callback(previousKeyword, "No match in nutrient database [edamam 2]");
                 }
             },
             error : function(xhr, status, exception){

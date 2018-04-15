@@ -10,29 +10,32 @@ var FoodHelperModule = function () {
         Utils.smartLog(["success: ", foodItemUri]);
         Utils.smartLog(["fetching nutrition info..."]);
 
-        DEBUG_VIEW.innerHTML = "[food_search_success]" + foodItemUri;
+        DEBUG_VIEW.innerHTML = "[edamam_food_search_success]" + foodItemUri;
 
-        EdamamModule.nutrientsFetch(foodItemUri, CORE_NUTRIENTS_FOR_DISPLAY, nutrientsFetchSuccess, nutrientsFetchFailure);
+        EdamamModule.nutrientsFetch(foodItemUri, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
 
-    function foodSearchFailure(msg) {
-        Utils.smartLog(["failure: ", msg]);
-        DEBUG_VIEW.innerHTML += "[food_search_failure]" + msg;
+    function foodSearchFailure(failedKeyword, msg) {
+        Utils.smartLog(["edamam_food_search_failure: ", msg]);
+        Utils.errorHandler(4000);
+        DEBUG_VIEW.innerHTML += "[edamam_food_search_failure]" + msg;
+
+        // call fallback method on integration module
+        ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
     }
 
 
 // nutrient search
     function nutrientsFetchSuccess(nutrientsInfo) {
-
         Utils.smartLog(["success: ", nutrientsInfo]);
         DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
         prepareNutrientsView(nutrientsInfo);
     }
 
     function nutrientsFetchFailure(failedKeyword, msg) {
-        Utils.smartLog(["failure: ", failedKeyword, msg]);
+        Utils.smartLog(["[edamam_nutrients_fetch_failure]: ", failedKeyword, msg]);
         DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure] " + failedKeyword + " " + msg;
-
+        Utils.errorHandler(4001);
 
         // call fallback method on integration module
         ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
@@ -51,7 +54,6 @@ var FoodHelperModule = function () {
 
                 var item = nutrientsObj[key];
                 nutInfoStringList.push([item.name, ": ", item.daily, " ", item.quantity].join(""));
-
                 // html += ["<p>", item.name, ": ", item.daily, " ", item.quantity, "</p>"].join("");
             }
         }
@@ -68,25 +70,11 @@ var FoodHelperModule = function () {
         // not needed when AR content
         /*
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
-
         IMAGE_CAPTURED.show();          // show top-right captured image
         */
 
-        StateModule.afterCapture();
-
-
-        // ### FINISH ROUND ###
-        // TODO: put in module together with init functions (analyze-button-clicked)
-        // ANALYZE_BUTTON.prop('disabled', false).css("background-color", "#C8C8C8");
-
-        // $("#btn-analyze").show();
-        // $("#btn-analyze-spinner").css("animation-play-state", "paused").hide();
-        // $("#btn-analyze").prop('disabled', false).css("border-bottom-color", "transparent");
-        // $("#btn-roller").hide();
-
-        // ROLLER.css("visibility", "hidden");
-        // ROLLER.css("display", "none");
-        // ROLLER.hide();
+        StateModule.afterCapture();     // after successful round, provide options for user to go back
+                                        // to capture mode
     }
 
 
@@ -151,7 +139,6 @@ var FoodHelperModule = function () {
             //     // renderNutritionAR(nutrientsObj);
             // }
         }
-
         return nutrientsObj;
     }
 
@@ -189,60 +176,7 @@ var FoodHelperModule = function () {
         }
 
         // if still not enough, not much we could do
-
         renderNutritionAR(collectedNutrients);
-
-        // var nutrientsObj = {};
-
-        // try {
-        //     var total_daily = nutrientsInfo.totalDaily;
-        //     var total_quantity = nutrientsInfo.totalNutrients;
-        //
-        //     // Utils.smartLog(total_daily);
-        //     // Utils.smartLog(total_quantity);
-        //
-        //
-        //
-        //
-        //     // for(var i=0; i< CORE_NUTRIENTS_FOR_DISPLAY.length; i++) {
-        //     //     var nutrient = CORE_NUTRIENTS_FOR_DISPLAY[i];
-        //     //
-        //     //     // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
-        //     //     // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
-        //     //
-        //     //     if (total_quantity[nutrient]) {
-        //     //         var total_daily_nutrient = total_daily[nutrient];
-        //     //         var total_quantity_nutrient = total_quantity[nutrient];
-        //     //
-        //     //         if (!nutrientsObj[nutrient]) {
-        //     //             nutrientsObj[nutrient] = {};
-        //     //         }
-        //     //
-        //     //         var total_daily_string = [Utils.round(total_daily_nutrient.quantity), total_daily_nutrient.unit].join(" ");
-        //     //         var total_quantity_string = [Utils.round(total_quantity_nutrient.quantity), total_quantity_nutrient.unit].join(" ");
-        //     //
-        //     //         nutrientsObj[nutrient]["daily"] = total_daily_string;
-        //     //         nutrientsObj[nutrient]["quantity"] = total_quantity_string;
-        //     //         nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
-        //     //
-        //     //         // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
-        //     //         // Utils.smartLog(searchString);
-        //     //         // Utils.smartLog(total_daily_string);
-        //     //         // Utils.smartLog(total_quantity_string);
-        //     //     } else {
-        //     //         // if certain nutrient not available, just skip
-        //     //         continue;
-        //     //     }
-        //     // }
-        // }
-        // catch(err) {
-        //     Utils.smartLog([err]);
-        // }
-        // finally {
-        //     // Utils.smartLog(nutrientsObj);
-        //     renderNutritionAR(nutrientsObj);
-        // }
-
     }
 
     // expose functions and objects here

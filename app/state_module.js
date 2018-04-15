@@ -17,7 +17,8 @@ var StateModule = function() {
             } else {
                 Utils.smartLog(['getUserMedia() is not supported in your browser']);
                 DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...';
-                var image = 'https://img-new.cgtrader.com/items/35108/c57508cfd2/china-tea-cup-and-saucer-3d-model-obj.jpg';
+                var image = 'http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/potato-soup-oh-1000.jpg';
+                var searchString = "soup";
 
                 StateModule.duringCapture();
                 ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);
@@ -35,11 +36,13 @@ var StateModule = function() {
         document.getElementById("background-bottom").style.display = "block";
         document.getElementById("background-left").style.display = "block";
 
-        $("#btn-analyze").css("background-color", "#C8C8C8");       // style btn-analyze normally
+        // #C8C8C8
+        $("#btn-analyze").css("background-color", "lawngreen");       // style btn-analyze normally
     }
 
     function duringCapture() {
         $("#btn-roller").show();       // show spinners
+        $("#btn-analyze").css("background-color", "#C8C8C8");
         $("#btn-analyze").prop('disabled', true);       // analyze while processing
     }
 
@@ -60,7 +63,7 @@ var StateModule = function() {
         $("#btn-roller").hide();
 
         $("#btn-analyze").prop('disabled', false);       // analyze while processing
-        $("#btn-analyze").css("background-color", "orange");
+        $("#btn-analyze").css("background-color", "lawngreen");        // orange
         $(".icono-leftArrow").show();
     }
 
@@ -71,10 +74,6 @@ var StateModule = function() {
 
     }
 }();
-
-
-
-
 
 
     /*

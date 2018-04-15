@@ -35,7 +35,7 @@ var ClarifaiModule = function () {
                 successCallback(results);
             },
             function (err) {
-                console.error(err);
+                // console.error(err);
                 var results = {
                     error: err
                 };

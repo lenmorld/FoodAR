@@ -24,12 +24,25 @@ var Utils = function () {
         }
     }
 
+    function errorHandler(code) {
+
+        /*
+               Clarifai Error on image recognition: Error 2000
+               Clarifai Error on image recognition: Error 2001
+
+               Edamam error on searching food to get food uri  Error 4000
+               Edamam error on getting nutrition info of food uri Error 4001
+         */
+    }
+
+
 
     return {
         round: round,
         getCommon: getCommon,
         getCategoryKeywords: getCategoryKeywords,
-        smartLog: smartLog
+        smartLog: smartLog,
+        errorHandler: errorHandler
     }
 }();
 

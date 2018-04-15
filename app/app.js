@@ -4,6 +4,7 @@
 $(function() {
     function testing() {
 
+        $("body").css("background-color", "green");
         DEV_MODE = true;
 
         // Utils.smartLog(['getUserMedia() is not supported in your browser']);
@@ -52,8 +53,6 @@ $(function() {
         // });
     }
 
-
-
     function analyzeObject(canvasObj) {
         // AR TEST
         // ArWebModule.addArText("lenny");
@@ -82,45 +81,11 @@ $(function() {
 
     if (ArWebModule.checkArBrowser()) {
         StateModule.prepareCapture();
-
         ArWebModule.startAR(analyzeObject, testing);
-
-
-        // add button listener
-        // ANALYZE_BUTTON.click(function() {
-        //
-        //     if (READY_TO_CAPTURE) {
-        //         analyzeButtonClicked();
-        //     } else if (!READY_TO_CAPTURE) {
-        //         debugger;
-        //         // restart and put the "blinders" again and reset everything
-        //         // document.getElementById("background-top").style.display = "block";
-        //         // document.getElementById("background-right").style.display = "block";
-        //         // document.getElementById("background-bottom").style.display = "block";
-        //         // document.getElementById("background-left").style.display = "block";
-        //
-        //         $(".icono-leftArrow").hide();       // show back button
-        //         READY_TO_CAPTURE = true;
-        //
-        //         document.getElementById("btn-roller").style.display = "none";
-        //         $("#btn-analyze").css("background-color", "#C8C8C8");
-        //     }
-        //
-        //
-        // });
-
     } else {
         testing();
 
         StateModule.prepareCapture();
     }
-
-
-
-
-
-
-
-
 });
 
