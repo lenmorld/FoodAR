@@ -97,39 +97,50 @@ var ViewModule = function () {
 
     function updateNutritionInfoView(nutInfoStringList) {
 
-        // reaching this point means FoodItemName is good to go
-        // display it first, then NutritionInfo
-
-        if (FOOD_ITEM_NAME) {
-            ArWebModule.addArText(FOOD_ITEM_NAME, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+        if (!nutInfoStringList.length || !FOOD_ITEM_NAME) {
+            Utils.smartLog("food item name or nutrition info not ready yet!");
+            return;
         }
 
-        // render as AR Content to center of screen, below the FoodItemName
+        ArWebModule.render3DTextGroup(FOOD_ITEM_NAME, nutInfoStringList);
 
-        // XXX remove for now in lieu of AR content
-        var nutritionInfoHTML = "";
-
-        // AR 3d text must be renderd indiv. with proper offset Y so they would stack
-        // up properly in screen
-
-        for (var i=0; i < nutInfoStringList.length; i++) {
-            // XXX remove for now in lieu of AR content
-            if (DEV_MODE) {
-                nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
-            }
-
-            // FoodItemName is at 0.5, give
-            // start at 0.35, then go down with 0.10 increments
-
-            // calculate offset based on current index
-            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
-            ArWebModule.addArText(nutInfoStringList[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
-        }
-
-        // XXX remove for now in lieu of AR content
-        if (DEV_MODE) {
-            NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
-        }
+        // if (!nutInfoStringList.length) {
+        //     return;
+        // }
+        //
+        // // reaching this point means FoodItemName is good to go
+        // // display it first, then NutritionInfo
+        //
+        // if (FOOD_ITEM_NAME) {
+        //     ArWebModule.addArText(FOOD_ITEM_NAME, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
+        // }
+        //
+        // // render as AR Content to center of screen, below the FoodItemName
+        //
+        // // XXX remove for now in lieu of AR content
+        // var nutritionInfoHTML = "";
+        //
+        // // AR 3d text must be renderd indiv. with proper offset Y so they would stack
+        // // up properly in screen
+        //
+        // for (var i=0; i < nutInfoStringList.length; i++) {
+        //     // XXX remove for now in lieu of AR content
+        //     if (DEV_MODE) {
+        //         nutritionInfoHTML += ["<p>", nutInfoStringList[i], "</p>"].join("");
+        //     }
+        //
+        //     // FoodItemName is at 0.5, give
+        //     // start at 0.35, then go down with 0.10 increments
+        //
+        //     // calculate offset based on current index
+        //     var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
+        //     ArWebModule.addArText(nutInfoStringList[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
+        // }
+        //
+        // // XXX remove for now in lieu of AR content
+        // if (DEV_MODE) {
+        //     NUTR_INFO_VIEW.innerHTML = nutritionInfoHTML;
+        // }
     }
 
 

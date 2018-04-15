@@ -28,6 +28,41 @@ var ArWebModule = function () {
 
     var removable_items = [];
 
+
+    /* 3dtext stuff */
+
+    var pose = null, ori = null, pos = null;
+
+    var ARfoodItemNameYposition = 0.45;       // make it close to the top, to give space for the NutritionInfo
+    // 0.25, a bit higher than middle, 0 is middle
+
+
+    // 3d text font sizes
+
+    var ARfoodItemNameSize = 0.01;
+    var ARfoodItemNameHeight = 0.01;
+
+    var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.30;      // start NutritionInfo at 0.30
+
+    var ARnutritionInfoItemSize = 0.005;
+    var ARnutritionInfoItemHeight = 0.005;
+    var ARnutritionInfoItemYoffset = 0.08;              // give each item 0.10 space
+
+
+
+    var loader = new THREE.FontLoader();
+    var font = null;
+
+    // load font once
+    if (!font) {
+        loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (_font) {
+            font = _font;
+        });
+    }
+
+    var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
+    /*****************/
+
     var canAddARObjectsAlready = false;
 
     var analyzeObject = null;
@@ -227,22 +262,26 @@ var ArWebModule = function () {
 
                 // TODO: pose data can be reused? since frame is same anyways and taken already
 
-                // Fetch the pose data from the current frame
-                var pose = vrFrameData.pose;
+                if (!pose) {
+                    // Fetch the pose data from the current frame
+                    var pose = vrFrameData.pose;
 
-                // Convert the pose orientation and position into
-                // THREE.Quaternion and THREE.Vector3 respectively
-                var ori = new THREE.Quaternion(
-                    pose.orientation[0],
-                    pose.orientation[1],
-                    pose.orientation[2],
-                    pose.orientation[3]
-                );
-                var pos = new THREE.Vector3(
-                    pose.position[0],
-                    pose.position[1],
-                    pose.position[2]
-                );
+                    // Convert the pose orientation and position into
+                    // THREE.Quaternion and THREE.Vector3 respectively
+                    ori = new THREE.Quaternion(
+                        pose.orientation[0],
+                        pose.orientation[1],
+                        pose.orientation[2],
+                        pose.orientation[3]
+                    );
+                    pos = new THREE.Vector3(
+                        pose.position[0],
+                        pose.position[1],
+                        pose.position[2]
+                    );
+                } else {
+                    // use old one
+                }
 
                 dirMtx.makeRotationFromQuaternion(ori);
                 // var push = new THREE.Vector3(0, 0, -1.0);
@@ -274,18 +313,9 @@ var ArWebModule = function () {
                 textGeo.computeVertexNormals();
                 // textGeo.center();
 
-
                 Utils.debug("after computing vertex");
 
                 var text3D = new THREE.Mesh(textGeo, textMaterial);
-
-                //         var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
-                //
-                //         // textMesh1 = new THREE.Mesh(textGeo, materials);
-                //
-                // text3D.position.x = centerOffset;
-                // text3D.position.y = Math.PI;
-                // text3D.position.z = 0;
 
                 // text3D.position.set(0, 90, 90);
                 scene.add(text3D);
@@ -295,13 +325,108 @@ var ArWebModule = function () {
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
 
-                Utils.debug("finish this 3d text");
-
             } catch(err) {
                 Utils.debug(err.message);
             }
         });
     }
+
+    function render3DTextGroup(food_name, nutr_list) {
+
+        Utils.debug("rendering 3d " + ARtext);
+
+        // if scene and camera not ready yet
+        if (!canAddARObjectsAlready) {
+            return;
+        }
+
+        // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
+        // var x=-0.25, y= 0 + Yoffset, z=-1.0;
+        var x=-0.25, z=-1.0;
+
+        // loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
+
+            // get pose only if not set yet
+            if (!pose) {
+                // Fetch the pose data from the current frame
+                pose = vrFrameData.pose;
+
+                // Convert the pose orientation and position into
+                // THREE.Quaternion and THREE.Vector3 respectively
+                ori = new THREE.Quaternion(
+                    pose.orientation[0],
+                    pose.orientation[1],
+                    pose.orientation[2],
+                    pose.orientation[3]
+                );
+                pos = new THREE.Vector3(
+                    pose.position[0],
+                    pose.position[1],
+                    pose.position[2]
+                );
+
+                dirMtx.makeRotationFromQuaternion(ori);
+            }
+        // });
+
+        // AR 3d text must be rendered indiv. with proper offset Y so they would stack
+        // up properly in screen
+
+        // render FOOD ITEM NAME
+
+
+        // render NUTRITION_INFO
+
+        for (var i=0; i < nutr_list.length; i++) {
+            // FoodItemName is at 0.5, give
+            // start at 0.35, then go down with 0.10 increments
+
+            // calculate offset based on current index
+            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
+            var y= 0 + Yoffset;
+
+            // ArWebModule.addArText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
+
+            var push = new THREE.Vector3(x, y, z);
+            // var push = new THREE.Vector3(-0.5, 0, -0.5);
+            // var push = new THREE.Vector3(0, 0, -1.0);
+
+            push.transformDirection(dirMtx);
+            pos.addScaledVector(push, scale);
+
+            // Clone our cube object and place it at the camera's
+            // current position
+            // var clone = cube.clone();
+            // scene.add(clone);
+            // clone.position.copy(pos);
+            // clone.quaternion.copy(ori);
+
+            textGeo = new THREE.TextGeometry(nutr_list[i], {
+                font: font,
+                size: ARnutritionInfoItemSize,
+                height: ARnutritionInfoItemHeight
+            });
+            textGeo.computeBoundingBox();
+            textGeo.computeVertexNormals();
+
+            var text3D = new THREE.Mesh(textGeo, textMaterial);
+
+            scene.add(text3D);
+            removable_items.push(text3D);     // garbage collect 3d objects
+
+            // place geometry at camera's current position
+            text3D.position.copy(pos);
+            text3D.quaternion.copy(ori);
+
+            Utils.debug("finish this 3d text");
+        }
+
+        // reset vars
+        pose = null;
+        ori = null;
+        pos = null;
+    }
+
 
     function cleanARcontent() {
         if (removable_items.length >0) {
@@ -313,12 +438,23 @@ var ArWebModule = function () {
     }
 
 
+    function setPoseData(bool) {
+        if (!bool) {
+            // clear pose data for new set
+
+        }
+
+    }
+
+
     // expose functions and objects here
     return {
         startAR: startAR,
         checkArBrowser: checkArBrowser,
         setCaptureFoodItem: setCaptureFoodItemStatus,
         addArText: addArText,
-        cleanARcontent: cleanARcontent
+        cleanARcontent: cleanARcontent,
+        setPoseData: setPoseData,
+        render3DTextGroup: render3DTextGroup
     };
 }();
