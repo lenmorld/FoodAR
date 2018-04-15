@@ -48,12 +48,12 @@ var EdamamModule = function () {
                 // totalNutrients is what we need
                 // check if at least one of the required nutrients is in the result object
 
-                DEBUG_VIEW.innerHTML += "[processing nutrient fetch json_data]";
+                Utils.debug("[processing nutrient fetch json_data]");
 
                 if (Object.keys(json_data.totalNutrients).length) {
                     // debugger;
 
-                    DEBUG_VIEW.innerHTML += "[checking total nutrients]";
+                    Utils.debug("[checking total nutrients]");
 
                     /*
                         disable this check for now, its better to have the calling function decide

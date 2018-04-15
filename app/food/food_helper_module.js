@@ -10,7 +10,7 @@ var FoodHelperModule = function () {
         Utils.smartLog(["success: ", foodItemUri]);
         Utils.smartLog(["fetching nutrition info..."]);
 
-        DEBUG_VIEW.innerHTML = "[edamam_food_search_success]" + foodItemUri;
+        Utils.debug("[edamam_food_search_success]" + foodItemUri);
 
         EdamamModule.nutrientsFetch(foodItemUri, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
@@ -18,7 +18,7 @@ var FoodHelperModule = function () {
     function foodSearchFailure(failedKeyword, msg) {
         Utils.smartLog(["edamam_food_search_failure: ", msg]);
         Utils.errorHandler(4000);
-        DEBUG_VIEW.innerHTML += "[edamam_food_search_failure]" + msg;
+        Utils.debug("[edamam_food_search_failure]" + msg);
 
         // call fallback method on integration module
         ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
@@ -28,13 +28,13 @@ var FoodHelperModule = function () {
 // nutrient search
     function nutrientsFetchSuccess(nutrientsInfo) {
         Utils.smartLog(["success: ", nutrientsInfo]);
-        DEBUG_VIEW.innerHTML = "[nutrient_fetch_success]";
+        Utils.debug("[nutrient_fetch_success]");
         prepareNutrientsView(nutrientsInfo);
     }
 
     function nutrientsFetchFailure(failedKeyword, msg) {
         Utils.smartLog(["[edamam_nutrients_fetch_failure]: ", failedKeyword, msg]);
-        DEBUG_VIEW.innerHTML += "[nutrients_fetch_failure] " + failedKeyword + " " + msg;
+        Utils.debug("[nutrients_fetch_failure] " + failedKeyword + " " + msg);
         Utils.errorHandler(4001);
 
         // call fallback method on integration module
@@ -61,7 +61,7 @@ var FoodHelperModule = function () {
         // SUCCESS!!! =D =D =D
         // NUTR_INFO_VIEW.innerHTML = html;
 
-        DEBUG_VIEW.innerHTML = "=D";
+        Utils.debug("=D");
         Utils.smartLog(["done! press analyze again..."]);
 
         ViewModule.updateNutritionInfoView(nutInfoStringList);

@@ -4,7 +4,7 @@ var StateModule = function() {
     function analyzeButtonClicked() {
         // first and foremost, clear all ARcontent for garbage collection
         // ArWebModule.cleanARcontent();
-        DEBUG_VIEW.innerHTML = "capturing...";
+        Utils.debug("capturing...");
         ArWebModule.setCaptureFoodItem(true);
     }
 
@@ -16,7 +16,7 @@ var StateModule = function() {
                 StateModule.duringCapture();
             } else {
                 Utils.smartLog(['getUserMedia() is not supported in your browser']);
-                DEBUG_VIEW.innerHTML = 'running app in desktop browser testing mode...';
+                Utils.debug('running app in desktop browser testing mode...');
                 var image = 'http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/potato-soup-oh-1000.jpg';
                 var searchString = "soup";
 

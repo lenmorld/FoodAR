@@ -7,6 +7,8 @@ var DEBUG_VIEW = document.getElementById('debug');
 
 var DEV_MODE = false;
 
+var PROD_RELEASE_MODE = true;
+
 // var IMAGE_CAPTURED = $("#img_captured");
 // var IMAGE_CAPTURED_THUMB = $("#img_captured_thumb");
 

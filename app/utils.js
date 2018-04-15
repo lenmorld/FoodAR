@@ -20,8 +20,15 @@ var Utils = function () {
         if(DEV_MODE) {
             console.log(msg.join(" "));
         } else {
-            LOGS_VIEW.innerHTML = msg.join(" ");
+            if (!PROD_RELEASE_MODE)
+                LOGS_VIEW.innerHTML = msg.join(" ");
         }
+    }
+
+
+    function debug(msg) {
+        if (!PROD_RELEASE_MODE)
+            DEBUG_VIEW.innerHTML = msg;
     }
 
     function errorHandler(code) {
@@ -42,7 +49,8 @@ var Utils = function () {
         getCommon: getCommon,
         getCategoryKeywords: getCategoryKeywords,
         smartLog: smartLog,
-        errorHandler: errorHandler
+        errorHandler: errorHandler,
+        debug: debug
     }
 }();
 

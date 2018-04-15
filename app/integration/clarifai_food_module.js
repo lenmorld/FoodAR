@@ -18,7 +18,7 @@ var ClarifaiFoodModule = function () {
         var fallbackKeywordsFoodModel = PREVIOUS_CLARIFAI_KEYWORD_RESULTS.food.filter(function(e) { return e.name !== failedKeyword});
         var fallbackKeywordsGeneralModel = PREVIOUS_CLARIFAI_KEYWORD_RESULTS.general.filter(function(e) { return e.name !== failedKeyword});
 
-        DEBUG_VIEW.innerHTML = "using fallback keyword set...";
+        Utils.debug("using fallback keyword set...");
 
         var fallbackKeywordSet = {
             general: fallbackKeywordsGeneralModel,
@@ -91,7 +91,7 @@ var ClarifaiFoodModule = function () {
                 // var food_result = words.food[index].name;
                 text += food_result + " ";
             }
-            DEBUG_VIEW.innerHTML = text;
+            Utils.debug(text);
         }
 
         // get first item

@@ -205,7 +205,7 @@ var ArWebModule = function () {
      */
     function addArText(ARtext, size, height, Yoffset) {
 
-        DEBUG_VIEW.innerHTML = "rendering 3d " + ARtext;
+        Utils.debug("rendering 3d " + ARtext);
 
         // if scene and camera not ready yet
         if (!canAddARObjectsAlready) {
@@ -217,9 +217,9 @@ var ArWebModule = function () {
 
         var loader = new THREE.FontLoader();
         loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
-            DEBUG_VIEW.innerHTML = "loading font";
+            Utils.debug("loading font");
             try {
-                DEBUG_VIEW.innerHTML = "font loaded";
+                Utils.debug("font loaded");
 
                 // var font = response;
                 // refreshText();
@@ -292,10 +292,10 @@ var ArWebModule = function () {
                 text3D.position.copy(pos);
                 text3D.quaternion.copy(ori);
 
-                DEBUG_VIEW.innerHTML = "finish this 3d text";
+                Utils.debug("finish this 3d text");
 
             } catch(err) {
-                DEBUG_VIEW.innerHTML = err.message;
+                Utils.debug(err.message);
             }
         });
     }
