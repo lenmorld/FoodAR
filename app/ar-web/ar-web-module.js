@@ -272,7 +272,7 @@ var ArWebModule = function () {
                 // textGeo.center();
 
 
-                DEBUG_VIEW.innerHTML = "after computing vertex";
+                Utils.debug("after computing vertex");
 
                 var text3D = new THREE.Mesh(textGeo, textMaterial);
 

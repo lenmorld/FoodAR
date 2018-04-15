@@ -71,6 +71,9 @@ $(function() {
         ClarifaiModule.predictUsingWorkflow({base64: base64img}, 10, 0.90, ClarifaiFoodModule.processKeywords);
     }
 
+
+    Utils.smartLog("press analyze...")
+
     //####################################################
 
     // ViewModule.updateFoodItemNameLabelView("FoodAR gives the nutritional value of your food!");
