@@ -34,7 +34,8 @@ var ArWebModule = function () {
     var captureFoodItem = false;        // must press button on load
 
     // 3d text geometry
-    var textMaterial = new THREE.MeshNormalMaterial();
+    // var textMaterial = new THREE.MeshNormalMaterial();
+    var textMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
     var dirMtx = new THREE.Matrix4();
 
 
