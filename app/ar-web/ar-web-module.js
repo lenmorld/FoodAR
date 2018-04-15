@@ -53,13 +53,6 @@ var ArWebModule = function () {
     var loader = new THREE.FontLoader();
     var font = null;
 
-    // load font once
-    if (!font) {
-        loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (_font) {
-            font = _font;
-        });
-    }
-
     var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
     /*****************/
 
@@ -72,6 +65,15 @@ var ArWebModule = function () {
     var textMaterial = new THREE.MeshNormalMaterial();
     // var textMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );       // basic material is just flat, hard to read 3d
     var dirMtx = new THREE.Matrix4();
+
+
+    function loadFont() {
+        if (!font) {
+            loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (_font) {
+                font = _font;
+            });
+        }
+    }
 
 
     function setCaptureFoodItemStatus(bool) {
@@ -333,6 +335,11 @@ var ArWebModule = function () {
 
     function render3DTextGroup(food_name, nutr_list) {
 
+        loadFont();
+
+        Utils.smartLog([food_name]);
+        Utils.smartLog(nutr_list);
+
         Utils.debug("rendering 3d " + ARtext);
 
         // if scene and camera not ready yet
@@ -348,6 +355,7 @@ var ArWebModule = function () {
 
             // get pose only if not set yet
             if (!pose) {
+                Utils.smartLog(["pose not set"]);
                 // Fetch the pose data from the current frame
                 pose = vrFrameData.pose;
 
@@ -366,6 +374,8 @@ var ArWebModule = function () {
                 );
 
                 dirMtx.makeRotationFromQuaternion(ori);
+            } else {
+                Utils.smartLog(["pose set"]);
             }
         // });
 
@@ -438,15 +448,6 @@ var ArWebModule = function () {
     }
 
 
-    function setPoseData(bool) {
-        if (!bool) {
-            // clear pose data for new set
-
-        }
-
-    }
-
-
     // expose functions and objects here
     return {
         startAR: startAR,
@@ -454,7 +455,7 @@ var ArWebModule = function () {
         setCaptureFoodItem: setCaptureFoodItemStatus,
         addArText: addArText,
         cleanARcontent: cleanARcontent,
-        setPoseData: setPoseData,
-        render3DTextGroup: render3DTextGroup
+        render3DTextGroup: render3DTextGroup,
+        loadFont: loadFont
     };
 }();

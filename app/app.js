@@ -85,6 +85,10 @@ $(function() {
     if (ArWebModule.checkArBrowser()) {
         StateModule.prepareCapture();
         ArWebModule.startAR(analyzeObject, testing);
+
+        // load 3d font now while still waiting for user input
+        ArWebModule.loadFont();
+
     } else {
         testing();
 
