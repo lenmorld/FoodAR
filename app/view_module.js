@@ -48,18 +48,18 @@ var ViewModule = function () {
 
      */
 
-
-    var ARfoodItemNameYposition = 0.45;       // make it close to the top, to give space for the NutritionInfo
-    // 0.25, a bit higher than middle, 0 is middle
-
-    var ARfoodItemNameSize = 0.01;
-    var ARfoodItemNameHeight = 0.01;
-
-    var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.30;      // start NutritionInfo at 0.30
-
-    var ARnutritionInfoItemSize = 0.005;
-    var ARnutritionInfoItemHeight = 0.005;
-    var ARnutritionInfoItemYoffset = 0.08;              // give each item 0.10 space
+    //
+    // var ARfoodItemNameYposition = 0.45;       // make it close to the top, to give space for the NutritionInfo
+    // // 0.25, a bit higher than middle, 0 is middle
+    //
+    // var ARfoodItemNameSize = 0.01;
+    // var ARfoodItemNameHeight = 0.01;
+    //
+    // var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.30;      // start NutritionInfo at 0.30
+    //
+    // var ARnutritionInfoItemSize = 0.005;
+    // var ARnutritionInfoItemHeight = 0.005;
+    // var ARnutritionInfoItemYoffset = 0.08;              // give each item 0.10 space
 
 
     function updateFoodItemNameLabelView(foodItemNameLabel) {

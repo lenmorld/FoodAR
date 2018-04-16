@@ -28,7 +28,6 @@ var ArWebModule = function () {
 
     var removable_items = [];
 
-
     /* 3dtext stuff */
 
     // var pose = null, ori = null, pos = null;

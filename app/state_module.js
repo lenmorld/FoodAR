@@ -10,7 +10,7 @@ var StateModule = function() {
     var btn_roller = $("#btn-roller");
     var left_arrow = $(".left-arrow");
 
-    var heading_notes = $(".heading-notes");
+    // var heading_notes = $(".heading-notes");
 
     function analyzeButtonClicked() {
         // first and foremost, clear all ARcontent for garbage collection
@@ -20,7 +20,7 @@ var StateModule = function() {
     }
 
     function prepareCapture() {
-        heading_notes.text("Capture food item...");
+        // heading_notes.text("Capture food item...");
         btn_analyze.off();
         btn_analyze.click(function() {
             if (!DEV_MODE) {
@@ -59,7 +59,7 @@ var StateModule = function() {
     }
 
     function afterCapture() {
-        heading_notes.text("* % Daily value | Nutrient amount");
+        // heading_notes.text("* % Daily value | Nutrient amount");
         btn_analyze.off();
         btn_analyze.click(function() {
             // first and foremost, clear all ARcontent for garbage collection
