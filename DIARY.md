@@ -13,9 +13,11 @@ improved performance, always on and reserved resources compared to free (pool of
 
 [+] must clear "view buffer" before activating it again
 
-[ ] !!! test/ make the 3Dtext stay with food at all costs! even when camera moves away --> VERY BUGGY! works sometimes
+[-_-] !!! test/ make the 3Dtext stay with food at all costs! even when camera moves away --> VERY BUGGY! works sometimes
 
-[ ] improve performance of 3Dtext geometry loading
+[x] improve performance of 3Dtext geometry loading
+    not much we can do
+    see LIMITATIONS
 
 [+] made CORE NUTRIENTS 7 instead of 5, to add SUGAR and SODIUM
 
@@ -26,20 +28,27 @@ improved performance, always on and reserved resources compared to free (pool of
     so there would be a backup nutrient when some are not available
     -> always show at least 5 nutrients
 
-[ ] fix 0 errors on line 012:103 on food-helper-module.js
+[?] fix 0 errors on line 012:103 on food-helper-module.js
 
-[ ] add attribution Clarifai and Edamam
+
+[-_-] add attribution Clarifai and Edamam
 https://developer.edamam.com/attribution
 
-[ ] BONUS: red font [3d text mesh] if bad, green font if good, i.e. if more than 15% DV is apparently a lot
+[x] BONUS: red font [3d text mesh] if bad, green font if good, i.e. if more than 15% DV is apparently a lot
 https://www.canada.ca/en/health-canada/services/understanding-food-labels/percent-daily-value.html
 
-[ ] BONUS: include dietLabels
+    -> not possible, basic Mesh (can be colored) is not visible/comprehensible in 3d
+        only for 2d
 
-[ ] try in different light conditions
+[-_-] BONUS: include dietLabels
 
-[ ]
+[-_-] try in different light conditions
 
+[ ] WebArOnArCore Chromium browser -> customize to
+    [ ] load URL on start
+    [ ] BONUS: hide URL bar
+    [ ] change Android icon
+    [ ] change app name
 
 DOCU
 

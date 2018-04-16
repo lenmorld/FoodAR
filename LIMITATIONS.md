@@ -52,8 +52,19 @@ curl -d '{"yield": 1, "ingredients": [{"quantity": 1,
    three.js does not provide a "Text Group" object
    thus, must render each 3d text object independently
 
-   also because each character is a special 3d object by itself
+   [x] tried re-using position vars (pose, ori, etc)
+    NOPE!
+
+   because each character is a special 3d object by itself
    and not like a cube that can be cloned easily
 
    see spawn-at-camera.html that is very fast because of 3d object cloning
+
+   [x] tried only hiding the spinner when all is rendered
+        (always show spinner while its rendering or doing whatever)
+         NOPE!
+
+         entire browser freezes, and even gif. spinner stops spinning
+         meaning browser is frozen, not just the 3d part
+
 
