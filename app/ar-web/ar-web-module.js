@@ -419,7 +419,7 @@ var ArWebModule = function () {
         }
 
         // callback when done
-        done_callback();
+        // done_callback();
     }
 
 
