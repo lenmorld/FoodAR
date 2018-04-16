@@ -104,7 +104,7 @@ var ViewModule = function () {
 
         // ArWebModule.render3DTextGroup(FOOD_ITEM_NAME, nutInfoStringList);
 
-        ArWebModule.render3dArText(FOOD_ITEM_NAME, nutInfoStringList, StateModule.afterCapture);
+        ArWebModule.render3dArText(FOOD_ITEM_NAME, nutInfoStringList);
 
         // use as callback instead
         // StateModule.afterCapture();     // after successful round, provide options for user to go back

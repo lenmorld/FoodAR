@@ -70,6 +70,9 @@ var ArWebModule = function () {
     }
 
 
+    var objectsToRender = 0;
+
+
     function setCaptureFoodItemStatus(bool) {
         captureFoodItem = bool;
     }
@@ -399,9 +402,20 @@ var ArWebModule = function () {
         // place geometry at camera's current position
         text3D.position.copy(pos);
         text3D.quaternion.copy(ori);
+
+
+        objectsToRender -= 1;
+        if (!objectsToRender) {
+            // callback when done
+            // done_callback();
+            StateModule.afterCapture;
+        }
+
     }
 
-    function render3dArText(food_name, nutr_list, done_callback) {
+    function render3dArText(food_name, nutr_list) {
+
+        objectsToRender = nutr_list.length + 1;
 
         addAr3dText(food_name, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
 
@@ -415,8 +429,6 @@ var ArWebModule = function () {
             addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
         }
 
-        // callback when done
-        done_callback();
     }
 
 
