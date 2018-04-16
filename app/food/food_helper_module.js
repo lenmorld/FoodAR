@@ -72,9 +72,6 @@ var FoodHelperModule = function () {
         IMAGE_CAPTURED_THUMB.attr('src', PREV_IMAGE_THUMBNAIL);
         IMAGE_CAPTURED.show();          // show top-right captured image
         */
-
-        StateModule.afterCapture();     // after successful round, provide options for user to go back
-                                        // to capture mode
     }
 
 

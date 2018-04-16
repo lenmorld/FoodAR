@@ -401,7 +401,7 @@ var ArWebModule = function () {
         text3D.quaternion.copy(ori);
     }
 
-    function render3dArText(food_name, nutr_list) {
+    function render3dArText(food_name, nutr_list, done_callback) {
 
         addAr3dText(food_name, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
 
@@ -414,6 +414,9 @@ var ArWebModule = function () {
             var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
             addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
         }
+
+        // callback when done
+        done_callback();
     }
 
 
