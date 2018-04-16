@@ -11,44 +11,47 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <div id="results">
-            <h3 id="food_item_label"></h3>
-            <div id="food_item"></div>
-            <br />
-            <h3 id="nut_info_label"></h3>
-            <div id="nut_info"></div>
-        </div>
-
-        <div id="capture-border">
-        </div>
-
-        <div id="background-top"></div>
-        <div id="background-right"></div>
-        <div id="background-bottom"></div>
-        <div id="background-left"></div>
-
-        <!--<div id="img_captured">-->
-        <!--<img id="img_captured_thumb" src="http://via.placeholder.com/140x140" width="140" height="140" />-->
-        <!--</div>-->
-        <div class="controls">
-            <div id="debug"></div>
-            <div id="logs"></div>
-
-            <div class="button-container">
-                <button id="btn-analyze">
-                    <div class="left-arrow">
-                        <i class="fas fa-arrow-left"></i>
-                    </div>
-                    <!--<div class="icono-leftArrow">-->
-                    <!--<img src="arrow_left.png"></div>-->
-
-                </button>
-                <div id="btn-roller"><img src="roller_3.gif"/></div>
-            </div>
-        </div>
-        <!---------------->
+    <div class="top-bar">
+        <div class="heading">Food AR</div>
+        <div class="heading-notes">Capture food item and snap!</div>
     </div>
+    <div id="results">
+        <h3 id="food_item_label"></h3>
+        <div id="food_item"></div>
+        <br />
+        <h3 id="nut_info_label"></h3>
+        <div id="nut_info"></div>
+    </div>
+
+    <div id="capture-border">
+    </div>
+
+    <div id="background-top"></div>
+    <div id="background-right"></div>
+    <div id="background-bottom"></div>
+    <div id="background-left"></div>
+
+    <!--<div id="img_captured">-->
+    <!--<img id="img_captured_thumb" src="http://via.placeholder.com/140x140" width="140" height="140" />-->
+    <!--</div>-->
+    <div class="controls">
+        <div id="debug"></div>
+        <div id="logs"></div>
+
+        <div class="button-container">
+            <button id="btn-analyze">
+                <div class="left-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <!--<div class="icono-leftArrow">-->
+                <!--<img src="arrow_left.png"></div>-->
+
+            </button>
+            <div id="btn-roller"><img src="roller_3.gif"/></div>
+        </div>
+    </div>
+        <!---------------->
+
 
 
     <script src="AR/third_party/three.js/three.js"></script>

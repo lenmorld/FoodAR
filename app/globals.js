@@ -21,8 +21,8 @@ var ALL_ELSE = ['K', 'FAMS', 'MG', 'NIA', 'P', 'RIBF', 'THIA', 'TOCPHA', 'VITB12
 
 var DESIRED_NUTRIENTS_LENGTH = 7;       // depends on how much 3D text can be rendered
 
-
-var FOOD_SERVINGS_LIST = ['fruit salad', 'pasta', 'burger', 'hamburger', 'sandwich'];
+// most food servings cannot be processed by Edamam
+var FOOD_SERVINGS_LIST = ['soup','fruit salad', 'pasta', 'burger', 'hamburger', 'sandwich'];
 
 var MEALS_KEYWORD_LIST = ['meal', 'lunch', 'dinner'];
 

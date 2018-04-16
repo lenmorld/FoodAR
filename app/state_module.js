@@ -1,6 +1,17 @@
 var StateModule = function() {
 
 
+    var  background_top =  $("#background-top");
+    var  background_right =  $("#background-right");
+    var  background_bottom =  $("#background-bottom");
+    var  background_left =  $("#background-left");
+
+    var btn_analyze = $("#btn-analyze");
+    var btn_roller = $("#btn-roller");
+    var left_arrow = $(".left-arrow");
+
+    var heading_notes = $(".heading-notes");
+
     function analyzeButtonClicked() {
         // first and foremost, clear all ARcontent for garbage collection
         // ArWebModule.cleanARcontent();
@@ -9,8 +20,9 @@ var StateModule = function() {
     }
 
     function prepareCapture() {
-        $("#btn-analyze").off();
-        $("#btn-analyze").click(function() {
+        heading_notes.text("Capture food item...");
+        btn_analyze.off();
+        btn_analyze.click(function() {
             if (!DEV_MODE) {
                 analyzeButtonClicked();
                 StateModule.duringCapture();
@@ -26,45 +38,45 @@ var StateModule = function() {
             }
         });
 
-        $("#btn-analyze").prop('disabled', false);       // analyze while processing
+        btn_analyze.prop('disabled', false);       // analyze while processing
 
-        $("#btn-roller").hide();
-        $(".left-arrow").hide();       // hide back button
+        btn_roller.hide();
+        left_arrow.hide();       // hide back button
 
-        document.getElementById("background-top").style.display = "block";
-        document.getElementById("background-right").style.display = "block";
-        document.getElementById("background-bottom").style.display = "block";
-        document.getElementById("background-left").style.display = "block";
+        background_top.show();
+        background_right.show();
+        background_bottom.show();
+        background_left.show();
 
         // #C8C8C8
-        $("#btn-analyze").css("background-color", "lawngreen");       // style btn-analyze normally
+        btn_analyze.css("background-color", "lawngreen");       // style btn-analyze normally
     }
 
     function duringCapture() {
-        $("#btn-roller").show();       // show spinners
-        $("#btn-analyze").prop('disabled', true);       // analyze while processing
-        $("#btn-analyze").css("background-color", "#C8C8C8");
+        btn_roller.show();       // show spinners
+        btn_analyze.prop('disabled', true);       // analyze while processing
+        btn_analyze.css("background-color", "#C8C8C8");
     }
 
     function afterCapture() {
-
-        $("#btn-analyze").off();
-        $("#btn-analyze").click(function() {
+        heading_notes.text("* % Daily value | Nutrient amount");
+        btn_analyze.off();
+        btn_analyze.click(function() {
             // first and foremost, clear all ARcontent for garbage collection
             ArWebModule.cleanARcontent();
             prepareCapture();
         });
 
-        document.getElementById("background-top").style.display = "none";
-        document.getElementById("background-right").style.display = "none";
-        document.getElementById("background-bottom").style.display = "none";
-        document.getElementById("background-left").style.display = "none";
+        background_top.hide();
+        background_right.hide();
+        background_bottom.hide();
+        background_left.hide();
 
-        $("#btn-roller").hide();
-        $("#btn-analyze").prop('disabled', false);       // analyze while processing
-        $("#btn-analyze").css("background-color", "orange");        // orange
+        btn_roller.hide();
+        btn_analyze.prop('disabled', false);       // analyze while processing
+        btn_analyze.css("background-color", "orange");        // orange
 
-            $(".left-arrow").show();
+        left_arrow.show();
     }
 
     return {
