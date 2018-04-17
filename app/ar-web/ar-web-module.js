@@ -422,17 +422,18 @@ var ArWebModule = function () {
         // size: 0.025, height: 0.025
 
         start();
-        textGeo = new THREE.TextGeometry(ARtext, {
+        // TextGeometry
+        textGeo = new THREE.TextBufferGeometry(ARtext, {
             font: font,
             size: size,
             height: height
-        });
+        });         // SLOWEST BLOCK >>> takes 1.2 seconds per line
         timeLog += end() + " [3.1] ";
 
         start();
         textGeo.computeBoundingBox();
         textGeo.computeVertexNormals();
-        timeLog += end() + " [3.2] ";             // SLOWEST BLOCK >>> takes 1.4 seconds per line
+        timeLog += end() + " [3.2] ";
 
         start();
         // textGeo.center();
