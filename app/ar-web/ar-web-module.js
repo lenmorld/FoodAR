@@ -427,15 +427,16 @@ var ArWebModule = function () {
         var text3D = new THREE.Mesh(textGeo, textMaterial);
 
         // text3D.position.set(0, 90, 90);
+        text3D.position.copy(pos);
+        text3D.quaternion.copy(ori);
         scene.add(text3D);
         removable_items.push(text3D);     // garbage collect 3d objects
 
         // place geometry at camera's current position
-        text3D.position.copy(pos);
-        text3D.quaternion.copy(ori);
+        // text3D.position.copy(pos);
+        // text3D.quaternion.copy(ori);
 
         // size: , height: 4, curveSegments: 3,
-
 
         // try {
         //     var textGeom = new THREE.TextGeometry(ARtext,
@@ -468,8 +469,6 @@ var ArWebModule = function () {
         // } catch(err) {
         //     Utils.debug(err.message);
         // }
-
-
     }
 
     function render3dArText(food_name, nutr_list, done_callback) {
