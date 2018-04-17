@@ -369,23 +369,23 @@ var ArWebModule = function () {
     function end() {
         endTime = new Date();
         var timeDiff = endTime - startTime; //in ms
+        return timeDiff;
         // strip the ms
-        timeDiff /= 1000;
+        // timeDiff /= 1000;
 
         // get seconds
-        var seconds = Math.round(timeDiff);
+        // var seconds = Math.round(timeDiff);
         // console.log(seconds + " seconds");
-        Utils.debug(seconds + " seconds");
+        // Utils.debug(timeDiff + " ms");
     }
 
 
     function addAr3dText(ARtext, size, height, Yoffset) {
 
+        var timeLog = "";
 
-
-
-        Utils.debug("rendering 3d " + ARtext);
-
+        // Utils.debug("rendering 3d " + ARtext);
+        start();
         // if scene and camera not ready yet
         if (!canAddARObjectsAlready) {
             return;
@@ -416,7 +416,7 @@ var ArWebModule = function () {
             pose.position[1],
             pose.position[2]
         );
-
+        timeLog += end() + " [1] ";
 
 
         start();
@@ -428,6 +428,9 @@ var ArWebModule = function () {
 
         push.transformDirection(dirMtx);
         pos.addScaledVector(push, scale);
+        timeLog += end() + " [2] ";
+
+        start();
 
         // Clone our cube object and place it at the camera's
         // current position
@@ -445,6 +448,10 @@ var ArWebModule = function () {
         });
         textGeo.computeBoundingBox();
         textGeo.computeVertexNormals();
+        timeLog += end() + " [3] ";
+
+        start();
+
         // textGeo.center();
 
         var text3D = new THREE.Mesh(textGeo, textMaterial);
@@ -456,8 +463,11 @@ var ArWebModule = function () {
         // place geometry at camera's current position
         text3D.position.copy(pos);
         text3D.quaternion.copy(ori);
+        timeLog += end() + " [4] ";
 
-        end();
+
+        Utils.debug(timeLog);
+
         // size: , height: 4, curveSegments: 3,
 
         // try {
