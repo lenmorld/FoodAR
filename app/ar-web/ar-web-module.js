@@ -453,20 +453,20 @@ var ArWebModule = function () {
             var textMaterial = new THREE.MeshFaceMaterial(materialArray);
             var textMesh = new THREE.Mesh(textGeom, textMaterial );
 
-            // textGeom.computeBoundingBox();
-            // textGeom.computeVertexNormals();
-            // var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
-            //
-            // textMesh.position.set( -0.5 * textWidth, 50, 100 );
-            // textMesh.rotation.x = -Math.PI / 4;
+            textGeom.computeBoundingBox();
+            textGeom.computeVertexNormals();
+            var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+
+            textMesh.position.set( -0.5 * textWidth, 50, 100 );
+            textMesh.rotation.x = -Math.PI / 4;
 
             // text3D.position.set(0, 90, 90);
             scene.add(textMesh);
             removable_items.push(textMesh);     // garbage collect 3d objects
 
             // place geometry at camera's current position
-            textMesh.position.copy(pos);
-            textMesh.quaternion.copy(ori);
+            // textMesh.position.copy(pos);
+            // textMesh.quaternion.copy(ori);
         } catch(err) {
             Utils.debug(err.message);
         }
