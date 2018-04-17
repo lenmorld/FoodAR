@@ -50,6 +50,8 @@ https://www.canada.ca/en/health-canada/services/understanding-food-labels/percen
     [ ] change Android icon
     [ ] change app name
 
+[/] improved 3d rendering by half using TextBufferGeometry instead of TextGeometry
+
 DOCU
 
 -> can include brief three.js X,Y,Z axis
