@@ -340,6 +340,29 @@ var ArWebModule = function () {
         try {
             Utils.debug(text + " " + yPos);
 
+            if (!pose) {
+                // Fetch the pose data from the current frame
+                var pose = vrFrameData.pose;
+
+                // Convert the pose orientation and position into
+                // THREE.Quaternion and THREE.Vector3 respectively
+                ori = new THREE.Quaternion(
+                    pose.orientation[0],
+                    pose.orientation[1],
+                    pose.orientation[2],
+                    pose.orientation[3]
+                );
+                pos = new THREE.Vector3(
+                    pose.position[0],
+                    pose.position[1],
+                    pose.position[2]
+                );
+            } else {
+                // use old one
+            }
+
+
+
             var canvas1 = document.createElement('canvas');
             var context1 = canvas1.getContext('2d');
             context1.font = "Bold 40px Arial";
@@ -357,9 +380,13 @@ var ArWebModule = function () {
                 new THREE.PlaneGeometry(canvas1.width, canvas1.height),
                 material1
             );
-            mesh1.position.set(0,0,0);
+            // mesh1.position.set(0,0,0);
             scene.add( mesh1 );
             removable_items.push(mesh1);     // garbage collect 3d objects
+
+            mesh1.position.copy(pos);
+            mesh1.quaternion.copy(ori);
+
         }
 
         catch(err) {
@@ -458,9 +485,9 @@ var ArWebModule = function () {
         //     addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
         // }
 
-        addAR2dText("dasdsa % 123 g", 50);
-        addAR2dText("dasdsa % 123 g", 60);
-        addAR2dText("dasdsa % 123 g", 70);
+        addAR2dText("dasdsa % 123 g", 0.5);
+        addAR2dText("dasdsa % 123 g", 0.6);
+        addAR2dText("dasdsa % 123 g", 0.7);
 
         // callback when done
         done_callback();
