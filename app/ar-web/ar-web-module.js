@@ -61,6 +61,12 @@ var ArWebModule = function () {
     var dirMtx = new THREE.Matrix4();
 
 
+
+    var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+    var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+    var materialArray = [ materialFront, materialSide ];
+
+
     function loadFont() {
         if (!font) {
             loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (_font) {
@@ -303,6 +309,10 @@ var ArWebModule = function () {
 
                 // size: 0.025, height: 0.025
 
+
+
+                /*
+
                 textGeo = new THREE.TextGeometry(ARtext, {
                     font: font,
                     size: size,
@@ -316,14 +326,34 @@ var ArWebModule = function () {
                 Utils.debug("after computing vertex");
 
                 var text3D = new THREE.Mesh(textGeo, textMaterial);
+                */
+
+                var textGeom = new THREE.TextGeometry( "Hello, World!",
+                    {
+                        size: 30, height: 4, curveSegments: 3,
+                        font: font,
+                        // weight: "bold",
+                        // style: "normal",
+                        bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+                        material: 0, extrudeMaterial: 1
+                    });
+
+                var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+                var textMesh = new THREE.Mesh(textGeom, textMaterial );
+
+                textGeom.computeBoundingBox();
+                // var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+
+                // textMesh.position.set( -0.5 * textWidth, 50, 100 );
+                // textMesh.rotation.x = -Math.PI / 4;
 
                 // text3D.position.set(0, 90, 90);
-                scene.add(text3D);
-                removable_items.push(text3D);     // garbage collect 3d objects
+                scene.add(textMesh);
+                removable_items.push(textMesh);     // garbage collect 3d objects
 
                 // place geometry at camera's current position
-                text3D.position.copy(pos);
-                text3D.quaternion.copy(ori);
+                textMesh.position.copy(pos);
+                textMesh.quaternion.copy(ori);
 
             } catch(err) {
                 Utils.debug(err.message);
