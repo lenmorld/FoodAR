@@ -309,7 +309,8 @@ var ArWebModule = function () {
                     height: height
                 });
                 textGeo.computeBoundingBox();
-                textGeo.computeVertexNormals();
+                // textGeo.computeVertexNormals();      // <<<
+
                 // textGeo.center();
 
                 Utils.debug("after computing vertex");
