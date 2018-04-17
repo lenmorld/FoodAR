@@ -361,6 +361,7 @@ var ArWebModule = function () {
 
             textMesh.position.set( -0.5 * textWidth, 50, 100 );
             textMesh.rotation.x = -Math.PI / 4;
+            debugger;
             scene.add(textMesh);
 
             // Utils.debug(text + " " + yPos);
