@@ -454,7 +454,7 @@ var ArWebModule = function () {
             var textMesh = new THREE.Mesh(textGeom, textMaterial );
 
             textGeom.computeBoundingBox();
-            textGeo.computeVertexNormals();
+            textGeom.computeVertexNormals();
             // var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
             //
             // textMesh.position.set( -0.5 * textWidth, 50, 100 );
