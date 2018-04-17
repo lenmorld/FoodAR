@@ -67,4 +67,13 @@ curl -d '{"yield": 1, "ingredients": [{"quantity": 1,
          entire browser freezes, and even gif. spinner stops spinning
          meaning browser is frozen, not just the 3d part
 
+tried stuff here, no avail
+https://stackoverflow.com/questions/15248872/dynamically-create-2d-text-in-three-js?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
+    [x] tried 2d text, didnt work, since cannot create a 2d canvas from ARCore 3d canvas
+    ->  canvas1.getContext('2d');
+
+    http://stemkoski.github.io/Three.js/Texture-From-Canvas.html
+
+
+    [x] tried creating basic mesh with outline, still didnt work

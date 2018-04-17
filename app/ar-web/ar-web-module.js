@@ -361,8 +361,28 @@ var ArWebModule = function () {
         });
     }
 
+    var startTime, endTime;
+    function start() {
+        startTime = new Date();
+    };
+
+    function end() {
+        endTime = new Date();
+        var timeDiff = endTime - startTime; //in ms
+        // strip the ms
+        timeDiff /= 1000;
+
+        // get seconds
+        var seconds = Math.round(timeDiff);
+        // console.log(seconds + " seconds");
+        Utils.debug(seconds + " seconds");
+    }
+
 
     function addAr3dText(ARtext, size, height, Yoffset) {
+
+
+        start();
 
         Utils.debug("rendering 3d " + ARtext);
 
@@ -397,6 +417,8 @@ var ArWebModule = function () {
             pose.position[2]
         );
 
+        end();
+
         dirMtx.makeRotationFromQuaternion(ori);
         // var push = new THREE.Vector3(0, 0, -1.0);
 
@@ -427,14 +449,12 @@ var ArWebModule = function () {
         var text3D = new THREE.Mesh(textGeo, textMaterial);
 
         // text3D.position.set(0, 90, 90);
-        text3D.position.copy(pos);
-        text3D.quaternion.copy(ori);
         scene.add(text3D);
         removable_items.push(text3D);     // garbage collect 3d objects
 
         // place geometry at camera's current position
-        // text3D.position.copy(pos);
-        // text3D.quaternion.copy(ori);
+        text3D.position.copy(pos);
+        text3D.quaternion.copy(ori);
 
         // size: , height: 4, curveSegments: 3,
 
