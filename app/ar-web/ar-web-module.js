@@ -415,24 +415,62 @@ var ArWebModule = function () {
 
         // size: 0.025, height: 0.025
 
-        textGeo = new THREE.TextGeometry(ARtext, {
-            font: font,
-            size: size,
-            height: height
-        });
-        textGeo.computeBoundingBox();
-        textGeo.computeVertexNormals();
-        // textGeo.center();
 
-        var text3D = new THREE.Mesh(textGeo, textMaterial);
 
-        // text3D.position.set(0, 90, 90);
-        scene.add(text3D);
-        removable_items.push(text3D);     // garbage collect 3d objects
+        // textGeo = new THREE.TextGeometry(ARtext, {
+        //     font: font,
+        //     size: size,
+        //     height: height
+        // });
+        // textGeo.computeBoundingBox();
+        // textGeo.computeVertexNormals();
+        // // textGeo.center();
+        //
+        // var text3D = new THREE.Mesh(textGeo, textMaterial);
+        //
+        // // text3D.position.set(0, 90, 90);
+        // scene.add(text3D);
+        // removable_items.push(text3D);     // garbage collect 3d objects
+        //
+        // // place geometry at camera's current position
+        // text3D.position.copy(pos);
+        // text3D.quaternion.copy(ori);
 
-        // place geometry at camera's current position
-        text3D.position.copy(pos);
-        text3D.quaternion.copy(ori);
+        // size: , height: 4, curveSegments: 3,
+
+
+        try {
+            var textGeom = new THREE.TextGeometry(ARtext,
+                {
+                    size: size, height: height,
+                    font: font,
+                    // weight: "bold",
+                    // style: "normal",
+                    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+                    material: 0, extrudeMaterial: 1
+                });
+
+            var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+            var textMesh = new THREE.Mesh(textGeom, textMaterial );
+
+            textGeom.computeBoundingBox();
+            // var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+            //
+            // textMesh.position.set( -0.5 * textWidth, 50, 100 );
+            // textMesh.rotation.x = -Math.PI / 4;
+
+            // text3D.position.set(0, 90, 90);
+            scene.add(textMesh);
+            removable_items.push(textMesh);     // garbage collect 3d objects
+
+            // place geometry at camera's current position
+            textMesh.position.copy(pos);
+            textMesh.quaternion.copy(ori);
+        } catch(err) {
+            Utils.debug(err.message);
+        }
+
+
     }
 
     function render3dArText(food_name, nutr_list, done_callback) {
