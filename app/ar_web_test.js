@@ -18,7 +18,7 @@
     can avoid IIFE at the end, so it will become constructor
  */
 
-var ArWebModule = function () {
+var ArWebModule2 = function () {
     var vrDisplay, vrFrameData, vrControls, arView;
     var canvas, camera, scene, renderer;
     var BOX_DISTANCE = 1.5;
@@ -331,38 +331,7 @@ var ArWebModule = function () {
     }
 
 
-    function addAR2dText(text, yPos) {
-        /////// draw text on canvas /////////
-
-        // create a canvas element
-        // var canvas1 = document.createElement('canvas');
-
-        var context1 = canvas1.getContext('2d');
-        context1.font = "Bold 40px Arial";
-        context1.fillStyle = "rgba(255,0,0,0.95)";
-        context1.fillText(text, 0, yPos);
-
-        // canvas contents will be used for a texture
-        var texture1 = new THREE.Texture(canvas1);
-        texture1.needsUpdate = true;
-
-        var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
-        material1.transparent = true;
-
-        var mesh1 = new THREE.Mesh(
-            new THREE.PlaneGeometry(canvas1.width, canvas1.height),
-            material1
-        );
-        mesh1.position.set(0,0,0);
-        scene.add( mesh1 );
-        removable_items.push(mesh1);     // garbage collect 3d objects
-    }
-
-
-
     function addAr3dText(ARtext, size, height, Yoffset) {
-
-        Utils.debug("rendering 3d " + ARtext);
 
         // if scene and camera not ready yet
         if (!canAddARObjectsAlready) {
@@ -435,24 +404,18 @@ var ArWebModule = function () {
 
     function render3dArText(food_name, nutr_list, done_callback) {
 
-        // addAr3dText(food_name, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
-        //
-        // for (var i=0; i < nutr_list.length; i++) {
-        //
-        //     // FoodItemName is at 0.5, give
-        //     // start at 0.35, then go down with 0.10 increments
-        //
-        //     // calculate offset based on current index
-        //     var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
-        //     addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
-        // }
+        addAr3dText(food_name, ARfoodItemNameSize, ARfoodItemNameHeight, ARfoodItemNameYposition);
 
-        addAR2dText("dasdsa % 123 g", 50);
-        addAR2dText("dasdsa % 123 g", 60);
-        addAR2dText("dasdsa % 123 g", 70);
+        for (var i=0; i < nutr_list.length; i++) {
 
-        // callback when done
-        done_callback();
+            // FoodItemName is at 0.5, give
+            // start at 0.35, then go down with 0.10 increments
+
+            // calculate offset based on current index
+            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
+            addAr3dText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
+        }
+
     }
 
 
@@ -561,7 +524,7 @@ var ArWebModule = function () {
     function cleanARcontent() {
         if (removable_items.length >0) {
             removable_items.forEach(function(v,i) {
-               v.parent.remove(v);
+                v.parent.remove(v);
             });
             removable_items = [];
         }
@@ -577,6 +540,10 @@ var ArWebModule = function () {
         cleanARcontent: cleanARcontent,
         render3DTextGroup: render3DTextGroup,
         loadFont: loadFont,
-        render3dArText: render3dArText
+        render3dArText: render3dArText,
+        addAr3dText: addAr3dText
     };
 }();
+
+
+ArWebModule2.addAr3dText("haha", 0.1, 0.1, 0.5);

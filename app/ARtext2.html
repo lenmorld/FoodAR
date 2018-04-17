@@ -174,6 +174,10 @@
 
         scene.add( group );
 
+
+
+
+
         loadFont();
 
 //        var plane = new THREE.Mesh(
@@ -344,74 +348,104 @@
 
     function createText() {
 
-        textGeo = new THREE.TextGeometry( "lenny", {
-            font: font,
-            size: 20,
-            height: 10,
-//            curveSegments: curveSegments,
+//        textGeo = new THREE.TextGeometry( "lenny", {
+//            font: font,
+//            size: 20,
+//            height: 10,
+////            curveSegments: curveSegments,
+//
+////            bevelThickness: bevelThickness,
+////            bevelSize: bevelSize,
+////            bevelEnabled: bevelEnabled
+//        });
+//
+//        textGeo.computeBoundingBox();
+//        textGeo.computeVertexNormals();
+//
+//        // "fix" side normals by removing z-component of normals for side faces
+//        // (this doesn't work well for beveled geometry as then we lose nice curvature around z-axis)
+//
+////        if ( ! bevelEnabled ) {
+////
+////            var triangleAreaHeuristics = 0.1 * ( height * size );
+////
+////            for ( var i = 0; i < textGeo.faces.length; i ++ ) {
+////
+////                var face = textGeo.faces[ i ];
+////
+////                if ( face.materialIndex == 1 ) {
+////
+////                    for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
+////
+////                        face.vertexNormals[ j ].z = 0;
+////                        face.vertexNormals[ j ].normalize();
+////
+////                    }
+////
+////                    var va = textGeo.vertices[ face.a ];
+////                    var vb = textGeo.vertices[ face.b ];
+////                    var vc = textGeo.vertices[ face.c ];
+////
+////                    var s = THREE.GeometryUtils.triangleArea( va, vb, vc );
+////
+////                    if ( s > triangleAreaHeuristics ) {
+////
+////                        for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
+////
+////                            face.vertexNormals[ j ].copy( face.normal );
+////
+////                        }
+////
+////                    }
+////
+////                }
+////
+////            }
+////
+////        }
+//
+//        var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+//
+//        textMesh1 = new THREE.Mesh( textGeo, materials );
+//
+//        textMesh1.position.x = centerOffset;
+//        textMesh1.position.y = hover;
+//        textMesh1.position.z = 0;
+//
+//        textMesh1.rotation.x = 0;
+//        textMesh1.rotation.y = Math.PI * 2;
+//
+//        group.add( textMesh1 );
 
-//            bevelThickness: bevelThickness,
-//            bevelSize: bevelSize,
-//            bevelEnabled: bevelEnabled
-        });
 
-        textGeo.computeBoundingBox();
-        textGeo.computeVertexNormals();
+        /***/
+        /////// draw text on canvas /////////
 
-        // "fix" side normals by removing z-component of normals for side faces
-        // (this doesn't work well for beveled geometry as then we lose nice curvature around z-axis)
+        // create a canvas element
+        var canvas1 = document.createElement('canvas');
+        var context1 = canvas1.getContext('2d');
+        context1.font = "Bold 40px Arial";
+        context1.fillStyle = "rgba(255,0,0,0.95)";
+        context1.fillText('Hello, world!', 10, 10);
 
-//        if ( ! bevelEnabled ) {
-//
-//            var triangleAreaHeuristics = 0.1 * ( height * size );
-//
-//            for ( var i = 0; i < textGeo.faces.length; i ++ ) {
-//
-//                var face = textGeo.faces[ i ];
-//
-//                if ( face.materialIndex == 1 ) {
-//
-//                    for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-//
-//                        face.vertexNormals[ j ].z = 0;
-//                        face.vertexNormals[ j ].normalize();
-//
-//                    }
-//
-//                    var va = textGeo.vertices[ face.a ];
-//                    var vb = textGeo.vertices[ face.b ];
-//                    var vc = textGeo.vertices[ face.c ];
-//
-//                    var s = THREE.GeometryUtils.triangleArea( va, vb, vc );
-//
-//                    if ( s > triangleAreaHeuristics ) {
-//
-//                        for ( var j = 0; j < face.vertexNormals.length; j ++ ) {
-//
-//                            face.vertexNormals[ j ].copy( face.normal );
-//
-//                        }
-//
-//                    }
-//
-//                }
-//
-//            }
-//
-//        }
+        // canvas contents will be used for a texture
+        var texture1 = new THREE.Texture(canvas1);
+        texture1.needsUpdate = true;
 
-        var centerOffset = -0.5 * ( textGeo.boundingBox.max.x - textGeo.boundingBox.min.x );
+        var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
+        material1.transparent = true;
 
-        textMesh1 = new THREE.Mesh( textGeo, materials );
+        var mesh1 = new THREE.Mesh(
+            new THREE.PlaneGeometry(canvas1.width, canvas1.height),
+            material1
+        );
+        mesh1.position.set(0,0,0);
+        scene.add( mesh1 );
 
-        textMesh1.position.x = centerOffset;
-        textMesh1.position.y = hover;
-        textMesh1.position.z = 0;
 
-        textMesh1.rotation.x = 0;
-        textMesh1.rotation.y = Math.PI * 2;
+        /***/
 
-        group.add( textMesh1 );
+
 
 //        scene.add(textGeo);
 
