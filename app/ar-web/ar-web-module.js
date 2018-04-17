@@ -363,6 +363,19 @@ var ArWebModule = function () {
                 // use old one
             }
 
+
+            dirMtx.makeRotationFromQuaternion(ori);
+            // var push = new THREE.Vector3(0, 0, -1.0);
+
+            var push = new THREE.Vector3(x, y, z);
+            // var push = new THREE.Vector3(-0.5, 0, -0.5);
+
+            push.transformDirection(dirMtx);
+
+            // var scale = 0.125
+            var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
+            pos.addScaledVector(push, scale);
+
             var canvas1 = document.createElement('canvas');
             var context1 = canvas1.getContext('2d');
 
