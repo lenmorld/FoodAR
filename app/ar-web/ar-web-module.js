@@ -338,70 +338,95 @@ var ArWebModule = function () {
         // var canvas1 = document.createElement('canvas');
 
         try {
-            Utils.debug(text + " " + yPos);
 
-            var pose, ori, pos;
+            // add 3D text
+            var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+            var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
+            var materialArray = [ materialFront, materialSide ];
+            var textGeom = new THREE.TextGeometry( "Hello, World!",
+                {
+                    size: 30, height: 4, curveSegments: 3,
+                    font: "helvetiker", weight: "bold", style: "normal",
+                    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+                    material: 0, extrudeMaterial: 1
+                });
+            // font: helvetiker, gentilis, droid sans, droid serif, optimer
+            // weight: normal, bold
 
-            if (!pose) {
-                // Fetch the pose data from the current frame
-                var pose = vrFrameData.pose;
+            var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+            var textMesh = new THREE.Mesh(textGeom, textMaterial );
 
-                // Convert the pose orientation and position into
-                // THREE.Quaternion and THREE.Vector3 respectively
-                ori = new THREE.Quaternion(
-                    pose.orientation[0],
-                    pose.orientation[1],
-                    pose.orientation[2],
-                    pose.orientation[3]
-                );
-                pos = new THREE.Vector3(
-                    pose.position[0],
-                    pose.position[1],
-                    pose.position[2]
-                );
-            } else {
-                // use old one
-            }
+            textGeom.computeBoundingBox();
+            var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
 
+            textMesh.position.set( -0.5 * textWidth, 50, 100 );
+            textMesh.rotation.x = -Math.PI / 4;
+            scene.add(textMesh);
 
-            dirMtx.makeRotationFromQuaternion(ori);
-            // var push = new THREE.Vector3(0, 0, -1.0);
-
-            var push = new THREE.Vector3(x, y, z);
-            // var push = new THREE.Vector3(-0.5, 0, -0.5);
-
-            push.transformDirection(dirMtx);
-
-            // var scale = 0.125
-            var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
-            pos.addScaledVector(push, scale);
-
-            var canvas1 = document.createElement('canvas');
-            var context1 = canvas1.getContext('2d');
-
-            Utils.debug(context1);
-
-            context1.font = "Bold 40px Arial";
-            context1.fillStyle = "rgba(255,0,0,0.95)";
-            context1.fillText(text, 0, yPos);
-
-            // canvas contents will be used for a texture
-            var texture1 = new THREE.Texture(canvas1);
-            texture1.needsUpdate = true;
-
-            var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
-            material1.transparent = true;
-
-            var mesh1 = new THREE.Mesh(
-                new THREE.PlaneGeometry(canvas1.width, canvas1.height),
-                material1
-            );
-            // mesh1.position.set(0,0,0);
-            scene.add( mesh1 );
-            removable_items.push(mesh1);     // garbage collect 3d objects
-
-            mesh1.position.copy(pos);
-            mesh1.quaternion.copy(ori);
+            // Utils.debug(text + " " + yPos);
+            //
+            // var pose, ori, pos;
+            //
+            // if (!pose) {
+            //     // Fetch the pose data from the current frame
+            //     var pose = vrFrameData.pose;
+            //
+            //     // Convert the pose orientation and position into
+            //     // THREE.Quaternion and THREE.Vector3 respectively
+            //     ori = new THREE.Quaternion(
+            //         pose.orientation[0],
+            //         pose.orientation[1],
+            //         pose.orientation[2],
+            //         pose.orientation[3]
+            //     );
+            //     pos = new THREE.Vector3(
+            //         pose.position[0],
+            //         pose.position[1],
+            //         pose.position[2]
+            //     );
+            // } else {
+            //     // use old one
+            // }
+            //
+            //
+            // dirMtx.makeRotationFromQuaternion(ori);
+            // // var push = new THREE.Vector3(0, 0, -1.0);
+            //
+            // var push = new THREE.Vector3(x, y, z);
+            // // var push = new THREE.Vector3(-0.5, 0, -0.5);
+            //
+            // push.transformDirection(dirMtx);
+            //
+            // // var scale = 0.125
+            // var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
+            // pos.addScaledVector(push, scale);
+            //
+            // var canvas1 = document.createElement('canvas');
+            // var context1 = canvas1.getContext('2d');
+            //
+            // Utils.debug(context1);
+            //
+            // context1.font = "Bold 40px Arial";
+            // context1.fillStyle = "rgba(255,0,0,0.95)";
+            // context1.fillText(text, 0, yPos);
+            //
+            // // canvas contents will be used for a texture
+            // var texture1 = new THREE.Texture(canvas1);
+            // texture1.needsUpdate = true;
+            //
+            // var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
+            // material1.transparent = true;
+            //
+            // var mesh1 = new THREE.Mesh(
+            //     new THREE.PlaneGeometry(canvas1.width, canvas1.height),
+            //     material1
+            // );
+            // // mesh1.position.set(0,0,0);
+            // scene.add( mesh1 );
+            // removable_items.push(mesh1);     // garbage collect 3d objects
+            //
+            // mesh1.position.copy(pos);
+            // mesh1.quaternion.copy(ori);
 
         }
 
