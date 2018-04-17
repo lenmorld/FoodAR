@@ -431,6 +431,7 @@ var ArWebModule = function () {
         }
 
         catch(err) {
+            Utils.debug(err);
             Utils.smartLog([err.message]);
         }
 
