@@ -41,7 +41,7 @@ var ArWebModule = function () {
     var ARnutritionInfoYposition = ARfoodItemNameYposition - 0.20;      // start NutritionInfo at 0.30
 
     var ARnutritionInfoItemSize = 0.005;
-    var ARnutritionInfoItemHeight = 0.005;
+    var ARnutritionInfoItemHeight = 0.003;
     var ARnutritionInfoItemYoffset = 0.08;              // give each item 0.10 space
 
     var loader = new THREE.FontLoader();
@@ -415,61 +415,59 @@ var ArWebModule = function () {
 
         // size: 0.025, height: 0.025
 
+        textGeo = new THREE.TextGeometry(ARtext, {
+            font: font,
+            size: size,
+            height: height
+        });
+        textGeo.computeBoundingBox();
+        textGeo.computeVertexNormals();
+        // textGeo.center();
 
+        var text3D = new THREE.Mesh(textGeo, textMaterial);
 
-        // textGeo = new THREE.TextGeometry(ARtext, {
-        //     font: font,
-        //     size: size,
-        //     height: height
-        // });
-        // textGeo.computeBoundingBox();
-        // textGeo.computeVertexNormals();
-        // // textGeo.center();
-        //
-        // var text3D = new THREE.Mesh(textGeo, textMaterial);
-        //
-        // // text3D.position.set(0, 90, 90);
-        // scene.add(text3D);
-        // removable_items.push(text3D);     // garbage collect 3d objects
-        //
-        // // place geometry at camera's current position
-        // text3D.position.copy(pos);
-        // text3D.quaternion.copy(ori);
+        // text3D.position.set(0, 90, 90);
+        scene.add(text3D);
+        removable_items.push(text3D);     // garbage collect 3d objects
+
+        // place geometry at camera's current position
+        text3D.position.copy(pos);
+        text3D.quaternion.copy(ori);
 
         // size: , height: 4, curveSegments: 3,
 
 
-        try {
-            var textGeom = new THREE.TextGeometry(ARtext,
-                {
-                    size: size, height: height,
-                    font: font,
-                    // weight: "bold",
-                    // style: "normal",
-                    bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-                    material: 0, extrudeMaterial: 1
-                });
-
-            var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-            var textMesh = new THREE.Mesh(textGeom, textMaterial );
-
-            textGeom.computeBoundingBox();
-            textGeom.computeVertexNormals();
-            var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
-
-            textMesh.position.set( -0.5 * textWidth, 50, 100 );
-            textMesh.rotation.x = -Math.PI / 4;
-
-            // text3D.position.set(0, 90, 90);
-            scene.add(textMesh);
-            removable_items.push(textMesh);     // garbage collect 3d objects
-
-            // place geometry at camera's current position
-            // textMesh.position.copy(pos);
-            // textMesh.quaternion.copy(ori);
-        } catch(err) {
-            Utils.debug(err.message);
-        }
+        // try {
+        //     var textGeom = new THREE.TextGeometry(ARtext,
+        //         {
+        //             size: size, height: height,
+        //             font: font,
+        //             // weight: "bold",
+        //             // style: "normal",
+        //             bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
+        //             material: 0, extrudeMaterial: 1
+        //         });
+        //
+        //     var textMaterial = new THREE.MeshFaceMaterial(materialArray);
+        //     var textMesh = new THREE.Mesh(textGeom, textMaterial );
+        //
+        //     textGeom.computeBoundingBox();
+        //     textGeom.computeVertexNormals();
+        //     var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
+        //
+        //     textMesh.position.set( -0.5 * textWidth, 50, 100 );
+        //     textMesh.rotation.x = -Math.PI / 4;
+        //
+        //     // text3D.position.set(0, 90, 90);
+        //     scene.add(textMesh);
+        //     removable_items.push(textMesh);     // garbage collect 3d objects
+        //
+        //     // place geometry at camera's current position
+        //     // textMesh.position.copy(pos);
+        //     // textMesh.quaternion.copy(ori);
+        // } catch(err) {
+        //     Utils.debug(err.message);
+        // }
 
 
     }
