@@ -60,8 +60,6 @@ var ArWebModule = function () {
     // var textMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );       // basic material is just flat, hard to read 3d
     var dirMtx = new THREE.Matrix4();
 
-
-
     var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
     var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
     var materialArray = [ materialFront, materialSide ];
@@ -370,20 +368,11 @@ var ArWebModule = function () {
         endTime = new Date();
         var timeDiff = endTime - startTime; //in ms
         return timeDiff;
-        // strip the ms
-        // timeDiff /= 1000;
-
-        // get seconds
-        // var seconds = Math.round(timeDiff);
-        // console.log(seconds + " seconds");
-        // Utils.debug(timeDiff + " ms");
     }
 
 
     function addAr3dText(ARtext, size, height, Yoffset) {
-
         var timeLog = "";
-
         // Utils.debug("rendering 3d " + ARtext);
         start();
         // if scene and camera not ready yet
@@ -394,15 +383,11 @@ var ArWebModule = function () {
         // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
         var x=-0.25, y= 0 + Yoffset, z=-1.0;
 
-        // var font = response;
-        // refreshText();
-
         // TODO: pose data can be reused? NO IT CANT
         // since frame is same anyways and taken already
 
         // Fetch the pose data from the current frame
         var pose = vrFrameData.pose;
-
         // Convert the pose orientation and position into
         // THREE.Quaternion and THREE.Vector3 respectively
         var ori = new THREE.Quaternion(
@@ -418,19 +403,14 @@ var ArWebModule = function () {
         );
         timeLog += end() + " [1] ";
 
-
         start();
         dirMtx.makeRotationFromQuaternion(ori);
         // var push = new THREE.Vector3(0, 0, -1.0);
-
         var push = new THREE.Vector3(x, y, z);
         // var push = new THREE.Vector3(-0.5, 0, -0.5);
-
         push.transformDirection(dirMtx);
         pos.addScaledVector(push, scale);
         timeLog += end() + " [2] ";
-
-        start();
 
         // Clone our cube object and place it at the camera's
         // current position
@@ -441,19 +421,21 @@ var ArWebModule = function () {
 
         // size: 0.025, height: 0.025
 
+        start();
         textGeo = new THREE.TextGeometry(ARtext, {
             font: font,
             size: size,
             height: height
         });
-        textGeo.computeBoundingBox();
-        textGeo.computeVertexNormals();
-        timeLog += end() + " [3] ";
+        timeLog += end() + " [3.1] ";
 
         start();
+        textGeo.computeBoundingBox();
+        textGeo.computeVertexNormals();
+        timeLog += end() + " [3.2] ";             // SLOWEST BLOCK >>> takes 1.4 seconds per line
 
+        start();
         // textGeo.center();
-
         var text3D = new THREE.Mesh(textGeo, textMaterial);
 
         // text3D.position.set(0, 90, 90);
@@ -464,7 +446,6 @@ var ArWebModule = function () {
         text3D.position.copy(pos);
         text3D.quaternion.copy(ori);
         timeLog += end() + " [4] ";
-
 
         Utils.debug(timeLog);
 
