@@ -382,7 +382,7 @@ var ArWebModule = function () {
     function addAr3dText(ARtext, size, height, Yoffset) {
 
 
-        start();
+
 
         Utils.debug("rendering 3d " + ARtext);
 
@@ -417,8 +417,9 @@ var ArWebModule = function () {
             pose.position[2]
         );
 
-        end();
 
+
+        start();
         dirMtx.makeRotationFromQuaternion(ori);
         // var push = new THREE.Vector3(0, 0, -1.0);
 
@@ -456,6 +457,7 @@ var ArWebModule = function () {
         text3D.position.copy(pos);
         text3D.quaternion.copy(ori);
 
+        end();
         // size: , height: 4, curveSegments: 3,
 
         // try {
