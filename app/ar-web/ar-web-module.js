@@ -21,9 +21,6 @@
 var ArWebModule = function () {
     var vrDisplay, vrFrameData, vrControls, arView;
     var canvas, camera, scene, renderer;
-    var BOX_DISTANCE = 1.5;
-    var BOX_SIZE = 0.25;
-    var BOX_QUANTITY = 6;
     var boxesAdded = false;
 
     var removable_items = [];
@@ -72,9 +69,6 @@ var ArWebModule = function () {
             });
         }
     }
-
-
-    var objectsToRender = 0;
 
 
     function setCaptureFoodItemStatus(bool) {
@@ -224,19 +218,6 @@ var ArWebModule = function () {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    function addBoxes () {
-        // Create some cubes around the origin point
-        for (var i = 0; i < BOX_QUANTITY; i++) {
-            var angle = Math.PI * 2 * (i / BOX_QUANTITY);
-            var geometry = new THREE.BoxGeometry(BOX_SIZE, BOX_SIZE, BOX_SIZE);
-            var material = new THREE.MeshNormalMaterial();
-            var cube = new THREE.Mesh(geometry, material);
-            cube.position.set(Math.cos(angle) * BOX_DISTANCE, camera.position.y - 0.25, Math.sin(angle) * BOX_DISTANCE);
-            scene.add(cube);
-            removable_items.push(cube);     // garbage collect 3d objects
-        }
     }
 
     /*
