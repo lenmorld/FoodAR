@@ -17,17 +17,14 @@ var EdamamModule = function () {
             data: JSON.stringify({"query": searchString}),
             type: 'POST',
             success: function (data) {
-                Utils.smartLog(["[edamam_api_calls]", data]);
-
                 if (data.parsed[0]) {
                     success_callback(data.parsed[0].food.uri);
                 } else {
-                    failure_callback(previousKeyword, "no nutrition info found on food [edamam 1]");
+                    failure_callback(previousKeyword, "[edmamam_food_search_failure]", 4000);
                 }
             },
             error : function(xhr, status, exception){
-                Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
-                failure_callback(status + " " + exception);
+                failure_callback(previousKeyword, status + " " + exception, 2200);
             }
         });
     }
@@ -43,38 +40,16 @@ var EdamamModule = function () {
 
                 var json_data = JSON.parse(data);
 
-                // Utils.smartLog("[edamam_api_calls]", json_data);
-
-                // totalNutrients is what we need
-                // check if at least one of the required nutrients is in the result object
-
-                Utils.debug("[processing nutrient fetch json_data]");
+                // totalNutrients is what we need, check if at least one nutrient
 
                 if (Object.keys(json_data.totalNutrients).length) {
-                    // debugger;
-
-                    Utils.debug("[checking total nutrients]");
-
-                    /*
-                        disable this check for now, its better to have the calling function decide
-                        on which nutrients to display
-                     */
-
-                    // var requiredNutrientsReturned = Utils.getCommon(Object.keys(json_data.totalNutrients), nutrientsForDisplay);
-
-                    // if (requiredNutrientsReturned.length) {
-                        success_callback(json_data);
-                    // } else {
-                    //     failure_callback(previousKeyword, "No nutrient info found for food");
-                    // }
-
+                    success_callback(json_data);
                 } else {
-                    failure_callback(previousKeyword, "No match in nutrient database [edamam 2]");
+                    failure_callback(previousKeyword, "[edmamam_nutrient_fetch_failure]", 4001);
                 }
             },
             error : function(xhr, status, exception){
-                Utils.smartLog(["[edamam_api_calls]", status + " " + exception]);
-                failure_callback(previousKeyword, status + " " + exception);
+                failure_callback(previousKeyword, status + " " + exception, 2300);
             }
         });
     }

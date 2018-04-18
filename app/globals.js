@@ -5,7 +5,7 @@
 var LOGS_VIEW = document.getElementById('logs');
 var DEBUG_VIEW = document.getElementById('debug');
 
-var DEV_MODE = false;
+var DEV_MODE = false;        // if true, display stuff in Browser DOM instead of AR
 
 var PROD_RELEASE_MODE = true;
 

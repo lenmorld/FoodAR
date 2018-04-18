@@ -31,11 +31,23 @@ var Utils = function () {
             DEBUG_VIEW.innerHTML = msg;
     }
 
-    function errorHandler(code) {
+    function errorHandler(msg, code) {
+        if (code < 3000) {      // serious codes: log to user for "ticket" submission to Dev
+            LOGS_VIEW.innerHTML = "Error code:" + code;
+            DEBUG_VIEW.innerHTML = msg;
+        } else {
+            debug(msg);
+        }
+
 
         /*
+                No internet: 100
+
                Clarifai Error on image recognition: Error 2000
                Clarifai Error on image recognition: Error 2001
+
+               Edamam 2200 : XHR error on food_search
+               Edamam 2300 : XHR error on nutrients_fetch
 
                Edamam error on searching food to get food uri  Error 4000
                Edamam error on getting nutrition info of food uri Error 4001

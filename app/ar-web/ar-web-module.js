@@ -27,6 +27,16 @@ var ArWebModule = function () {
 
     /* 3dtext stuff */
 
+    /*
+    banana                      0.50
+                                            0.15 3d text height - FoodItemName
+                                                a bit of space of margin between them
+    carbs = 10 % 100 g          0.35        0.10 3d text height - NutirionInfo
+    ...                         0.25
+    ...
+
+     */
+
     // var pose = null, ori = null, pos = null;
     var ARfoodItemNameYposition = 0.45;       // make it close to the top, to give space for the NutritionInfo
     // 0.25, a bit higher than middle, 0 is middle
@@ -56,10 +66,6 @@ var ArWebModule = function () {
     var textMaterial = new THREE.MeshNormalMaterial();
     // var textMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );       // basic material is just flat, hard to read 3d
     var dirMtx = new THREE.Matrix4();
-
-    var materialFront = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
-    var materialSide = new THREE.MeshBasicMaterial( { color: 0x000088 } );
-    var materialArray = [ materialFront, materialSide ];
 
 
     function loadFont() {
@@ -102,8 +108,6 @@ var ArWebModule = function () {
 
     function checkArBrowser() {
         if (hasGetUserMedia()) {
-            // alert("AR is ready!");
-            // Good to go!
             return true;
         } else {
             return false;
@@ -149,14 +153,7 @@ var ArWebModule = function () {
 
         // Bind our event handlers
         window.addEventListener('resize', onWindowResize, false);
-
-        /*
-        // +++ can add a touch even here, but is not very practical the way the spawned objects appear with the
-        // food item to be captured
-        // touchstart Event  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
-        // USE THIS or ANALYZE_BUTTON?
         // canvas.addEventListener('touchstart', addArText, false);
-        */
 
         // Kick off the render loop!
         update();
@@ -190,8 +187,6 @@ var ArWebModule = function () {
         // and the camera's Y position is not undefined or 0, create boxes
         if (!boxesAdded && !camera.position.y) {
             canAddARObjectsAlready = true;
-            // addBoxes();           // SUPPRESS THE BOXES FOR NOW
-            // addText();
         }
 
         // Render our three.js virtual scene
@@ -223,122 +218,6 @@ var ArWebModule = function () {
     /*
         do this everytime there is an update of FoodItemName and NutritionInfo
      */
-    function addArText(ARtext, size, height, Yoffset) {
-
-        Utils.debug("rendering 3d " + ARtext);
-
-        // if scene and camera not ready yet
-        if (!canAddARObjectsAlready) {
-            return;
-        }
-
-        // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
-        var x=-0.25, y= 0 + Yoffset, z=-1.0;
-
-        var loader = new THREE.FontLoader();
-        loader.load('AR/third_party/fonts/optimer_bold.typeface.json', function (font) {
-            Utils.debug("loading font");
-            try {
-                Utils.debug("font loaded");
-
-                // var font = response;
-                // refreshText();
-
-                // TODO: pose data can be reused? since frame is same anyways and taken already
-
-                if (!pose) {
-                    // Fetch the pose data from the current frame
-                    var pose = vrFrameData.pose;
-
-                    // Convert the pose orientation and position into
-                    // THREE.Quaternion and THREE.Vector3 respectively
-                    ori = new THREE.Quaternion(
-                        pose.orientation[0],
-                        pose.orientation[1],
-                        pose.orientation[2],
-                        pose.orientation[3]
-                    );
-                    pos = new THREE.Vector3(
-                        pose.position[0],
-                        pose.position[1],
-                        pose.position[2]
-                    );
-                } else {
-                    // use old one
-                }
-
-                dirMtx.makeRotationFromQuaternion(ori);
-                // var push = new THREE.Vector3(0, 0, -1.0);
-
-                var push = new THREE.Vector3(x, y, z);
-                // var push = new THREE.Vector3(-0.5, 0, -0.5);
-
-                push.transformDirection(dirMtx);
-
-                // var scale = 0.125
-                var scale = 0.125;        // smaller -> inwards, bigger -> outwards  from camera
-                pos.addScaledVector(push, scale);
-
-                // Clone our cube object and place it at the camera's
-                // current position
-                // var clone = cube.clone();
-                // scene.add(clone);
-                // clone.position.copy(pos);
-                // clone.quaternion.copy(ori);
-
-                // size: 0.025, height: 0.025
-
-
-
-                /*
-
-                textGeo = new THREE.TextGeometry(ARtext, {
-                    font: font,
-                    size: size,
-                    height: height
-                });
-                textGeo.computeBoundingBox();
-                textGeo.computeVertexNormals();      // <<<
-
-                // textGeo.center();
-
-                Utils.debug("after computing vertex");
-
-                var text3D = new THREE.Mesh(textGeo, textMaterial);
-                */
-
-                var textGeom = new THREE.TextGeometry( "Hello, World!",
-                    {
-                        size: 30, height: 4, curveSegments: 3,
-                        font: font,
-                        // weight: "bold",
-                        // style: "normal",
-                        bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-                        material: 0, extrudeMaterial: 1
-                    });
-
-                var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-                var textMesh = new THREE.Mesh(textGeom, textMaterial );
-
-                textGeom.computeBoundingBox();
-                var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
-
-                textMesh.position.set( -0.5 * textWidth, 50, 100 );
-                textMesh.rotation.x = -Math.PI / 4;
-
-                // text3D.position.set(0, 90, 90);
-                scene.add(textMesh);
-                removable_items.push(textMesh);     // garbage collect 3d objects
-
-                // place geometry at camera's current position
-                // textMesh.position.copy(pos);
-                // textMesh.quaternion.copy(ori);
-
-            } catch(err) {
-                Utils.debug(err.message);
-            }
-        });
-    }
 
     var startTime, endTime;
     function start() {
@@ -350,7 +229,6 @@ var ArWebModule = function () {
         var timeDiff = endTime - startTime; //in ms
         return timeDiff;
     }
-
 
     function addAr3dText(ARtext, size, height, Yoffset) {
         var timeLog = "";
@@ -393,14 +271,6 @@ var ArWebModule = function () {
         pos.addScaledVector(push, scale);
         timeLog += end() + " [2] ";
 
-        // Clone our cube object and place it at the camera's
-        // current position
-        // var clone = cube.clone();
-        // scene.add(clone);
-        // clone.position.copy(pos);
-        // clone.quaternion.copy(ori);
-
-        // size: 0.025, height: 0.025
 
         start();
         // TextGeometry
@@ -430,40 +300,6 @@ var ArWebModule = function () {
         timeLog += end() + " [4] ";
 
         Utils.debug(timeLog);
-
-        // size: , height: 4, curveSegments: 3,
-
-        // try {
-        //     var textGeom = new THREE.TextGeometry(ARtext,
-        //         {
-        //             size: size, height: height,
-        //             font: font,
-        //             // weight: "bold",
-        //             // style: "normal",
-        //             bevelThickness: 1, bevelSize: 2, bevelEnabled: true,
-        //             material: 0, extrudeMaterial: 1
-        //         });
-        //
-        //     var textMaterial = new THREE.MeshFaceMaterial(materialArray);
-        //     var textMesh = new THREE.Mesh(textGeom, textMaterial );
-        //
-        //     textGeom.computeBoundingBox();
-        //     textGeom.computeVertexNormals();
-        //     var textWidth = textGeom.boundingBox.max.x - textGeom.boundingBox.min.x;
-        //
-        //     textMesh.position.set( -0.5 * textWidth, 50, 100 );
-        //     textMesh.rotation.x = -Math.PI / 4;
-        //
-        //     // text3D.position.set(0, 90, 90);
-        //     scene.add(textMesh);
-        //     removable_items.push(textMesh);     // garbage collect 3d objects
-        //
-        //     // place geometry at camera's current position
-        //     // textMesh.position.copy(pos);
-        //     // textMesh.quaternion.copy(ori);
-        // } catch(err) {
-        //     Utils.debug(err.message);
-        // }
     }
 
     function render3dArText(food_name, nutr_list, done_callback) {
@@ -485,108 +321,6 @@ var ArWebModule = function () {
     }
 
 
-    function render3DTextGroup(food_name, nutr_list) {
-
-        // loadFont();
-
-        Utils.smartLog([food_name]);
-        Utils.smartLog(nutr_list);
-
-        Utils.debug("rendering 3d ");
-
-        // if scene and camera not ready yet
-        if (!canAddARObjectsAlready) {
-            return;
-        }
-
-        // y=0 for exact middle, x=-0.25 and z=-1.0 very good center for Pixel
-        // var x=-0.25, y= 0 + Yoffset, z=-1.0;
-        var x=-0.25, z=-1.0;
-
-        // get pose only if not set yet
-        if (!pose) {
-            Utils.smartLog(["pose not set"]);
-            // Fetch the pose data from the current frame
-            pose = vrFrameData.pose;
-
-            // Convert the pose orientation and position into
-            // THREE.Quaternion and THREE.Vector3 respectively
-            ori = new THREE.Quaternion(
-                pose.orientation[0],
-                pose.orientation[1],
-                pose.orientation[2],
-                pose.orientation[3]
-            );
-            pos = new THREE.Vector3(
-                pose.position[0],
-                pose.position[1],
-                pose.position[2]
-            );
-
-            dirMtx.makeRotationFromQuaternion(ori);
-        } else {
-            Utils.smartLog(["pose set"]);
-        }
-
-        // AR 3d text must be rendered indiv. with proper offset Y so they would stack
-        // up properly in screen
-
-        // render FOOD ITEM NAME
-
-
-        // render NUTRITION_INFO
-
-        for (var i=0; i < nutr_list.length; i++) {
-            // FoodItemName is at 0.5, give
-            // start at 0.35, then go down with 0.10 increments
-
-            // calculate offset based on current index
-            var Yoffset = ARnutritionInfoYposition - (i*ARnutritionInfoItemYoffset);
-            var y= 0 + Yoffset;
-
-            // ArWebModule.addArText(nutr_list[i], ARnutritionInfoItemSize, ARnutritionInfoItemHeight, Yoffset);
-
-            var push = new THREE.Vector3(x, y, z);
-            // var push = new THREE.Vector3(-0.5, 0, -0.5);
-            // var push = new THREE.Vector3(0, 0, -1.0);
-
-            push.transformDirection(dirMtx);
-            pos.addScaledVector(push, scale);
-
-            // Clone our cube object and place it at the camera's
-            // current position
-            // var clone = cube.clone();
-            // scene.add(clone);
-            // clone.position.copy(pos);
-            // clone.quaternion.copy(ori);
-
-            textGeo = new THREE.TextGeometry(nutr_list[i], {
-                font: font,
-                size: ARnutritionInfoItemSize,
-                height: ARnutritionInfoItemHeight
-            });
-            textGeo.computeBoundingBox();
-            textGeo.computeVertexNormals();
-
-            var text3D = new THREE.Mesh(textGeo, textMaterial);
-
-            scene.add(text3D);
-            removable_items.push(text3D);     // garbage collect 3d objects
-
-            // place geometry at camera's current position
-            text3D.position.copy(pos);
-            text3D.quaternion.copy(ori);
-
-            Utils.debug("finish this 3d text");
-        }
-
-        // reset vars
-        pose = null;
-        ori = null;
-        pos = null;
-    }
-
-
     function cleanARcontent() {
         if (removable_items.length >0) {
             removable_items.forEach(function(v,i) {
@@ -602,9 +336,7 @@ var ArWebModule = function () {
         startAR: startAR,
         checkArBrowser: checkArBrowser,
         setCaptureFoodItem: setCaptureFoodItemStatus,
-        addArText: addArText,
         cleanARcontent: cleanARcontent,
-        render3DTextGroup: render3DTextGroup,
         loadFont: loadFont,
         render3dArText: render3dArText
     };

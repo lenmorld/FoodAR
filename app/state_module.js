@@ -30,10 +30,14 @@ var StateModule = function() {
                 Utils.smartLog(['getUserMedia() is not supported in your browser']);
                 Utils.debug('running app in desktop browser testing mode...');
                 var image = 'http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/potato-soup-oh-1000.jpg';
-                var searchString = "soup";
 
                 StateModule.duringCapture();
+
+                // test from image
                 ClarifaiModule.predictUsingWorkflow(image, 10, 0.90, ClarifaiFoodModule.processKeywords);
+
+                // test Edamam search directly
+                // var searchString = "soup";
                 // EdamamModule.foodSearch(searchString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
             }
         });
@@ -85,33 +89,3 @@ var StateModule = function() {
         afterCapture: afterCapture
     }
 }();
-
-
-    /*
-            // $("#btn-analyze").show();
-        // $("#btn-analyze-spinner").hide().css("animation-play-state", "paused");
-
-        // $("#btn-analyze").css("border-bottom-color", "transparent");
-
-        // $("#btn-analyze").show();
-        // $("#btn-roller").hide();
-        // ROLLER.css("visibility", "hidden");
-
-
-
-                // $(this).css("background-color", "blue");
-
-            // $("#btn-analyze").hide();
-            // $("#btn-analyze-spinner").show().css("animation-play-state", "running");
-
-            // $("#btn-analyze").css("border-bottom-color", "lawngreen");
-            // $("#btn-analyze").toggle().toggle();
-            // $("#btn-analyze").hide();
-
-            // $("#btn-roller").show();
-            // ROLLER.css("visibility", "visible");
-            // ROLLER.css("display", "block");
-            // ROLLER.show();
-
-            document.getElementById("btn-roller").style.display = "block";
-     */

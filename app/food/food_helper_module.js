@@ -4,38 +4,28 @@
  */
 
 var FoodHelperModule = function () {
-// food item search
     function foodSearchSuccess(foodItemUri) {
-
-        Utils.smartLog(["success: ", foodItemUri]);
-        Utils.smartLog(["fetching nutrition info..."]);
-
-        Utils.debug("[edamam_food_search_success]" + foodItemUri);
+        Utils.debug("[edamam_food_search_success] " + foodItemUri);
 
         EdamamModule.nutrientsFetch(foodItemUri, nutrientsFetchSuccess, nutrientsFetchFailure);
     }
 
-    function foodSearchFailure(failedKeyword, msg) {
-        Utils.smartLog(["edamam_food_search_failure: ", msg]);
-        Utils.errorHandler(4000);
-        Utils.debug("[edamam_food_search_failure]" + msg);
+    function foodSearchFailure(failedKeyword, msg, code) {
+        Utils.errorHandler(msg, code);
 
-        // call fallback method on integration module
+        // redo search with next keyword -> call fallback method on integration module
         ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
     }
 
 
 // nutrient search
     function nutrientsFetchSuccess(nutrientsInfo) {
-        Utils.smartLog(["success: ", nutrientsInfo]);
         Utils.debug("[nutrient_fetch_success]");
         prepareNutrientsView(nutrientsInfo);
     }
 
-    function nutrientsFetchFailure(failedKeyword, msg) {
-        Utils.smartLog(["[edamam_nutrients_fetch_failure]: ", failedKeyword, msg]);
-        Utils.debug("[nutrients_fetch_failure] " + failedKeyword + " " + msg);
-        Utils.errorHandler(4001);
+    function nutrientsFetchFailure(failedKeyword, msg, code) {
+        Utils.errorHandler(msg, code);
 
         // call fallback method on integration module
         ClarifaiFoodModule.nutrientFetchFailureFallback(failedKeyword);
@@ -59,10 +49,8 @@ var FoodHelperModule = function () {
         }
 
         // SUCCESS!!! =D =D =D
-        // NUTR_INFO_VIEW.innerHTML = html;
 
-        Utils.debug("=D");
-        Utils.smartLog(["done! press analyze again..."]);
+        Utils.debug("=D done! press analyze again");
 
         ViewModule.updateNutritionInfoView(nutInfoStringList);
 
@@ -86,55 +74,45 @@ var FoodHelperModule = function () {
             // {label: "Carbs", quantity: 8.808626666666665, unit: "%"}
             // {label: "Carbs", quantity: 26.425879999999996, unit: "g"}
 
-            try {
-                if (totalDaily[nutrient]) {     // totalDaily is more important since it's more useful to user
-                    var total_daily_nutrient = totalDaily[nutrient];
-                    var total_quantity_nutrient = totalQuantity[nutrient];
+            if (totalDaily[nutrient]) {     // totalDaily is more important since it's more useful to user
+                var total_daily_nutrient = totalDaily[nutrient];
+                var total_quantity_nutrient = totalQuantity[nutrient];
 
-                    if (!nutrientsObj[nutrient]) {
-                        nutrientsObj[nutrient] = {};
-                    }
-
-                    var dblDaily = Utils.round(total_daily_nutrient.quantity);
-                    var dblQuantity = Utils.round(total_quantity_nutrient.quantity);
-
-                    // if both 0, its like its not included, it shouldnt be displayed
-                    // if (dblDaily === 0 && dblQuantity === 0) {
-                    //     continue;
-                    // }
-
-                    var total_daily_string = [dblDaily, total_daily_nutrient.unit].join(" ");
-                    var total_quantity_string = [dblQuantity, total_quantity_nutrient.unit].join(" ");
-
-                    nutrientsObj[nutrient]["daily"] = total_daily_string;
-                    nutrientsObj[nutrient]["quantity"] = total_quantity_string;
-                    nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
-
-                    collected++;
-
-                    if (neededItems === collected) {
-                        return nutrientsObj;
-                    } else {
-
-                    }
-
-                    // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
-                    // Utils.smartLog(searchString);
-                    // Utils.smartLog(total_daily_string);
-                    // Utils.smartLog(total_quantity_string);
-                } else {
-                    // if certain nutrient not available, just skip
-                    continue;
+                if (!nutrientsObj[nutrient]) {
+                    nutrientsObj[nutrient] = {};
                 }
+
+                var dblDaily = Utils.round(total_daily_nutrient.quantity);
+                var dblQuantity = Utils.round(total_quantity_nutrient.quantity);
+
+                // if both 0, its like its not included, it shouldnt be displayed
+                // if (dblDaily === 0 && dblQuantity === 0) {
+                //     continue;
+                // }
+
+                var total_daily_string = [dblDaily, total_daily_nutrient.unit].join(" ");
+                var total_quantity_string = [dblQuantity, total_quantity_nutrient.unit].join(" ");
+
+                nutrientsObj[nutrient]["daily"] = total_daily_string;
+                nutrientsObj[nutrient]["quantity"] = total_quantity_string;
+                nutrientsObj[nutrient]["name"] = total_daily_nutrient.label;
+
+                collected++;
+
+                if (neededItems === collected) {
+                    return nutrientsObj;
+                } else {
+
+                }
+
+                // can also get official Food Item info from nutrientsInfo.nutrientsInfo.ingredients[0].parsed[0]
+                // Utils.smartLog(searchString);
+                // Utils.smartLog(total_daily_string);
+                // Utils.smartLog(total_quantity_string);
+            } else {
+                // if certain nutrient not available, just skip
+                continue;
             }
-            catch(err) {
-                Utils.smartLog([err]);
-                return nutrientsObj;            // dont stop when error, just return what's completed
-            }
-            // finally {
-            //     // Utils.smartLog(nutrientsObj);
-            //     // renderNutritionAR(nutrientsObj);
-            // }
         }
         return nutrientsObj;
     }
