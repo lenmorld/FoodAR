@@ -41,8 +41,6 @@ var Utils = function () {
 
 
         /*
-                No internet: 100
-
                Clarifai Error on image recognition: Error 2000
                Clarifai Error on image recognition: Error 2001
 

@@ -55,6 +55,13 @@ var ClarifaiFoodModule = function () {
         // get first item
         if (words.food.length > 0) {
             var searchNutritionString = words.food[0].name;
+
+            // PATCH 4-23-2018
+            if (GENERAL_TO_SPECIFIC.includes(searchNutritionString)) {
+                // if general term like "vegetable" or "fruit", try next specific item
+                nutrientFetchFailureFallback(searchNutritionString);
+            }
+
             ViewModule.updateFoodItemNameView(searchNutritionString);
 
             // get nutrition info
