@@ -28,4 +28,4 @@ var MEALS_KEYWORD_LIST = ['meal', 'lunch', 'dinner'];
 
 var RECIPES_KEYWORD_LIST = ['cooking', 'preparation'];      // to use for General model
 
-var GENERAL_TO_SPECIFIC = ['vegetable', 'fruit'];       // if encountered, try next more specific keyword
+var GENERAL_TO_SPECIFIC = ['vegetable', 'fruit', 'dairy', 'seafood'];       // if encountered, try next more specific keyword
