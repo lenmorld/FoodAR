@@ -60,12 +60,16 @@ var ClarifaiFoodModule = function () {
             if (GENERAL_TO_SPECIFIC.includes(searchNutritionString)) {
                 // if general term like "vegetable" or "fruit", try next specific item
                 nutrientFetchFailureFallback(searchNutritionString);
+            } else {
+
+                // food item specific enough
+                ViewModule.updateFoodItemNameView(searchNutritionString);
+
+                // get nutrition info
+                EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
             }
 
-            ViewModule.updateFoodItemNameView(searchNutritionString);
 
-            // get nutrition info
-            EdamamModule.foodSearch(searchNutritionString, FoodHelperModule.foodSearchSuccess, FoodHelperModule.foodSearchFailure);
         } else {
             Utils.errorHandler("Clarifai API Error words.food empty", 2001);
         }
