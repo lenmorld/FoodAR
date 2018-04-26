@@ -5,7 +5,7 @@
 ### Demo
 
 
-[https://streamable.com/ub0k7] Food AR on apple
+https://streamable.com/ub0k7
 
 
 
@@ -56,13 +56,12 @@ AR webapp.
 
 first check if device is here:
 
-[https://developers.google.com/ar/discover/](ARCore supported devices)
-
+https://developers.google.com/ar/discover/
 
 complete instructions on running the app here:
-[https://goo.gl/forms/SoISrkKScSndpHLA3](Google Form)
+https://goo.gl/forms/SoISrkKScSndpHLA3
 
-rundown:
+TL; DR quick rundown:
 
 1. Download and Install ARCore APK
 https://github.com/google-ar/arcore-android-sdk/releases/download/sdk-preview/arcore-preview.apk
@@ -77,8 +76,6 @@ Replace the URL address at the top with this URL:
 
 Go/enter URL.  
 You should be redirected to the webapp. 
-
-
 
 deployed in a Heroku Dyno at
 https://tranquil-ravine-83977.herokuapp.com/
