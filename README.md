@@ -20,6 +20,9 @@ nutritional information on a given food name using Edamam API. Lastly, View modu
 the preparation and augmentation of digital AR content to the physical AR target, using WebAR
 and ARCore for Android devices.
 
+![alt text](https://raw.githubusercontent.com/lenmorld/FoodAR/master/FoodAR.png)
+
+
 The app prototype was evaluated by nine participants, in order to assess its feasibility in
 accomplishing the objectives. The evaluation consisted of a pre-test questionnaire that
 determines users’ background and interest in AR and nutrition, a set of tasks performed by the
