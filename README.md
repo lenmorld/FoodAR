@@ -61,7 +61,7 @@ https://developers.google.com/ar/discover/
 complete instructions on running the app here:
 https://goo.gl/forms/SoISrkKScSndpHLA3
 
-TL; DR quick rundown:
+### TL; DR quick rundown
 
 1. Download and Install ARCore APK
 https://github.com/google-ar/arcore-android-sdk/releases/download/sdk-preview/arcore-preview.apk
