@@ -1,4 +1,5 @@
-# SOEN 498 HCI Final Project - Food AR
+# SOEN 498 HCI Final Project (April 2018)
+## Food AR webapp
 
 
 ### Demo
@@ -43,9 +44,13 @@ qualitative data provided various insights and ideas for improvements. Both quan
 qualitative results of the user evaluation will be indispensable in the future development of Food
 AR webapp.
 
-
-
-
+### tech, languages, frameworks
+- ARCore
+- WebARonArCore
+- HTML, JS, CSS, jQuery
+- WebGL, three.js, three.ar.js
+- Node.js
+- Heroku
 
 ### How to run
 
