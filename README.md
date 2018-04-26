@@ -13,6 +13,9 @@ application (webapp). The app’s objective is to increase awareness of users on
 eat, by utilizing AR to digitally present nutritional information. The app allows user to capture food
 items through mobile device camera, then augments the food item with digital information.
 
+##### Preview
+![alt text](https://raw.githubusercontent.com/lenmorld/FoodAR/master/UX_design.PNG)
+
 The implementation of the app prototype can be divided into three main modules, with their
 respective frameworks and libraries for rapid prototyping. Food module handles food object
 recognition and generating keywords from images using Clarifai API. Nutrition module obtains
@@ -20,6 +23,7 @@ nutritional information on a given food name using Edamam API. Lastly, View modu
 the preparation and augmentation of digital AR content to the physical AR target, using WebAR
 and ARCore for Android devices.
 
+##### Design
 ![alt text](https://raw.githubusercontent.com/lenmorld/FoodAR/master/FoodAR.png)
 
 
@@ -38,7 +42,7 @@ qualitative results of the user evaluation will be indispensable in the future d
 AR webapp.
 
 
-### Design
+
 
 
 ### How to run
